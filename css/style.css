@@ -53,6 +53,11 @@ a:hover {
     filter: grayscale(0%);
     transform: scale(1.1);
 }
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.8rem;
+}
 p {
     max-width: 800px;
     margin: 0 auto 1.5rem auto;
@@ -69,12 +74,12 @@ p {
     margin: 2rem 0;
 }
 .btn-cv {
-    background-color: rgb(36, 9, 48);
+    background-color: #bb86fc;
     color: white;
     padding: 10px 20px;
     border-radius: 10px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
