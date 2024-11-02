@@ -10,6 +10,8 @@ body {
     line-height: 1.6;
     padding: 1rem;
     text-align: center;
+    width: 100vw;
+    height: 100vh;
 }
 img {
     border-radius: 0.8rem;
@@ -88,3 +90,86 @@ p {
     background-color: rgb(50, 15, 66);
     color: white;
 }
+
+
+
+
+  
+  #jeff {
+  
+    width: 800px;
+    height: 400px;
+  
+    overflow: hidden;
+  
+    box-shadow: inset 20px 0px 30px 121212,
+      inset -20px 0px 30px 121212;
+  
+  }
+  
+  .row {
+  
+    height: 50%;
+    width: fit-content;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .stack {
+  
+    height: 100%;
+    width: fit-content;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    animation: toTheLeft 30s infinite linear;
+    z-index: -2;
+  
+  }
+  
+  img {
+  
+    height: 90px;
+    width: 90px;
+    margin: 20px;
+  
+    filter: invert(1) grayscale(100%);
+  
+  
+  }
+  
+  .reverse {
+  
+    animation: toTheRight 30s infinite linear;
+  
+  }
+  
+  @keyframes toTheLeft {
+  
+    0% {
+  
+      transform: translateX(0%);
+  
+    }
+  
+    100% {
+  
+      transform: translateX(-100%);
+  
+    }
+  
+  }
+  
+  @keyframes toTheRight {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
