@@ -7,7 +7,79 @@
     <link rel="shortcut icon" href="./Imgs/guiño.webp" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/loader.css">
+    <style>
+        /* CSS base para el tamaño predeterminado de las imágenes */
+        .pacman1 {
+            width: 5%;
+            transition: width 0.3s;
+        }
+        .pacman2 {
+            width: 7%;
+            transition: width 0.3s;
+        }
+        .pacman3 {
+            width: 5%;
+            transition: width 0.3s;
+        }
+        .pacman4 {
+            width: 5.5%;
+            transition: width 0.3s;
+        }
 
+        /* Tamaño para pantallas pequeñas (móviles) */
+        @media (max-width: 576px) {
+            .pacman1 {
+                width: 10%;
+            }
+            .pacman2 {
+                width: 14%;
+            }
+            .pacman3 {
+                width: 10%;
+            }
+            .pacman4 {
+                width: 11%;
+            }
+            .guiño {
+                width: 30%;
+            }
+        }
+
+        @media (min-width: 577px) and (max-width: 768px) {
+            .pacman1 {
+                width: 8%;
+            }
+            .pacman2 {
+                width: 11%;
+            }
+            .pacman3 {
+                width: 8%;
+            }
+            .pacman4 {
+                width: 9%;
+            }
+            .guiño {
+                width: 20%;
+            }
+        }
+
+        /* Tamaño para pantallas grandes (escritorios y laptops grandes) */
+        @media (min-width: 769px) {
+            .pacman1 {
+                width: 6%;
+            }
+            .pacman2 {
+                width: 9%;
+            }
+            .pacman3 {
+                width: 6%;
+            }
+            .pacman4 {
+                width: 7%;
+            }
+        }
+
+    </style>
 </head>
 <body>
     <div class="banter-loader" id="loader">
@@ -61,7 +133,7 @@
             </div>
         </div>       
         
-        <img src="./Imgs/guiño.webp" width="15%" align="left" class="inline-image" />
+        <img class="guiño" src="./Imgs/guiño.webp" width="15%" align="left" class="inline-image"/>
     
         <p>
             ¡Hola! Soy Mario, estudiante de <a href="https://www.todofp.es/que-estudiar/loe/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank"><strong>Desarrollo de Aplicaciones</strong></a>, apasionado de la Música 🎵 y un fanático del cine🎬, especialmente de Marvel. Me encanta la magia del cine y cómo las películas pueden transportarnos a mundos imaginarios y emocionantes, y también, me fascina como la música es capaz de lograr que sintamos cosas indescriptibles.
@@ -73,12 +145,14 @@
         </p>
     
         <div class="section-divider""></div>
+
         <div style="display: flex; align-items: center; justify-content: center;">
-            <img src="./Imgs/pacman.gif" width="5%" />
-            <img src="./Imgs/fanred.gif" width="7%" />
-            <img src="./Imgs/fanblue.gif" width="5%" />
-            <img src="./Imgs/fanpurple.gif" width="5.5%" />
+            <img class="pacman1" src="./Imgs/pacman.gif" width="5%" />
+            <img class="pacman2" src="./Imgs/fanred.gif" width="7%" />
+            <img class="pacman3" src="./Imgs/fanblue.gif" width="5%" />
+            <img class="pacman4" src="./Imgs/fanpurple.gif" width="5.5%" />
         </div>    
+
         <div class="section-divider"></div>
     
         <p>
@@ -111,4 +185,3 @@
     <script src="./js/script.js"></script>
 </body>
 </html>
-
