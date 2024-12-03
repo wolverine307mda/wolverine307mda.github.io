@@ -124,12 +124,16 @@ body {
 }
 
 .navbar-brand {
-    font-weight: bold;
-    color: rgb(255, 255, 255);
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.navbar.scrolled .navbar-brand {
+    color: #b023a6;
 }
 
 .nav-link {
-    color: rgb(255, 255, 255);
+    color: white;
     transition: color 0.3s ease;
 }
 
@@ -139,6 +143,16 @@ body {
 
 .nav-link:hover {
     color: rgb(76, 8, 77);
+}
+
+.navbar-toggler {
+    color: white;
+    border-color: white;
+}
+
+.navbar.scrolled .navbar-toggler {
+    color: #b023a6;
+    border-color: #b023a6;
 }
 
 .header {
