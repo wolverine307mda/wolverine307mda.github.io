@@ -25,7 +25,7 @@ body {
 
 /* Responsive Hero Section Styles */
 #hero {
-    background-image: url('../Imgs/');
+    background-image: url('../Imgs/fondo.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
