@@ -18,14 +18,13 @@
 }
 
 body {
-    background-color: #121212;
+    background-color: #010101;
     color: #e0e0e0;
     font-family: Arial, sans-serif;
 }
 
-/* Responsive Hero Section Styles */
 #hero {
-    background-image: url('../Imgs/fondo.png');
+    background-image: url('../Imgs/erwann-stephanne-GUOzBcVIpc0-unsplash.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -45,7 +44,7 @@ body {
 
 #hero h1 {
     font-family: "MiFuente";
-    color: #b023a6;
+    color: #ffffff;
     line-height: 1.2;
     margin-bottom: 1rem;
 }
@@ -126,19 +125,25 @@ body {
 .navbar-brand {
     color: white;
     transition: color 0.3s ease;
+    font-weight: bold; /* Cambia a bold */
+    font-size: 1.2rem; /* Opcional: ajusta el tamaño si es necesario */
 }
 
 .navbar.scrolled .navbar-brand {
     color: #b023a6;
+    font-weight: bold; /* Asegúrate de que también sea bold aquí */
 }
 
 .nav-link {
     color: white;
     transition: color 0.3s ease;
+    font-weight: bold; /* Cambia a bold */
+    font-size: 1rem; /* Opcional: ajusta el tamaño si es necesario */
 }
 
 .navbar.scrolled .nav-link {
     color: #b023a6;
+    font-weight: bold; /* Asegúrate de que también sea bold aquí */
 }
 
 .nav-link:hover {
@@ -191,12 +196,9 @@ h1, h2 {
     color: #bb86fc;
     margin-bottom: 1rem;
 }
-h1 {
-    font-family: "MiFuente";
-    font-size: 2rem;
-}
 h2 {
-    font-size: 1.8rem;
+    font-family: 'MiFuente2';
+    font-size: 4.2rem;
 }
 a {
     color: #03dac6;
@@ -207,28 +209,27 @@ a:hover {
     color: #bb86fc;
 }
 .social-links {
-    margin-top: 2rem;
+    margin-top: 3rem; /* Reduce el margen superior */
     display: flex; 
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px; 
-    padding: 0 20px; 
+    justify-content: space-evenly; /* Espacios equilibrados entre los iconos y los bordes */
+    flex-wrap: wrap; /* Permite que los iconos se ajusten en varias filas en pantallas pequeñas */
+    gap: 10px; /* Espacio entre los iconos */
+    padding: 10px; /* Ajusta el espacio interno */
     width: 100%;
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Asegura que padding y border no alteren el ancho */
 }
 
 .social-links img {
-    width: 100%; 
-    max-width: 200px; 
+    width: auto; /* Mantén las proporciones de los iconos */
+    max-width: 150px; /* Limita el tamaño máximo de los iconos */
     height: auto; 
-    transition: transform 0.3s;
-    margin: 0 auto;
+    transition: transform 0.3s; /* Efecto suave en hover */
+    margin: 0; /* Elimina márgenes */
 }
 
 .social-links img:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el ratón */
 }
-
 .profile-image {
     width: 100%;
     max-width: 120px;
