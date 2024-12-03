@@ -1,6 +1,10 @@
-window.addEventListener("load", function() {
-    // Oculta la pantalla de carga
-    document.getElementById("loader").style.display = "none";
-    // Muestra el contenido principal
-    document.querySelector(".pagina").style.display = "block";
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 });
