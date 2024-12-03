@@ -5,81 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Mario de Domingo Álvarez</title>
     <link rel="shortcut icon" href="./Imgs/guiño.webp" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Lugrasimo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/loader.css">
-    <style>
-        /* CSS base para el tamaño predeterminado de las imágenes */
-        .pacman1 {
-            width: 5%;
-            transition: width 0.3s;
-        }
-        .pacman2 {
-            width: 7%;
-            transition: width 0.3s;
-        }
-        .pacman3 {
-            width: 5%;
-            transition: width 0.3s;
-        }
-        .pacman4 {
-            width: 5.5%;
-            transition: width 0.3s;
-        }
-
-        /* Tamaño para pantallas pequeñas (móviles) */
-        @media (max-width: 576px) {
-            .pacman1 {
-                width: 10%;
-            }
-            .pacman2 {
-                width: 14%;
-            }
-            .pacman3 {
-                width: 10%;
-            }
-            .pacman4 {
-                width: 11%;
-            }
-            .guinio {
-                width: 30%;
-            }
-        }
-
-        @media (min-width: 577px) and (max-width: 768px) {
-            .pacman1 {
-                width: 8%;
-            }
-            .pacman2 {
-                width: 11%;
-            }
-            .pacman3 {
-                width: 8%;
-            }
-            .pacman4 {
-                width: 9%;
-            }
-            .guiño {
-                width: 20%;
-            }
-        }
-
-        /* Tamaño para pantallas grandes (escritorios y laptops grandes) */
-        @media (min-width: 769px) {
-            .pacman1 {
-                width: 6%;
-            }
-            .pacman2 {
-                width: 9%;
-            }
-            .pacman3 {
-                width: 6%;
-            }
-            .pacman4 {
-                width: 7%;
-            }
-        }
-
-    </style>
 </head>
 <body>
     <div class="banter-loader" id="loader">
@@ -92,13 +22,35 @@
         <div class="banter-loader__box"></div>
         <div class="banter-loader__box"></div>
         <div class="banter-loader__box"></div>
-      </div>
+    </div>
 
+    <div class="pagina">
+
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#home">Developer</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#info">Información</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#galeria">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Tecnologias</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     
-    <div class="contenido">
-        <div>
-            <img src="./Imgs/logodaw.png" alt="Logo" style="width: 100%;">
-        </div>
+        <section id="hero" class="d-flex align-items-center">
+            <div class="container text-center">
+                <h1 style="font-size: 9rem;">Mario de Domingo <br> Alvarez</h1>
+                <p class="lead" style="font-family: 'MiFuente2'; color: #feae34; font-size: 3rem;">
+                    web application development student
+                </p>
+            </div>
+        </section>
     
         <div class="social-links">
             <a href="https://github.com/wolverine307mda" target="_blank">
@@ -120,68 +72,88 @@
                 <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
             </a>
         </div>
-    
-        <img src="./Imgs/gif.gif" width="5%" align="right" />
-        <h1>¡¡¡Saludos✌!!! Soy Mario de Domingo Álvarez 💥</h1>
-    
-        <div style="text-align: center; margin: 20px;">
-            <div style="display: inline-block; margin: 20px;">
-                <a href="https://wolverine307mda.github.io/Curriculum/" class="btn-cv">Ver Currículum</a>
-            </div>
-            <div style="display: inline-block; margin: 20px;">
-                <a href="https://wolverine307mda.github.io/RFA/" class="btn-cv">Mis Proyectos</a>
-            </div>
-        </div>       
+
+        <div class="contenido">        
+            <img src="./Imgs/gif.gif" width="5%" align="right" />
+            <h2>¡¡¡Saludos✌!!! Soy Mario de Domingo Álvarez 💥</h>
         
-        <img class="guinio" src="./Imgs/guiño.webp" width="15%" align="left" class="inline-image"/>
-    
-        <p>
-            ¡Hola! Soy Mario, estudiante de <a href="https://www.todofp.es/que-estudiar/loe/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank"><strong>Desarrollo de Aplicaciones</strong></a>, apasionado de la Música 🎵 y un fanático del cine🎬, especialmente de Marvel. Me encanta la magia del cine y cómo las películas pueden transportarnos a mundos imaginarios y emocionantes, y también, me fascina como la música es capaz de lograr que sintamos cosas indescriptibles.
-        </p>
-    
-        <img class="guinio" src="./Imgs/octogato.png" width="16%" align="right" class="inline-image" />
-        <p>
-            Mi interés por el desarrollo de aplicaciones web surgió cuando descubrí la capacidad de utilizar la tecnología para crear experiencias interactivas y funcionales en línea🌐. Como estudiante de desarrollo de aplicaciones web💻, me emociona la idea de combinar mi amor por el cine y Marvel con mis habilidades técnicas.
-        </p>
-    
-        <div class="section-divider""></div>
+            <div style="text-align: center; margin: 20px;">
+                <div style="display: inline-block; margin: 20px;">
+                    <a href="https://wolverine307mda.github.io/Curriculum/" class="btn-cv">Ver Currículum</a>
+                </div>
+                <div style="display: inline-block; margin: 20px;">
+                    <a href="https://wolverine307mda.github.io/RFA/" class="btn-cv">Mis Proyectos</a>
+                </div>
+            </div>       
+            
+            <img class="guinio" src="./Imgs/guiño.webp" width="15%" align="left" class="inline-image"/>
+        
+            <p>
+                ¡Hola! Soy Mario, estudiante de <a href="https://www.todofp.es/que-estudiar/loe/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank"><strong>Desarrollo de Aplicaciones</strong></a>, apasionado de la Música 🎵 y un fanático del cine🎬, especialmente de Marvel. Me encanta la magia del cine y cómo las películas pueden transportarnos a mundos imaginarios y emocionantes, y también, me fascina como la música es capaz de lograr que sintamos cosas indescriptibles.
+            </p>
+        
+            <img class="guinio" src="./Imgs/octogato.png" width="16%" align="right" class="inline-image" />
+            <p>
+                Mi interés por el desarrollo de aplicaciones web surgió cuando descubrí la capacidad de utilizar la tecnología para crear experiencias interactivas y funcionales en línea🌐. Como estudiante de desarrollo de aplicaciones web💻, me emociona la idea de combinar mi amor por el cine y Marvel con mis habilidades técnicas.
+            </p>
+        
+            <div class="section-divider""></div>
 
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <img class="pacman1" src="./Imgs/pacman.gif" width="5%" />
-            <img class="pacman2" src="./Imgs/fanred.gif" width="7%" />
-            <img class="pacman3" src="./Imgs/fanblue.gif" width="5%" />
-            <img class="pacman4" src="./Imgs/fanpurple.gif" width="5.5%" />
-        </div>    
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <img class="pacman1" src="./Imgs/pacman.gif" width="5%" />
+                <img class="pacman2" src="./Imgs/fanred.gif" width="7%" />
+                <img class="pacman3" src="./Imgs/fanblue.gif" width="5%" />
+                <img class="pacman4" src="./Imgs/fanpurple.gif" width="5.5%" />
+            </div>    
 
-        <div class="section-divider"></div>
-    
-        <p>
-            Como un verdadero friki de Marvel me fascina el <a href="https://www.marvel.com" target="_blank"><strong>UCM</strong></a>🕸️ y cómo las diferentes películas se conectan📡 entre sí para crear una narrativa épica. Me encanta sumergirme en las historias de los superhéroes, sus poderes y los desafíos a los que se enfrentan🚀.
-        </p>
-        <p>
-            En resumen, soy Mario, un estudiante de Primero de <a href="https://www.todofp.es/que-estudiar/loe/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank"><strong>D.A.W.</strong></a> entusiasta en el centro de educación superior <a href="https://www.iesluisvives.es/" target="_blank"><strong>IES Luis Vives</strong></a> en <a href="https://www.google.com/maps/place/Legan%C3%A9s,+Madrid" target="_blank"><strong>Leganés</strong></a>. Estoy emocionado por las oportunidades que el campo de la tecnología🛰️ me ofrece, y espero poder combinar mis dos pasiones para crear proyectos web innovadores.
-        </p>
-    
-        <h2>💻 Tecnologías que uso</h2>
-        <div class="technologies">
-            <img src="./Imgs/github.png" width="5%" />
-            <img src="./Imgs/gitkraken.png" width="5%" />
-            <img src="./Imgs/kotlin.png" width="5%" />
-            <img src="./Imgs/html.png" width="5%" />
-            <img src="./Imgs/css.png" width="5%" />
-            <img src="./Imgs/mysql.png" width="5%" />
-            <img src="./Imgs/sqlite.png" width="5%" />
-            <img src="./Imgs/java.png" width="5%" />
-            <br>
-            <img src="./Imgs/dockerLogo.png" width="5%" />
-            <img src="./Imgs/postman.svg" width="6%" />
-            <img src="./Imgs/springboot.png" width="5%" />
-            <img src="./Imgs/postgres.png" width="5%" />
-            <img src="./Imgs/mariadb.svg" width="5%" />
-            <img src="./Imgs/bootstrap.png" width="5%" />
-            <img src="./Imgs/javascript.png" width="5%" />
+            <div class="section-divider"></div>
+        
+            <p>
+                Como un verdadero friki de Marvel me fascina el <a href="https://www.marvel.com" target="_blank"><strong>UCM</strong></a>🕸️ y cómo las diferentes películas se conectan📡 entre sí para crear una narrativa épica. Me encanta sumergirme en las historias de los superhéroes, sus poderes y los desafíos a los que se enfrentan🚀.
+            </p>
+            <p>
+                En resumen, soy Mario, un estudiante de Primero de <a href="https://www.todofp.es/que-estudiar/loe/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank"><strong>D.A.W.</strong></a> entusiasta en el centro de educación superior <a href="https://www.iesluisvives.es/" target="_blank"><strong>IES Luis Vives</strong></a> en <a href="https://www.google.com/maps/place/Legan%C3%A9s,+Madrid" target="_blank"><strong>Leganés</strong></a>. Estoy emocionado por las oportunidades que el campo de la tecnología🛰️ me ofrece, y espero poder combinar mis dos pasiones para crear proyectos web innovadores.
+            </p>
+        
+            <div class="tech-section">
+                <h2>💻 Tecnologías que uso</h2>
+                <div class="technologies">
+                    <img src="./Imgs/tecnologias/github.png" alt="GitHub" />
+                    <img src="./Imgs/tecnologias/gitkraken.png" alt="GitKraken" />
+                    <img src="./Imgs/tecnologias/kotlin.png" alt="Kotlin" />
+                    <img src="./Imgs/tecnologias/html.png" alt="HTML" />
+                    <img src="./Imgs/tecnologias/css.png" alt="CSS" />
+                    <img src="./Imgs/tecnologias/mysql.png" alt="MySQL" />
+                    <img src="./Imgs/tecnologias/sqlite.png" alt="SQLite" />
+                    <img src="./Imgs/tecnologias/java.png" alt="Java" />
+                    <img src="./Imgs/tecnologias/dockerLogo.png" alt="Docker" />
+                    <img src="./Imgs/tecnologias/postman.svg" alt="Postman" />
+                    <img src="./Imgs/tecnologias/springboot.png" alt="Spring Boot" />
+                    <img src="./Imgs/tecnologias/postgres.png" alt="PostgreSQL" />
+                    <img src="./Imgs/tecnologias/mariadb.svg" alt="MariaDB" />
+                    <img src="./Imgs/tecnologias/bootstrap.png" alt="Bootstrap" />
+                    <img src="./Imgs/tecnologias/javascript.png" alt="JavaScript" />
+                    <img src="./Imgs/tecnologias/reac.png" alt="React" />
+                    <img src="./Imgs/tecnologias/C_Sharp.png" alt="C_Sharp" />
+                    <img src="./Imgs/tecnologias/NET.png" alt=".net" />                    
+                </div>
+            </div>
+            
         </div>
     </div>
     <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,16 +1,175 @@
+@font-face {
+    font-family: 'MiFuente';
+    src: url('../fonts/La Plantilla Dirty.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MiFuente2';
+    src: url('../fonts/Study\ Clash.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: #121212;
     color: #e0e0e0;
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding: 1rem;
+}
+
+/* Responsive Hero Section Styles */
+#hero {
+    background-image: url('../Imgs/fondo.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero .container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+#hero h1 {
+    font-family: "MiFuente";
+    color: #b023a6;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+#hero .lead {
+    font-family: 'MiFuente2';
+    color: #feae34;
+}
+
+/* Mobile Devices (up to 576px) */
+@media (max-width: 576px) {
+    #hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 0 60px;
+    }
+
+    #hero h1 {
+        font-size: 5rem !important;
+    }
+
+    #hero .lead {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    #hero h1 {
+        font-size: 5rem !important;
+    }
+
+    #hero .lead {
+        font-size: 2rem !important;
+    }
+}
+
+/* Small Desktops (769px to 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+    #hero h1 {
+        font-size: 7rem !important;
+    }
+
+    #hero .lead {
+        font-size: 2.5rem !important;
+    }
+}
+
+/* Large Desktops (993px and up) */
+@media (min-width: 993px) {
+    #hero h1 {
+        font-size: 9rem !important;
+    }
+
+    #hero .lead {
+        font-size: 3rem !important;
+    }
+}
+
+/* Ensure text is always readable */
+@media (max-width: 1200px) {
+    #hero h1 {
+        max-width: 100%;
+        word-wrap: break-word;
+    }
+}
+
+.navbar {
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.navbar.scrolled {
+    background-color: #121212;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+.nav-link {
+    color: rgb(255, 255, 255);
+    transition: color 0.3s ease;
+}
+
+.navbar.scrolled .nav-link {
+    color: #b023a6;
+}
+
+.nav-link:hover {
+    color: rgb(76, 8, 77);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(18, 18, 18, 0.8);
+    z-index: 100;
+    padding: 10px 0;
     text-align: center;
 }
+
+.contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
 img {
     border-radius: 0.8rem;
 }
@@ -19,7 +178,8 @@ h1, h2 {
     margin-bottom: 1rem;
 }
 h1 {
-    font-size: 2.5rem;
+    font-family: "MiFuente";
+    font-size: 2rem;
 }
 h2 {
     font-size: 1.8rem;
@@ -32,27 +192,64 @@ a {
 a:hover {
     color: #bb86fc;
 }
-.social-links img {
-    margin: 10px;
-    transition: transform 0.3s;
+.social-links {
+    margin-top: 2rem;
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; 
+    padding: 0 20px; 
+    width: 100%;
+    box-sizing: border-box; 
 }
+
+.social-links img {
+    width: 100%; 
+    max-width: 200px; 
+    height: auto; 
+    transition: transform 0.3s;
+    margin: 0 auto;
+}
+
 .social-links img:hover {
     transform: scale(1.1);
 }
+
 .profile-image {
     width: 100%;
     max-width: 120px;
     margin: 0 auto;
 }
+.tech-section {
+    display: flex; /* Para usar Flexbox */
+    flex-direction: column; /* Apila el título y las imágenes */
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    text-align: center; /* Centra el texto */
+    padding: 20px; /* Añade espacio alrededor */
+}
+
+.technologies {
+    display: flex; /* Flexbox para las imágenes */
+    flex-wrap: wrap; /* Permite que las imágenes se ajusten en varias líneas */
+    justify-content: center; /* Centra las imágenes en el contenedor */
+    gap: 15px; /* Espacio entre las imágenes */
+    max-width: 800px; /* Limita el ancho del contenedor */
+    margin: 20px auto; /* Centra el contenedor y añade separación */
+}
+
 .technologies img {
-    margin: 8px;
-    transition: transform 0.3s;
-    filter: grayscale(100%);
+    width: 60px; /* Tamaño uniforme para las imágenes */
+    height: auto; /* Mantiene proporciones */
+    transition: transform 0.3s, filter 0.3s; /* Transición suave */
+    filter: grayscale(100%); /* Escala de grises inicialmente */
 }
+
 .technologies img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.1);
+    transform: scale(1.2); /* Efecto de ampliación al pasar el cursor */
+    filter: grayscale(0%); /* Color al pasar el cursor */
 }
+
 .responsive-image {
     max-width: 100%;
     height: auto;
@@ -87,4 +284,74 @@ p {
 .btn-cv:hover {
     background-color: rgb(50, 15, 66);
     color: white;
+}
+
+.pacman1 {
+    width: 5%;
+    transition: width 0.3s;
+}
+.pacman2 {
+    width: 7%;
+    transition: width 0.3s;
+}
+.pacman3 {
+    width: 5%;
+    transition: width 0.3s;
+}
+.pacman4 {
+    width: 5.5%;
+    transition: width 0.3s;
+}
+
+/* Tamaño para pantallas pequeñas (móviles) */
+@media (max-width: 576px) {
+    .pacman1 {
+        width: 10%;
+    }
+    .pacman2 {
+        width: 14%;
+    }
+    .pacman3 {
+        width: 10%;
+    }
+    .pacman4 {
+        width: 11%;
+    }
+    .guinio {
+        width: 30%;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .pacman1 {
+        width: 8%;
+    }
+    .pacman2 {
+        width: 11%;
+    }
+    .pacman3 {
+        width: 8%;
+    }
+    .pacman4 {
+        width: 9%;
+    }
+    .guiño {
+        width: 20%;
+    }
+}
+
+/* Tamaño para pantallas grandes (escritorios y laptops grandes) */
+@media (min-width: 769px) {
+    .pacman1 {
+        width: 6%;
+    }
+    .pacman2 {
+        width: 9%;
+    }
+    .pacman3 {
+        width: 6%;
+    }
+    .pacman4 {
+        width: 7%;
+    }
 }
