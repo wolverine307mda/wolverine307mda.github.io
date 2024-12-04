@@ -1,12 +1,18 @@
 @font-face {
     font-family: 'MiFuente';
-    src: url('../fonts/La Plantilla Dirty.ttf') format('truetype');
+    src: url('../fonts/Barber-Complete.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'MiFuente2';
     src: url('../fonts/Study\ Clash.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MiFuente3';
+    src: url('../fonts/Blackout\ 2\ AM.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
