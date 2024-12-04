@@ -1,0 +1,97 @@
+/* Add this to your existing style.css */
+.btn-theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    background-color: rgba(187, 134, 252, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-theme-toggle:hover {
+    background-color: rgba(187, 134, 252, 1);
+    transform: scale(1.1);
+}
+
+/* Light mode styles */
+body.light-mode {
+    background-color: #dddddd;
+    color: #333;
+}
+
+.light-mode h1, .light-mode h2 {
+    color: #6a1b9a;
+}
+
+.light-mode a {
+    color: #ffffff;
+}
+
+.light-mode a:hover {
+    color: #6a1b9a;
+}
+
+.light-mode .navbar.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(253, 253, 253, 0.1);
+}
+
+.light-mode .navbar-brand {
+    color: white !important;
+}
+
+.light-mode .nav-link.navbar.scrolled {
+    color: #6a1b9a !important;
+}
+
+.light-mode .btn-cv {
+    background-color: #6a1b9a;
+    color: white;
+}
+
+.light-mode .btn-cv:hover {
+    background-color: #4a148c;
+}
+
+.light-mode .social-links img {
+    filter: invert(1);
+}
+
+.light-mode .social-links img:hover {
+    filter: invert(0);
+}
+
+.light-mode P {
+    color: #333;
+}
+
+.light-mode .pagina a {
+    color: #d6b8fa;
+}
+
+.light-mode .pagina a:hover {
+    color: #4a148c;
+}
+
+/* Estilos para light mode */
+.light-mode .footer {
+    background-color: #f8f9fa; /* Fondo claro */
+    color: #212529;
+}
+
+.light-mode .footer .social-link {
+    color: #212529;
+}
+
+.light-mode .footer .social-link:hover {
+    color: #007bff; /* Azul claro para hover */
+}
