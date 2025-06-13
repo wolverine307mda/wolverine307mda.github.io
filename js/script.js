@@ -73,3 +73,74 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+// Script para el mosaico de fotos aleatorias
+document.addEventListener('DOMContentLoaded', function () {
+  const allPhotos = [
+    './Imgs/fotos/imagen1.jpg',
+    './Imgs/fotos/imagen2.jpg',
+    './Imgs/fotos/imagen3.jpg',
+    './Imgs/fotos/imagen4.jpg',
+    './Imgs/fotos/imagen5.jpg',
+    './Imgs/fotos/imagen6.jpg',
+    './Imgs/fotos/imagen7.jpg',
+    './Imgs/fotos/imagen8.jpg',
+    './Imgs/fotos/imagen9.jpg',
+    './Imgs/fotos/imagen10.jpg',
+    './Imgs/fotos/imagen11.jpg',
+    './Imgs/fotos/imagen12.jpg',
+    './Imgs/fotos/imagen13.jpg',
+    './Imgs/fotos/imagen14.jpg',
+    './Imgs/fotos/imagen15.jpg',
+    './Imgs/fotos/imagen16.jpg',
+    './Imgs/fotos/imagen17.jpg',
+    './Imgs/fotos/imagen18.jpg',
+    './Imgs/fotos/imagen19.jpg',
+  ];
+
+  const NUM_IMAGES = 12;
+  const SIZE_CLASSES = ['wide', 'tall', 'big', '', '', '', 'wide', 'tall', '', 'wide', '', 'wide'];
+
+  const gallery = document.getElementById('photoGallery');
+
+  function getRandomImages(n) {
+    const shuffled = [...allPhotos].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, n);
+  }
+
+  function renderGallery() {
+    gallery.innerHTML = '';
+    const selectedImages = getRandomImages(NUM_IMAGES);
+
+    selectedImages.forEach((url, index) => {
+      const div = document.createElement('div');
+      div.classList.add('photo-item');
+
+      const size = SIZE_CLASSES[index % SIZE_CLASSES.length];
+      if (size) div.classList.add(size);
+
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = `Imagen ${index + 1}`;
+      img.loading = 'lazy';
+
+      div.appendChild(img);
+      gallery.appendChild(div);
+    });
+  }
+
+  function updateImages() {
+    const newImages = getRandomImages(NUM_IMAGES);
+    const imgs = document.querySelectorAll('.photo-item img');
+
+    imgs.forEach((img, i) => {
+      img.src = newImages[i];
+    });
+  }
+
+  renderGallery();
+
+  setInterval(updateImages, 10000); // actualiza cada 10s
+});
+
