@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Mario de Domingo Álvarez</title>
+    <title>Mario de Domingo Álvarez | Desarrollador Web</title>
     <link rel="shortcut icon" href="./Imgs/guiño.webp" type="image/x-icon">
+
+    <!-- Fuentes profesionales -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/all.min.css">
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/loader.css">
     <link rel="stylesheet" href="./css/modoClaro.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    <script src="./js/script.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/loader.js"></script>
-    <script src="./js/modoOscuroDiurno.js"></script>
+    <script src="./js/script.js" defer></script>
+    <script src="./js/bootstrap.min.js" defer></script>
+    <script src="./js/loader.js" defer></script>
+    <script src="./js/modoOscuroDiurno.js" defer></script>
+    <script src="./js/animaciones.js" defer></script>
 </head>
 <body>
 
@@ -37,16 +43,17 @@
         
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#home">Developer</a>
+                <a class="navbar-brand" href="#home">MD</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon""></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#social">Social</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#info">Información</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tecnologias">Tecnologias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">Sobre mí</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
                     </ul>
                     <button id="theme-toggle" class="btn btn-theme-toggle"><i class="fas fa-adjust"></i></button>
                 </div>
@@ -55,131 +62,362 @@
     
         <section id="hero" class="d-flex align-items-center">
             <div class="container text-center">
-                <h1 style="font-size: 9rem;">Mario de Domingo <br> Alvarez</h1>
-                <p class="lead" style="font-family: 'MiFuente2'; color: #ffffff; font-size: 3rem;">
-                    web application development student
-                </p>
+                <div class="hero-content">
+                    <h1 class="hero-title">Mario de Domingo Álvarez</h1>
+                    <p class="hero-subtitle">Desarrollador Web Full Stack</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+                        <a href="#contact" class="btn btn-outline">Contactar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-down">
+                <a href="#about"><i class="fas fa-chevron-down"></i></a>
             </div>
         </section>
 
-        <div id="social">
-            <br>
-        <div class="social-links">
-            <a href="https://github.com/wolverine307mda" target="_blank">
-                <img src="https://img.shields.io/badge/GitHub-white?style=for-the-badge&logo=github&logoColor=black" alt="GitHub" />
-            </a>                   
-            <a href="mailto:dedomingoalvarezmario@gmail.com" target="_blank">
-                <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
-            </a>
-            <a href="https://www.linkedin.com/in/mario-de-domingo-alvarez-615535295/" target="_blank">
-                <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-            </a>
-            <a href="https://www.instagram.com/mariio_dd" target="_blank">
-                <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
-            </a>
-            <a href="https://open.spotify.com/user/a2qtspq6fz4g7wrz2yawcwco7?si=szi3MZ2bS2ijjm-VjDSHfQ" target="_blank">
-                <img src="https://img.shields.io/badge/Spotify-1DB954?style=for-the-badge&logo=spotify&logoColor=white" alt="Spotify" />
-            </a>
-            <a href="https://x.com/Mario_DA_" target="_blank">
-                <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=x&logoColor=white" alt="Twitter" />
-            </a>
-        </div>
-        </div>
-        <br><br>
-        <div id="info" class="contenido">        
-            <img src="./Imgs/gif.gif" width="5%" align="right" />
-            <h2>¡¡¡Saludos✌!!! Soy Mario de Domingo Álvarez 💥</h2>
-        
-            <div style="text-align: center; margin: 20px;">
-                <div style="display: inline-block; margin: 20px;">
-                    <a href="https://wolverine307mda.github.io/Curriculum/" class="btn-cv">Ver Currículum</a>
-                </div>
-                <div style="display: inline-block; margin: 20px;">
-                    <a href="https://wolverine307mda.github.io/RFA/" class="btn-cv">Mis Proyectos</a>
-                </div>
-            </div>       
-            
-            <img class="guinio" src="./Imgs/guiño.webp" width="15%" align="left" class="inline-image"/>
-        
-            <p>
-                ¡Hola! Soy Mario, estudiante de <a href="https://www.todofp.es/que-estudiar/loe/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank"><strong>Desarrollo de Aplicaciones</strong></a>, apasionado de la Música 🎵 y un fanático del cine🎬, especialmente de <b style="font-family: 'MiFuente3'; color: red;">Marvel</b> . Me encanta la magia del cine y cómo las películas pueden transportarnos a mundos imaginarios y emocionantes, y también, me fascina como la música es capaz de lograr que sintamos cosas indescriptibles.
-            </p>
-        
-            <img class="guinio" src="./Imgs/octogato.png" width="16%" align="right" class="inline-image" />
-            <p>
-                Mi interés por el desarrollo de aplicaciones web surgió cuando descubrí la capacidad de utilizar la tecnología para crear experiencias interactivas y funcionales en línea🌐. Como estudiante de desarrollo de aplicaciones web💻, me emociona la idea de combinar mi amor por el cine y <b style="font-family: 'MiFuente3'; color: red;">Marvel</b> con mis habilidades técnicas.
-            </p>
-        
-            <div class="section-divider""></div>
-
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <img class="pacman1" src="./Imgs/pacman.gif" width="5%" />
-                <img class="pacman2" src="./Imgs/fanred.gif" width="7%" />
-                <img class="pacman3" src="./Imgs/fanblue.gif" width="5%" />
-                <img class="pacman4" src="./Imgs/fanpurple.gif" width="5.5%" />
-            </div>    
-
-            <div class="section-divider"></div>
-        
-            <p>
-                Como un verdadero friki de Marvel me fascina el <a href="https://www.marvel.com" target="_blank"><strong>UCM</strong></a>🕸️ y cómo las diferentes películas se conectan📡 entre sí para crear una narrativa épica. Me encanta sumergirme en las historias de los superhéroes, sus poderes y los desafíos a los que se enfrentan🚀.
-            </p>
-            <p>
-                En resumen, soy Mario, un estudiante de Primero de <a href="https://www.todofp.es/que-estudiar/loe/informatica-comunicaciones/des-aplicaciones-web.html" target="_blank"><strong>D.A.W.</strong></a> entusiasta en el centro de educación superior <a href="https://www.iesluisvives.es/" target="_blank"><strong>IES Luis Vives</strong></a> en <a href="https://www.google.com/maps/place/Legan%C3%A9s,+Madrid" target="_blank"><strong>Leganés</strong></a>. Estoy emocionado por las oportunidades que el campo de la tecnología🛰️ me ofrece, y espero poder combinar mis dos pasiones para crear proyectos web innovadores.
-            </p>
-        
-            <div id="tecnologias" class="tech-section">
-                <h2>💻 Tecnologías que uso</h2>
-                <div class="technologies">
-                    <img src="./Imgs/tecnologias/github.png" alt="GitHub" />
-                    <img src="./Imgs/tecnologias/gitkraken.png" alt="GitKraken" />
-                    <img src="./Imgs/tecnologias/kotlin.png" alt="Kotlin" />
-                    <img src="./Imgs/tecnologias/html.png" alt="HTML" />
-                    <img src="./Imgs/tecnologias/css.png" alt="CSS" />
-                    <img src="./Imgs/tecnologias/mysql.png" alt="MySQL" />
-                    <img src="./Imgs/tecnologias/sqlite.png" alt="SQLite" />
-                    <img src="./Imgs/tecnologias/java.png" alt="Java" />
-                    <img src="./Imgs/tecnologias/dockerLogo.png" alt="Docker" />
-                    <img src="./Imgs/tecnologias/postman.png" alt="Postman" />
-                    <img src="./Imgs/tecnologias/springboot.png" alt="Spring Boot" />
-                    <img src="./Imgs/tecnologias/postgres.png" alt="PostgreSQL" />
-                    <img src="./Imgs/tecnologias/mariadb.svg" alt="MariaDB" />
-                    <img src="./Imgs/tecnologias/bootstrap.png" alt="Bootstrap" />
-                    <img src="./Imgs/tecnologias/javascript.png" alt="JavaScript" />
-                    <img src="./Imgs/tecnologias/reac.png" alt="React" />
-                    <img src="./Imgs/tecnologias/C_Sharp.png" alt="C_Sharp" />
-                    <img src="./Imgs/tecnologias/NET.png" alt=".net" />                    
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">Sobre mí</h2><br>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Joven desarrollador web con experiencia en la creación de aplicaciones y sitios web modernos, orientados a la funcionalidad, la eficiencia y la experiencia de usuario.</p>
+                        
+                        <p>Finalicé mis estudios de Desarrollo de Aplicaciones Web (DAW) en el IES Luis Vives de Leganés. Durante mi formación realicé mis prácticas profesionales en Fontventa, una consultoría tecnológica ubicada en Alcorcón que ofrece servicios de mantenimiento informático, programación a medida, diseño web, auditorías y desarrollo de aplicaciones móviles.</p>
+                                                
+                        <p>Actualmente, sigo ampliando mis habilidades trabajando para la misma empresa y a través de proyectos propios y colaborativos, manteniéndome al día con las últimas tendencias tecnológicas y aportando soluciones modernas y funcionales.</p>
+                                                
+                        <div class="about-links">
+                            <a href="https://wolverine307mda.github.io/Curriculum/" class="btn btn-cv">Descargar CV</a>
+                            <div class="social-links">
+                                <a href="https://github.com/wolverine307mda" target="_blank" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/mario-de-domingo-alvarez-615535295/" target="_blank" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="mailto:dedomingoalvarezmario@gmail.com" target="_blank" aria-label="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                            <img src="./Imgs/guiño.webp" alt="Mario de Domingo Álvarez" class="profile-img">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-        </div>
+        </section>
 
-        <footer class="footer mt-auto py-3">
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="mb-2">
-                            © 2024 Mario de Domingo Álvarez. Todos los derechos reservados.
-                        </p>
-                        <div class="footer-social-links">
-                            <a href="https://github.com/wolverine307mda" target="_blank" class="social-link">
-                                <i class="fab fa-github fa-lg"></i>
+        <section id="projects" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <p class="section-subtitle">Algunos de mis trabajos recientes</p>
+                
+                <div class="projects-grid">
+                    <!-- Proyecto 1 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Proyecto 1">
+                            <div class="project-links">
+                                <a href="https://github.com/wolverine307mda/MovieTrip-TFC" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">MovieTrip (TFC)</h3>
+                            <p class="project-description">Aplicacion ideal para Viajeros y amantes del cine.</p>
+                            <div class="project-tech">
+                                <span>Kotlin</span>
+                                <span>springBoot</span>
+                                <span>Vue.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyecto 2 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1726572330396-0947f571ac19?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Proyecto 2">
+                            <div class="project-links">
+                                <a href="https://github.com/wolverine307mda/Wallapop-Laravel" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Waravel</h3>
+                            <p class="project-description">Plataforma de comercio electrónico con carrito de compras.</p>
+                            <div class="project-tech">
+                                <span>Laravel</span>
+                                <span>PostgreSQL</span>
+                                <span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyecto 3 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1579635827170-e17ba1c201f5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Proyecto 3">
+                            <div class="project-links">
+                                <a href="https://github.com/wolverine307mda/VivesBank.Net" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">VivesBank</h3>
+                            <p class="project-description">Servicio bancario con un enfoque modular y bien organizado.</p>
+                            <div class="project-tech">
+                                <span>Spring Boot</span>
+                                <span>.NET</span>
+                                <span>PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyecto 4
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="./Imgs/projects/project4.jpg" alt="Proyecto 4">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Aplicación Meteorológica</h3>
+                            <p class="project-description">Aplicación que muestra el pronóstico del tiempo utilizando APIs públicas con
+                                geolocalización.</p>
+                            <div class="project-tech">
+                                <span>JavaScript</span>
+                                <span>API REST</span>
+                                <span>CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="./Imgs/projects/project5.jpg" alt="Proyecto 5">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Plataforma de Aprendizaje</h3>
+                            <p class="project-description">Sistema de gestión de cursos online con videoconferencia integrada y
+                                evaluaciones.</p>
+                            <div class="project-tech">
+                                <span>React</span>
+                                <span>Firebase</span>
+                                <span>WebRTC</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="./Imgs/projects/project6.jpg" alt="Proyecto 6">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Aplicación Móvil de Notas</h3>
+                            <p class="project-description">Aplicación móvil para tomar notas con sincronización en la nube y categorización.
+                            </p>
+                            <div class="project-tech">
+                                <span>Kotlin</span>
+                                <span>SQLite</span>
+                                <span>Firebase</span>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                
+                <div class="d-flex justify-content-center mt-5">
+                    <div class="mx-2">
+                        <a href="https://wolverine307mda.github.io/RFA/" target="_blank" class="btn btn-outline" style="color: black;">Ver más proyectos en GitHub</a>
+                    </div>
+
+                    <div class="mx-2">
+                        <a href="https://github.com/wolverine307mda?tab=repositories" target="_blank" style="color: black;" class="btn btn-outline">Ver mis diseños web</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">Habilidades Técnicas</h2>
+                <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+                
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Frontend</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/html.png" alt="HTML5"></div>
+                                <span class="skill-name">HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/css.png" alt="CSS3"></div>
+                                <span class="skill-name">CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/javascript.png" alt="JavaScript"></div>
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://brandlogos.net/wp-content/uploads/2022/01/vue.js-logo-brandlogo.net_.png" alt="React"></div>
+                                <span class="skill-name">Vue.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://th.bing.com/th/id/R.ab5fe52c483924b543f8860a90f9242e?rik=yWfxWWFhZP9AZA&pid=ImgRaw&r=0" alt="React"></div>
+                                <span class="skill-name">Angular</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/bootstrap.png" alt="Bootstrap"></div>
+                                <span class="skill-name">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Backend</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/java.png" alt="Java"></div>
+                                <span class="skill-name">Java</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/kotlin.png" alt="Java"></div>
+                                <span class="skill-name">Kotlin</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/springboot.png" alt="Spring Boot"></div>
+                                <span class="skill-name">Spring Boot</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/NET.png" alt=".NET"></div>
+                                <span class="skill-name">.NET</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/C_Sharp.png" alt="C#"></div>
+                                <span class="skill-name">C#</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://logospng.org/download/laravel/logo-laravel-icon-1024.png" alt="Laravel"></div>
+                                <span class="skill-name">Laravel</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Bases de Datos</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/mysql.png" alt="MySQL"></div>
+                                <span class="skill-name">MySQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/postgres.png" alt="PostgreSQL"></div>
+                                <span class="skill-name">PostgreSQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/mariadb.svg" alt="MariaDB"></div>
+                                <span class="skill-name">MariaDB</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/sqlite.png" alt="SQLite"></div>
+                                <span class="skill-name">SQLite</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://static-00.iconduck.com/assets.00/database-mongo-db-icon-1954x2048-wrw32e9l.png" alt="MongoDB"></div>
+                                <span class="skill-name">MongoDB</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://static.vecteezy.com/system/resources/previews/029/345/981/non_2x/database-icon-data-analytics-icon-monitoring-big-data-analysis-containing-database-free-png.png" alt="MongoDB"></div>
+                                <span class="skill-name">H2</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Herramientas</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/github.png" alt="GitHub"></div>
+                                <span class="skill-name">GitHub</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.freebiesupply.com/logos/thumbs/2x/intellij-idea-1-logo.png" alt="GitHub"></div>
+                                <span class="skill-name">IntelliJ</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/gitkraken.png" alt="GitKraken"></div>
+                                <span class="skill-name">GitKraken</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/dockerLogo.png" alt="Docker"></div>
+                                <span class="skill-name">Docker</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/postman.png" alt="Postman"></div>
+                                <span class="skill-name">Postman</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://www.pngall.com/wp-content/uploads/13/Figma-Logo-PNG-Cutout.png" alt="Figma"></div>
+                                <span class="skill-name">Figma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <a href="#hero" class="footer-logo">MD</a>
+                        <p class="footer-text">Desarrollador Web</p>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4 class="footer-title">Enlaces</h4>
+                        <ul>
+                            <li><a href="#about">Sobre mí</a></li>
+                            <li><a href="#projects">Proyectos</a></li>
+                            <li><a href="#skills">Habilidades</a></li>
+                            <li><a href="#contact">Contacto</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4 class="footer-title">Redes Sociales</h4>
+                        <div class="social-links">
+                            <a href="https://github.com/wolverine307mda" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/mario-de-domingo-alvarez-615535295/" target="_blank" class="social-link">
-                                <i class="fab fa-linkedin fa-lg"></i>
+                            <a href="https://www.linkedin.com/in/mario-de-domingo-alvarez-615535295/" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="https://www.instagram.com/mariio_dd" target="_blank" class="social-link">
-                                <i class="fab fa-instagram fa-lg"></i>
-                            </a>
-                            <a href="https://x.com/Mario_DA_" target="_blank" class="social-link">
-                                <i class="fab fa-x-twitter fa-lg"></i>
+                            <a href="mailto:dedomingoalvarezmario@gmail.com" target="_blank" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>      
+                
+                <div class="footer-bottom">
+                    <p>&copy; <span id="year"></span> Mario de Domingo Álvarez. Todos los derechos reservados.</p>
+                </div>
+            </div>
         </footer>
-        
     </div>
 
 </body>
