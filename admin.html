@@ -296,14 +296,58 @@
     </div>
 
     <script>
-        const SERVER_URL = window.location.origin;
+        // Detectar si estamos en desarrollo local o en GitHub Pages
+        const isLocal = window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1' || 
+                       window.location.hostname === '';
+        
+        const SERVER_URL = isLocal ? 'http://localhost:3000' : window.location.origin;
         let serverCheckInterval;
+        
+        console.log('Entorno detectado:', isLocal ? 'Local' : 'GitHub Pages');
+        console.log('URL del servidor:', SERVER_URL);
         
         // Cargar estado al iniciar
         document.addEventListener('DOMContentLoaded', () => {
+            if (!isLocal) {
+                showGitHubPagesWarning();
+                return;
+            }
             checkStatus();
             startServerMonitoring();
         });
+
+        function showGitHubPagesWarning() {
+            document.getElementById('server-instructions').style.display = 'block';
+            document.getElementById('server-instructions').innerHTML = `
+                <h3 style="margin-bottom: 15px; color: #856404;">⚠️ Panel de Administración</h3>
+                <p style="color: #856404; margin-bottom: 15px;">
+                    Estás accediendo al panel desde GitHub Pages. Para administrar las estadísticas de Spotify 
+                    necesitas usar el servidor local de Node.js.
+                </p>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0; font-family: monospace; color: #495057;">
+                        <strong>Para usar el panel de administración:</strong><br><br>
+                        1. Abre una terminal en tu proyecto<br>
+                        2. Ejecuta: <code>npm start</code><br>
+                        3. Ve a: <code>http://localhost:3000/admin.html</code>
+                    </p>
+                </div>
+                <p style="color: #856404; margin: 0; font-size: 14px;">
+                    El panel de administración solo funciona en el servidor local por seguridad.
+                </p>
+            `;
+            
+            // Actualizar estados
+            document.getElementById('tokens-status').textContent = 'Solo en servidor local';
+            document.getElementById('tokens-status').className = 'status-value status-neutral';
+            document.getElementById('token-expiry').textContent = 'Solo en servidor local';
+            document.getElementById('token-expiry').className = 'status-value status-neutral';
+            document.getElementById('cache-status').textContent = 'Solo en servidor local';
+            document.getElementById('cache-status').className = 'status-value status-neutral';
+            document.getElementById('last-update').textContent = 'Solo en servidor local';
+            document.getElementById('last-update').className = 'status-value status-neutral';
+        }
 
         function startServerMonitoring() {
             // Verificar el servidor cada 5 segundos si no está disponible
