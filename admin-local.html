@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Spotify Stats</title>
+    <title>Admin Local - Spotify Stats</title>
     <style>
         * {
             margin: 0;
@@ -132,16 +132,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-danger {
-            background: #dc3545;
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: #c82333;
-            transform: translateY(-2px);
-        }
-
         .message {
             padding: 15px;
             border-radius: 10px;
@@ -219,8 +209,8 @@
 <body>
     <div class="admin-container">
         <div class="admin-header">
-            <h1>🎵 Admin Spotify Stats</h1>
-            <p>Panel de administración para gestionar tu integración con Spotify</p>
+            <h1>🎵 Admin Local - Spotify Stats</h1>
+            <p>Panel de administración para tu servidor local (localhost:3000)</p>
         </div>
 
         <div id="message" class="message"></div>
@@ -232,19 +222,14 @@
             </p>
             <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
                 <p style="margin: 0; font-family: monospace; color: #495057;">
-                    <strong>Opción 1 (Windows):</strong><br>
-                    Haz doble clic en <code>start-server.bat</code>
-                </p>
-                <br>
-                <p style="margin: 0; font-family: monospace; color: #495057;">
-                    <strong>Opción 2 (Terminal):</strong><br>
-                    <code>cd "c:\Users\wolve\Desktop\wolverine307mda.github.io"</code><br>
-                    <code>npm install</code><br>
-                    <code>npm start</code>
+                    <strong>Para iniciar el servidor:</strong><br><br>
+                    <code>npm start</code><br><br>
+                    <strong>O ejecuta el archivo:</strong><br>
+                    <code>start-server.bat</code>
                 </p>
             </div>
             <p style="color: #856404; margin: 0; font-size: 14px;">
-                Una vez iniciado el servidor, esta página se actualizará automáticamente.
+                Esta página se actualizará automáticamente cuando el servidor esté disponible.
             </p>
         </div>
 
@@ -269,7 +254,7 @@
         </div>
 
         <div class="actions">
-            <a href="/admin/auth/spotify" class="btn btn-primary">
+            <a href="http://localhost:3000/admin/auth/spotify" class="btn btn-primary">
                 🔐 Autorizar Spotify
             </a>
             <button onclick="refreshToken()" class="btn btn-secondary">
@@ -289,68 +274,24 @@
 
         <div class="footer">
             <p>
-                <a href="/" target="_blank">← Volver al Portfolio</a> |
-                <a href="/api/mario-stats" target="_blank">Ver API Pública</a>
+                <a href="http://localhost:3000/" target="_blank">← Volver al Portfolio</a> |
+                <a href="http://localhost:3000/api/mario-stats" target="_blank">Ver API Pública</a>
             </p>
         </div>
     </div>
 
     <script>
-        // Detectar si estamos en desarrollo local o en GitHub Pages
-        const isLocal = window.location.hostname === 'localhost' || 
-                       window.location.hostname === '127.0.0.1' || 
-                       window.location.hostname === '';
-        
-        const SERVER_URL = isLocal ? 'http://localhost:3000' : window.location.origin;
+        const SERVER_URL = 'http://localhost:3000';
         let serverCheckInterval;
-        
-        console.log('Entorno detectado:', isLocal ? 'Local' : 'GitHub Pages');
-        console.log('URL del servidor:', SERVER_URL);
         
         // Cargar estado al iniciar
         document.addEventListener('DOMContentLoaded', () => {
-            if (!isLocal) {
-                showGitHubPagesWarning();
-                return;
-            }
             checkStatus();
             startServerMonitoring();
         });
 
-        function showGitHubPagesWarning() {
-            document.getElementById('server-instructions').style.display = 'block';
-            document.getElementById('server-instructions').innerHTML = `
-                <h3 style="margin-bottom: 15px; color: #856404;">⚠️ Panel de Administración</h3>
-                <p style="color: #856404; margin-bottom: 15px;">
-                    Estás accediendo al panel desde GitHub Pages. Para administrar las estadísticas de Spotify 
-                    necesitas usar el servidor local de Node.js.
-                </p>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                    <p style="margin: 0; font-family: monospace; color: #495057;">
-                        <strong>Para usar el panel de administración:</strong><br><br>
-                        1. Abre una terminal en tu proyecto<br>
-                        2. Ejecuta: <code>npm start</code><br>
-                        3. Ve a: <code>http://localhost:3000/admin.html</code>
-                    </p>
-                </div>
-                <p style="color: #856404; margin: 0; font-size: 14px;">
-                    El panel de administración solo funciona en el servidor local por seguridad.
-                </p>
-            `;
-            
-            // Actualizar estados
-            document.getElementById('tokens-status').textContent = 'Solo en servidor local';
-            document.getElementById('tokens-status').className = 'status-value status-neutral';
-            document.getElementById('token-expiry').textContent = 'Solo en servidor local';
-            document.getElementById('token-expiry').className = 'status-value status-neutral';
-            document.getElementById('cache-status').textContent = 'Solo en servidor local';
-            document.getElementById('cache-status').className = 'status-value status-neutral';
-            document.getElementById('last-update').textContent = 'Solo en servidor local';
-            document.getElementById('last-update').className = 'status-value status-neutral';
-        }
-
         function startServerMonitoring() {
-            // Verificar el servidor cada 5 segundos si no está disponible
+            // Verificar el servidor cada 3 segundos si no está disponible
             serverCheckInterval = setInterval(async () => {
                 try {
                     const response = await fetch(`${SERVER_URL}/admin/status`);
@@ -363,7 +304,7 @@
                 } catch (error) {
                     // Servidor aún no disponible, seguir esperando
                 }
-            }, 5000);
+            }, 3000);
         }
 
         async function checkStatus() {
@@ -433,17 +374,17 @@
                 document.getElementById('server-instructions').style.display = 'block';
                 
                 // Actualizar todos los estados como desconocidos
-                document.getElementById('tokens-status').textContent = 'Desconocido';
+                document.getElementById('tokens-status').textContent = 'Servidor no disponible';
                 document.getElementById('tokens-status').className = 'status-value status-invalid';
                 document.getElementById('token-expiry').textContent = 'Servidor no disponible';
                 document.getElementById('token-expiry').className = 'status-value status-invalid';
-                document.getElementById('cache-status').textContent = 'Desconocido';
+                document.getElementById('cache-status').textContent = 'Servidor no disponible';
                 document.getElementById('cache-status').className = 'status-value status-invalid';
                 document.getElementById('last-update').textContent = 'Servidor no disponible';
                 document.getElementById('last-update').className = 'status-value status-invalid';
                 
                 if (error.message.includes('fetch')) {
-                    showMessage('❌ No se puede conectar con el servidor. Inicia el servidor Node.js para continuar.', 'error');
+                    showMessage('❌ No se puede conectar con el servidor local. Inicia el servidor con npm start', 'error');
                 } else {
                     showMessage('Error al cargar el estado: ' + error.message, 'error');
                 }
