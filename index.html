@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./css/loader.css">
     <link rel="stylesheet" href="./css/modoClaro.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/spotify.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
@@ -24,6 +25,7 @@
     <script src="./js/loader.js" defer></script>
     <script src="./js/modoOscuroDiurno.js" defer></script>
     <script src="./js/animaciones.js" defer></script>
+    <script src="./js/mario-spotify-stats.js" defer></script>
 </head>
 <body>
 
@@ -386,7 +388,26 @@
                 
                 <!-- Fotografía -->
                 <div class="hobby-section">
-                    <h3 class="hobby-title">Fotografía</h3>
+                    <h3 class="hobby-title">📸 Fotografía</h3>
+                    <p class="hobby-description">
+                        La fotografía es mi forma de capturar momentos únicos y expresar mi creatividad. Me especializo en fotografía urbana, 
+                        paisajes naturales y retratos espontáneos. Cada imagen cuenta una historia y refleja mi perspectiva del mundo.
+                        Aunque uso principalmente mi teléfono móvil, he aprendido a aprovechar al máximo sus capacidades para crear contenido visual atractivo.
+                    </p>
+                    <div class="photo-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Fotos tomadas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Años de experiencia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Móvil</span>
+                            <span class="stat-label">Herramienta principal</span>
+                        </div>
+                    </div>
                     <div class="photo-mosaic" id="photoGallery">
                         <!-- Las imágenes se cargarán dinámicamente con JavaScript -->
                     </div>
@@ -394,13 +415,31 @@
                 
                 <!-- Cine -->
                 <div class="hobby-section">
-                    <h3 class="hobby-title">Cine</h3>
+                    <h3 class="hobby-title">🎬 Cine</h3>
+                    <p class="hobby-description">
+                        El cine es mi pasión desde pequeño. Me fascina cómo una historia puede transportarte a otros mundos y 
+                        hacerte vivir emociones intensas. Disfruto especialmente de películas de ciencia ficción, fantasía y dramas psicológicos.
+                    </p>
+                    <div class="movie-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Películas vistas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Series completadas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Fantasy</span>
+                            <span class="stat-label">Género favorito</span>
+                        </div>
+                    </div>
                     <div class="movie-showcase">
                         <div class="movie-card">
                             <div class="movie-poster" style="background-image: url('https://es.web.img2.acsta.net/c_310_420/img/82/c9/82c98127314efdde24f74dbcf3c799b5.jpeg');">
                                 <div class="movie-overlay">
                                     <h4>Cómo Entrenar a Tu Dragón</h4>
-                                    <p>2025 · Dean DeBlois</p>
+                                    <p>Una historia emotiva sobre la amistad y el crecimiento personal</p>
                                     <div class="movie-rating">★★★★★</div>
                                 </div>
                             </div>
@@ -408,8 +447,8 @@
                         <div class="movie-card">
                             <div class="movie-poster" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/thunderbolts-poster-66f184dbe403e.jpg');">
                                 <div class="movie-overlay">
-                                    <h4>Thunderbolts*</h4>
-                                    <p>2025 · Jake Schreier</p>
+                                    <h4>Thunderbolts</h4>
+                                    <p>Esperando con ansias esta nueva película del MCU</p>
                                     <div class="movie-rating">★★★★★</div>
                                 </div>
                             </div>
@@ -417,17 +456,17 @@
                         <div class="movie-card">
                             <div class="movie-poster" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/juego-de-tronos-primera-temporada-1558599291.jpg?resize=640:*');">
                                 <div class="movie-overlay">
-                                    <h4>Juego de Tronos</h4>
-                                    <p>2011-2019 · David Benioff y D. B. Weiss</p>
-                                    <div class="movie-rating">★★★★★</div>
+                                    <h4>Game of Thrones</h4>
+                                    <p>Una serie épica que marcó una época</p>
+                                    <div class="movie-rating">★★★★☆</div>
                                 </div>
                             </div>
                         </div>                        
                         <div class="movie-card">
                             <div class="movie-poster" style="background-image: url('https://www.lavanguardia.com/peliculas-series/images/all/movie/posters/2010/7/movie-41216/w1280/isZ17XIQ5aEQjkts4g2EllBMB9O.jpg');">
                                 <div class="movie-overlay">
-                                    <h4>Ga'Hoole: la leyenda de los guardianes</h4>
-                                    <p>2010 · Zack Snyder</p>
+                                    <h4>Inception</h4>
+                                    <p>Una obra maestra de Christopher Nolan</p>
                                     <div class="movie-rating">★★★★★</div>
                                 </div>
                             </div>
@@ -437,14 +476,32 @@
                 
                 <!-- Música -->
                 <div class="hobby-section">
-                    <h3 class="hobby-title">Música</h3>
+                    <h3 class="hobby-title">🎵 Música</h3>
+                    <p class="hobby-description">
+                        La música es mi compañera constante, especialmente cuando programo. Me encanta descubrir nuevos artistas y géneros, 
+                        desde pop español hasta trap urbano. Cada canción tiene el poder de cambiar mi estado de ánimo y darme energía para crear.
+                    </p>
+                    <div class="music-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">8h</span>
+                            <span class="stat-label">Música diaria</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Canciones favoritas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Variado</span>
+                            <span class="stat-label">Gustos musicales</span>
+                        </div>
+                    </div>
                     <div class="music-showcase">
                         <div class="music-card">
                             <div class="music-cover" style="background-image: url('https://mallorcamusicmagazine.com/wp-content/uploads/Melendi-BW.jpg');">
                                 <div class="music-overlay">
                                     <h4>Melendi</h4>
-                                    <p>Pop/Rock español</p>
-                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/1EXjXQpDx2pROygh8zvHs4" target="_blank" title="Ver en Spotify"></a>
+                                    <p>Pop/Rock español que me acompaña desde siempre</p>
+                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/1EXjXQpDx2pROygh8zvHs4" target="_blank" title="Ver en Spotify">♪</a>
                                 </div>
                             </div>
                         </div>
@@ -452,8 +509,8 @@
                             <div class="music-cover" style="background-image: url('https://image.europafm.com/clipping/cmsimages01/2024/04/23/19BBA217-774F-4F2C-A2D7-A8BD45195672/rels-lanza-vida-primer-adelanto-nuevo-disco-new-star-1993_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply');">
                                 <div class="music-overlay">
                                     <h4>Rels B</h4>
-                                    <p>Urban / R&B</p>
-                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/2IMZYfNi21MGqxopj9fWx8" target="_blank" title="Ver en Spotify"></a>
+                                    <p>Urban / R&B perfecto para concentrarme</p>
+                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/2IMZYfNi21MGqxopj9fWx8" target="_blank" title="Ver en Spotify">♪</a>
                                 </div>
                             </div>
                         </div>
@@ -461,29 +518,32 @@
                             <div class="music-cover" style="background-image: url('https://vein.es/wp-content/uploads/2023/07/pepe-vizio-cosasbonitas-vein.jpg');">
                                 <div class="music-overlay">
                                     <h4>Pepe y Vizio</h4>
-                                    <p>Trap / Urbano</p>
-                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/4rvJ0Ktz2X2Erea9XUHxfu" target="_blank" title="Ver en Spotify"></a>
+                                    <p>Trap / Urbano que me motiva mientras codifico</p>
+                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/7L3qJvJJBJK0hXRKvdvSvf" target="_blank" title="Ver en Spotify">♪</a>
                                 </div>
                             </div>
                         </div>
                         <div class="music-card">
-                            <div class="music-cover" style="background-image: url('https://cdn-p.smehost.net/sites/5b3bac59eb36401694af3a241173447f/wp-content/uploads/2021/03/FotoPuchoElMadrilen%CC%83o.jpg');">
+                            <div class="music-cover" style="background-image: url('https://i.scdn.co/image/ab67616d0000b273e13de7b8662b085b0885ffef');">
                                 <div class="music-overlay">
-                                    <h4>C. Tangana</h4>
-                                    <p>Fusión / Experimental</p>
-                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/5TYxZTjIPqKM8K8NuP9woO" target="_blank" title="Ver en Spotify"></a>
+                                    <h4>Duki</h4>
+                                    <p>Trap argentino lleno de energía</p>
+                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/1HZKmLKMXMtJARJvJGDRx4" target="_blank" title="Ver en Spotify">♪</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="music-card">
-                            <div class="music-cover" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvVSGy4peqMbsoTVGWLCk-3tetgLdBGFgf0Q&s');">
-                                <div class="music-overlay">
-                                    <h4>Kaze</h4>
-                                    <p>Rap / Hip-Hop</p>
-                                    <a class="music-spotify" href="https://open.spotify.com/intl-es/artist/2X11x8C63wCzAf1WwsIuLg" target="_blank" title="Ver en Spotify"></a>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+
+                <!-- Estadísticas de Spotify en Tiempo Real -->
+                <div class="hobby-section">
+                    <h3 class="hobby-title">📊 Mis Estadísticas Musicales</h3>
+                    <p class="hobby-description">
+                        Estas son mis estadísticas reales de Spotify, actualizadas en tiempo real. 
+                        Puedes ver qué estoy escuchando ahora mismo, mis canciones favoritas del último mes y mi historial reciente.
+                    </p>
+                    <div id="spotify-stats" class="spotify-stats-container">
+                        <!-- Las estadísticas se cargarán aquí automáticamente -->
                     </div>
                 </div>
 

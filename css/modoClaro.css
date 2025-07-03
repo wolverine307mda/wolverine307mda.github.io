@@ -91,3 +91,72 @@ body.light-mode {
 .light-mode .footer .social-link:hover {
     color: #007bff; /* Azul claro para hover */
 }
+
+/* Estilos para aficiones en modo claro */
+.light-mode .hobby-section {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e9ecef;
+}
+
+.light-mode .hobby-title {
+    color: #6a1b9a;
+    margin-bottom: 1rem;
+}
+
+.light-mode .hobby-description {
+    color: #495057;
+    line-height: 1.6;
+}
+
+.light-mode .stat-item {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.light-mode .stat-number {
+    color: #6a1b9a;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.light-mode .stat-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.light-mode .movie-card, .light-mode .music-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.light-mode .movie-card:hover, .light-mode .music-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.light-mode .movie-overlay, .light-mode .music-overlay {
+    background: linear-gradient(45deg, rgba(106, 27, 154, 0.9), rgba(74, 20, 140, 0.9));
+}
+
+.light-mode .movie-rating {
+    color: #ffc107;
+}
+
+.light-mode .music-spotify {
+    color: #1db954;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.light-mode .music-spotify:hover {
+    color: #1ed760;
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesando autenticación...</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 400px;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        h1 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+        
+        p {
+            margin: 0 0 20px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .success {
+            background: rgba(29, 185, 84, 0.2);
+            color: #1db954;
+            border: 1px solid #1db954;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .error {
+            background: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            border: 1px solid #dc3545;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background: white;
+            color: #1db954;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loading" style="display: block;">
+            <div class="spinner"></div>
+            <h1>🎵 Procesando autenticación</h1>
+            <p>Conectando con Spotify...</p>
+        </div>
+        
+        <div id="success" style="display: none;">
+            <h1>✅ ¡Autorización exitosa!</h1>
+            <div class="success">
+                <p>Mario ha sido autorizado exitosamente. Las estadísticas ya están disponibles para todos los visitantes.</p>
+            </div>
+            <a href="/admin.html" class="btn">Ir al Panel de Admin</a>
+            <a href="/index.html" class="btn">Ver Portfolio</a>
+        </div>
+        
+        <div id="error" style="display: none;">
+            <h1>❌ Error en la autorización</h1>
+            <div class="error">
+                <p id="error-message">Hubo un problema con la autorización.</p>
+            </div>
+            <a href="/admin.html" class="btn">Volver al Panel</a>
+            <a href="/admin/auth/spotify" class="btn">Intentar de nuevo</a>
+        </div>
+    </div>
+
+    <script>
+        // Configuración del servidor
+        const SERVER_URL = window.location.origin;
+        
+        // Procesar callback
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Obtener parámetros de la URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const code = urlParams.get('code');
+                const state = urlParams.get('state');
+                const error = urlParams.get('error');
+                
+                if (error) {
+                    throw new Error(`Error de Spotify: ${error}`);
+                }
+                
+                if (!code) {
+                    throw new Error('No se recibió el código de autorización');
+                }
+                
+                // Intercambiar código por tokens
+                const response = await fetch(`${SERVER_URL}/admin/exchange-token`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        code: code,
+                        state: state
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Error al intercambiar tokens');
+                }
+                
+                // Mostrar éxito
+                showSuccess();
+                
+                // Limpiar URL
+                window.history.replaceState({}, document.title, '/callback.html');
+                
+            } catch (error) {
+                console.error('Error en callback:', error);
+                showError(error.message);
+            }
+        });
+        
+        function showSuccess() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+            document.getElementById('error').style.display = 'none';
+        }
+        
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('success').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error-message').textContent = message;
+        }
+    </script>
+</body>
+</html>
+            margin: 0;
+            opacity: 0.8;
+        }
+        
+        .spotify-icon {
+            color: #1db954;
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <i class="fab fa-spotify spotify-icon"></i>
+        <div class="spinner"></div>
+        <h1>Conectando con Spotify</h1>
+        <p>Procesando autorización...</p>
+    </div>
+
+    <script>
+        // Extraer código de autorización de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const state = urlParams.get('state');
+        const error = urlParams.get('error');
+
+        if (error) {
+            document.querySelector('h1').textContent = 'Error de autorización';
+            document.querySelector('p').textContent = 'Hubo un problema conectando con Spotify. Inténtalo de nuevo.';
+            document.querySelector('.spinner').style.display = 'none';
+            
+            // Redirigir de vuelta al portfolio después de 3 segundos
+            setTimeout(() => {
+                window.location.href = 'https://wolverine307mda.github.io/#hobbies';
+            }, 3000);
+        } else if (code) {
+            // Enviar código al servidor local para intercambio de tokens
+            exchangeCodeForTokens(code, state);
+        } else {
+            document.querySelector('h1').textContent = 'URL inválida';
+            document.querySelector('p').textContent = 'No se encontró código de autorización.';
+            document.querySelector('.spinner').style.display = 'none';
+            
+            setTimeout(() => {
+                window.location.href = 'https://wolverine307mda.github.io/#hobbies';
+            }, 3000);
+        }
+
+        async function exchangeCodeForTokens(code, state) {
+            try {
+                // Intentar conectar con el servidor local
+                const response = await fetch('http://localhost:3000/exchange-token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ code, state })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Guardar tokens en localStorage
+                    localStorage.setItem('spotify_access_token', data.access_token);
+                    localStorage.setItem('spotify_refresh_token', data.refresh_token);
+                    localStorage.setItem('spotify_token_expiry', (Date.now() + (data.expires_in * 1000)).toString());
+                    
+                    document.querySelector('h1').textContent = '¡Conectado exitosamente!';
+                    document.querySelector('p').textContent = 'Redirigiendo a tu portfolio...';
+                    
+                    // Redirigir de vuelta al portfolio
+                    setTimeout(() => {
+                        window.location.href = 'https://wolverine307mda.github.io/#hobbies';
+                    }, 2000);
+                } else {
+                    throw new Error('Error del servidor');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                
+                // Si no hay servidor local, mostrar mensaje informativo
+                document.querySelector('h1').textContent = 'Servidor local no disponible';
+                document.querySelector('p').textContent = 'Asegúrate de que el servidor local esté ejecutándose (npm run dev)';
+                document.querySelector('.spinner').style.display = 'none';
+                
+                setTimeout(() => {
+                    window.location.href = 'https://wolverine307mda.github.io/#hobbies';
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
