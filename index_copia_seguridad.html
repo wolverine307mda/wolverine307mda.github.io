@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario de Domingo Álvarez | Desarrollador Web</title>
+    <link rel="shortcut icon" href="./Imgs/guiño.webp" type="image/x-icon">
+
+    <!-- Fuentes profesionales -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <script src="./js/script.js" defer></script>
+    <script src="./js/bootstrap.min.js" defer></script>
+    <script src="./js/loader.js" defer></script>
+    <script src="./js/animaciones.js" defer></script>
+    <script src="./js/stats-animations.js" defer></script>
+</head>
+
+<body data-theme="dark">
+
+    <div class="banter-loader" id="loader">
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+    </div>
+
+    <div class="pagina">
+
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#home">MDA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">Sobre mí</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#hobbies">Aficiones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#social">Social</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="hero" class="d-flex align-items-center">
+            <div class="container text-center">
+                <div class="hero-content">
+                    <h1 class="hero-title">Mario de Domingo Álvarez</h1>
+                    <p class="hero-subtitle">Desarrollador Web Full Stack</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+                        <a href="#hobbies" class="btn btn-outline">Aficiones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-down">
+                <a href="#about"><i class="fas fa-chevron-down"></i></a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">Sobre mí</h2><br>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Joven desarrollador web con experiencia en la creación de aplicaciones y sitios web modernos,
+                            orientados a la funcionalidad, la eficiencia y la experiencia de usuario.</p>
+
+                        <p>Finalicé mis estudios de Desarrollo de Aplicaciones Web (DAW) en el IES Luis Vives de
+                            Leganés. Durante mi formación realicé mis prácticas profesionales en Fontventa, una
+                            consultoría tecnológica ubicada en Alcorcón que ofrece servicios de mantenimiento
+                            informático, programación a medida, diseño web, auditorías y desarrollo de aplicaciones
+                            móviles.</p>
+
+                        <p>Actualmente, sigo ampliando mis habilidades trabajando para la misma empresa y a través de
+                            proyectos propios y colaborativos, manteniéndome al día con las últimas tendencias
+                            tecnológicas y aportando soluciones modernas y funcionales.</p>
+
+                        <div class="about-links">
+                            <a href="https://wolverine307mda.github.io/Curriculum/" class="btn btn-cv">Ver CV</a>
+                            <div class="social-links">
+                                <a href="https://github.com/wolverine307mda" target="_blank" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/mario-de-domingo-alvarez-615535295/"
+                                    target="_blank" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="mailto:dedomingoalvarezmario@gmail.com" target="_blank" aria-label="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                            <img src="./Imgs/guiño.webp" alt="Mario de Domingo Álvarez" class="profile-img">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partículas de fondo -->
+            <div class="social-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </section>
+
+        <section id="projects" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <p class="section-subtitle">Algunos de mis trabajos recientes</p>
+
+                <div class="projects-grid">
+                    <!-- Proyecto 1 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Proyecto 1">
+                            <div class="project-links">
+                                <a href="https://github.com/wolverine307mda/MovieTrip-TFC" class="project-link"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">MovieTrip (TFC)</h3>
+                            <p class="project-description">Aplicacion ideal para Viajeros y amantes del cine.</p>
+                            <div class="project-tech">
+                                <span>Kotlin</span>
+                                <span>springBoot</span>
+                                <span>Vue.js</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1726572330396-0947f571ac19?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Proyecto 2">
+                            <div class="project-links">
+                                <a href="https://github.com/wolverine307mda/Wallapop-Laravel" class="project-link"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Waravel</h3>
+                            <p class="project-description">Plataforma de comercio electrónico con carrito de compras.
+                            </p>
+                            <div class="project-tech">
+                                <span>Laravel</span>
+                                <span>PostgreSQL</span>
+                                <span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 3 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1579635827170-e17ba1c201f5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Proyecto 3">
+                            <div class="project-links">
+                                <a href="https://github.com/wolverine307mda/VivesBank.Net" class="project-link"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">VivesBank</h3>
+                            <p class="project-description">Servicio bancario con un enfoque modular y bien organizado.
+                            </p>
+                            <div class="project-tech">
+                                <span>Spring Boot</span>
+                                <span>.NET</span>
+                                <span>PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-5">
+                    <div class="mx-2">
+                        <a href="https://github.com/wolverine307mda?tab=repositories" target="_blank"
+                            class="btn btn-outline" style="color: black;">Ver más proyectos en GitHub</a>
+                    </div>
+
+                    <div class="mx-2">
+                        <a href="https://wolverine307mda.github.io/RFA/" target="_blank" style="color: black;"
+                            class="btn btn-outline">Ver mis diseños web</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">Habilidades Técnicas</h2>
+                <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Frontend</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/html.png" alt="HTML5"></div>
+                                <span class="skill-name">HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/css.png" alt="CSS3"></div>
+                                <span class="skill-name">CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/javascript.png" alt="JavaScript">
+                                </div>
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img
+                                        src="https://brandlogos.net/wp-content/uploads/2022/01/vue.js-logo-brandlogo.net_.png"
+                                        alt="React"></div>
+                                <span class="skill-name">Vue.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img
+                                        src="https://th.bing.com/th/id/R.ab5fe52c483924b543f8860a90f9242e?rik=yWfxWWFhZP9AZA&pid=ImgRaw&r=0"
+                                        alt="React"></div>
+                                <span class="skill-name">Angular</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/bootstrap.png" alt="Bootstrap">
+                                </div>
+                                <span class="skill-name">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Backend</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/java.png" alt="Java"></div>
+                                <span class="skill-name">Java</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/kotlin.png" alt="Java"></div>
+                                <span class="skill-name">Kotlin</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/springboot.png" alt="Spring Boot">
+                                </div>
+                                <span class="skill-name">Spring Boot</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/NET.png" alt=".NET"></div>
+                                <span class="skill-name">.NET</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/C_Sharp.png" alt="C#"></div>
+                                <span class="skill-name">C#</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img
+                                        src="https://logospng.org/download/laravel/logo-laravel-icon-1024.png"
+                                        alt="Laravel"></div>
+                                <span class="skill-name">Laravel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Bases de Datos</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/mysql.png" alt="MySQL"></div>
+                                <span class="skill-name">MySQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/postgres.png" alt="PostgreSQL">
+                                </div>
+                                <span class="skill-name">PostgreSQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/mariadb.svg" alt="MariaDB"></div>
+                                <span class="skill-name">MariaDB</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/sqlite.png" alt="SQLite"></div>
+                                <span class="skill-name">SQLite</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img
+                                        src="https://static-00.iconduck.com/assets.00/database-mongo-db-icon-1954x2048-wrw32e9l.png"
+                                        alt="MongoDB"></div>
+                                <span class="skill-name">MongoDB</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img
+                                        src="https://static.vecteezy.com/system/resources/previews/029/345/981/non_2x/database-icon-data-analytics-icon-monitoring-big-data-analysis-containing-database-free-png.png"
+                                        alt="MongoDB"></div>
+                                <span class="skill-name">H2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Herramientas</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/github.png" alt="GitHub"></div>
+                                <span class="skill-name">GitHub</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img
+                                        src="https://cdn.freebiesupply.com/logos/thumbs/2x/intellij-idea-1-logo.png"
+                                        alt="GitHub"></div>
+                                <span class="skill-name">IntelliJ</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/gitkraken.png" alt="GitKraken">
+                                </div>
+                                <span class="skill-name">GitKraken</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/dockerLogo.png" alt="Docker"></div>
+                                <span class="skill-name">Docker</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="./Imgs/tecnologias/postman.png" alt="Postman"></div>
+                                <span class="skill-name">Postman</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img
+                                        src="https://www.pngall.com/wp-content/uploads/13/Figma-Logo-PNG-Cutout.png"
+                                        alt="Figma"></div>
+                                <span class="skill-name">Figma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partículas de fondo -->
+            <div class="social-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </section>
+
+        <section id="hobbies" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Mis Aficiones</h2>
+                <p class="section-subtitle">Las cosas que me apasionan fuera del desarrollo</p>
+
+                <!-- Fotografía -->
+                <div class="hobby-section">
+                    <h3 class="hobby-title">📸 Fotografía</h3>
+                    <p class="hobby-description">
+                        La fotografía es mi forma de capturar momentos únicos y expresar mi creatividad. Me especializo
+                        en fotografía urbana,
+                        paisajes naturales y retratos espontáneos. Cada imagen cuenta una historia y refleja mi
+                        perspectiva del mundo.
+                        Aunque uso principalmente mi teléfono móvil, he aprendido a aprovechar al máximo sus capacidades
+                        para crear contenido visual atractivo.
+                    </p>
+                    <div class="photo-mosaic" id="photoGallery">
+                        <!-- Las imágenes se cargarán dinámicamente con JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Cine -->
+                <!-- <div class="hobby-section">
+                    <h3 class="hobby-title">🎬 Cine & Series</h3>
+                    <p class="hobby-description">
+                        El cine es mi escapatoria favorita al mundo de la fantasía y la ciencia ficción. Me fascina
+                        especialmente
+                        el Universo Cinematográfico de Marvel, las grandes sagas épicas y las historias que desafían la
+                        realidad.
+                        Desde superhéroes hasta viajes en el tiempo, cada película es una nueva aventura que me
+                        transporta a mundos extraordinarios.
+                    </p>
+                    <div class="movie-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">300+</span>
+                            <span class="stat-label">Películas vistas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Marvel</span>
+                            <span class="stat-label">Saga favorita</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Sci-Fi</span>
+                            <span class="stat-label">Género preferido</span>
+                        </div>
+                    </div>
+                    <div class="movie-showcase">
+                        <div class="movie-card">
+                            <div class="movie-poster"
+                                style="background-image: url('https://i.pinimg.com/736x/92/8e/77/928e777d5e5c3c1c7e58d1d48a0f5e09.jpg');">
+                                <div class="movie-genre">Marvel</div>
+                                <div class="movie-overlay">
+                                    <h4>Avengers: Endgame</h4>
+                                    <p>La culminación épica de 10 años de MCU. Una experiencia cinematográfica
+                                        inolvidable que marcó mi amor por Marvel.</p>
+                                    <div class="movie-rating">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie-card">
+                            <div class="movie-poster"
+                                style="background-image: url('https://m.media-amazon.com/images/I/A1t8xCe9jwL._AC_UF894,1000_QL80_.jpg');">
+                                <div class="movie-genre">Sci-Fi</div>
+                                <div class="movie-overlay">
+                                    <h4>Interstellar</h4>
+                                    <p>Una obra maestra de Christopher Nolan que explora el espacio, el tiempo y el amor
+                                        de manera extraordinaria.</p>
+                                    <div class="movie-rating">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie-card">
+                            <div class="movie-poster"
+                                style="background-image: url('https://m.media-amazon.com/images/I/91KkWf50SoL._AC_UF1000,1000_QL80_.jpg');">
+                                <div class="movie-genre">Marvel</div>
+                                <div class="movie-overlay">
+                                    <h4>Spider-Man: No Way Home</h4>
+                                    <p>El multiverso de Spider-Man que reunió tres generaciones. Una experiencia
+                                        cinematográfica única.</p>
+                                    <div class="movie-rating">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie-card">
+                            <div class="movie-poster"
+                                style="background-image: url('https://m.media-amazon.com/images/I/91Eo2zd8NHL._AC_UF1000,1000_QL80_.jpg');">
+                                <div class="movie-genre">Sci-Fi</div>
+                                <div class="movie-overlay">
+                                    <h4>Blade Runner 2049</h4>
+                                    <p>Una secuela visualmente impresionante que profundiza en la filosofía de la
+                                        humanidad y la inteligencia artificial.</p>
+                                    <div class="movie-rating">★★★★☆</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie-card">
+                            <div class="movie-poster"
+                                style="background-image: url('https://m.media-amazon.com/images/I/91G4aPIs7tL._AC_UF1000,1000_QL80_.jpg');">
+                                <div class="movie-genre">Marvel</div>
+                                <div class="movie-overlay">
+                                    <h4>Guardians of the Galaxy</h4>
+                                    <p>La perfecta combinación de humor, acción y una banda sonora increíble que
+                                        redefinió las películas de superhéroes.</p>
+                                    <div class="movie-rating">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie-card">
+                            <div class="movie-poster"
+                                style="background-image: url('https://m.media-amazon.com/images/I/A1JVqNMI7UL._AC_UF1000,1000_QL80_.jpg');">
+                                <div class="movie-genre">Sci-Fi</div>
+                                <div class="movie-overlay">
+                                    <h4>The Matrix</h4>
+                                    <p>La película que cambió la ciencia ficción para siempre. Una reflexión profunda
+                                        sobre la realidad y la percepción.</p>
+                                    <div class="movie-rating">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Música -->
+                <div class="hobby-section">
+                    <h3 class="hobby-title">🎵 Música</h3>
+                    <p class="hobby-description">
+                        La música es mi compañera constante en el día a día. Escucho una gran variedad de géneros,
+                        desde hip-hop y urbano latino hasta pop y trap. Me gusta descubrir nuevos artistas y mantener
+                        mis playlists siempre actualizadas con los últimos hits.
+                    </p>
+
+                    <!-- Estadísticas Principales con Animaciones -->
+                    <div class="music-stats-grid">
+                        <!-- Minutos totales -->
+                        <div class="stat-card animate-grow">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-content">
+                                <span class="stat-number" data-target="281907">0</span>
+                                <span class="stat-label">Minutos reproducidos</span>
+                                <div class="stat-comparison">4,698 horas en total</div>
+                            </div>
+                            <div class="stat-progress" style="--progress: 100%"></div>
+                        </div>
+
+                        <!-- Streams totales -->
+                        <div class="stat-card animate-grow" style="animation-delay: 0.1s">
+                            <div class="stat-icon">🎵</div>
+                            <div class="stat-content">
+                                <span class="stat-number" data-target="100621">0</span>
+                                <span class="stat-label">Reproducciones totales</span>
+                                <div class="stat-comparison">Desde que uso Spotify</div>
+                            </div>
+                            <div class="stat-progress" style="--progress: 95%"></div>
+                        </div>
+
+                        <!-- Canciones diferentes -->
+                        <div class="stat-card animate-grow" style="animation-delay: 0.2s">
+                            <div class="stat-icon">🎶</div>
+                            <div class="stat-content">
+                                <span class="stat-number" data-target="14828">0</span>
+                                <span class="stat-label">Canciones diferentes</span>
+                                <div class="stat-comparison">Gran variedad musical</div>
+                            </div>
+                            <div class="stat-progress" style="--progress: 85%"></div>
+                        </div>
+
+                        <!-- Artistas diferentes -->
+                        <div class="stat-card animate-grow" style="animation-delay: 0.3s">
+                            <div class="stat-icon">🎤</div>
+                            <div class="stat-content">
+                                <span class="stat-number" data-target="8193">0</span>
+                                <span class="stat-label">Artistas diferentes</span>
+                                <div class="stat-comparison">Exploración constante</div>
+                            </div>
+                            <div class="stat-progress" style="--progress: 80%"></div>
+                        </div>
+
+                        <!-- Álbumes diferentes -->
+                        <div class="stat-card animate-grow" style="animation-delay: 0.4s">
+                            <div class="stat-icon">💿</div>
+                            <div class="stat-content">
+                                <span class="stat-number" data-target="11984">0</span>
+                                <span class="stat-label">Álbumes diferentes</span>
+                                <div class="stat-comparison">Discografías completas</div>
+                            </div>
+                            <div class="stat-progress" style="--progress: 75%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Géneros Musicales -->
+                    <div class="music-genres-section">
+                        <h4 class="section-subtitle">Mis Géneros Favoritos</h4>
+                        <div class="genres-cloud">
+                            <span class="genre-tag large">Hip-Hop/Rap</span>
+                            <span class="genre-tag large">Urbano Latino</span>
+                            <span class="genre-tag medium">Pop</span>
+                            <span class="genre-tag medium">Latin</span>
+                            <span class="genre-tag medium">Trap Latino</span>
+                            <span class="genre-tag small">Flamenco Urbano</span>
+                            <span class="genre-tag small">Reggaeton</span>
+                            <span class="genre-tag small">R&B</span>
+                            <span class="genre-tag small">Alternative Hip-Hop</span>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico de Distribución de Géneros -->
+                    <!-- <div class="genres-chart-section">
+                        <h4 class="section-subtitle">Distribución de Géneros Musicales</h4>
+                        <div class="donut-chart-container">
+                            <div class="donut-chart">
+                                <div class="donut-segment"
+                                    style="--percentage: 35; --start: 0; --color: var(--purple-gradient);"
+                                    data-genre="Hip-Hop/Rap"></div>
+                                <div class="donut-segment"
+                                    style="--percentage: 25; --start: 35; --color: var(--blue-gradient);"
+                                    data-genre="Urbano Latino"></div>
+                                <div class="donut-segment"
+                                    style="--percentage: 15; --start: 60; --color: var(--green-gradient);"
+                                    data-genre="Pop"></div>
+                                <div class="donut-segment"
+                                    style="--percentage: 10; --start: 75; --color: var(--orange-gradient);"
+                                    data-genre="Latin"></div>
+                                <div class="donut-segment"
+                                    style="--percentage: 15; --start: 85; --color: var(--purple-gradient);"
+                                    data-genre="Otros"></div>
+                                <div class="donut-center">
+                                    <div class="donut-title">Géneros</div>
+                                    <div class="donut-subtitle">Favoritos</div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: var(--purple-gradient);"></div>
+                                    <span>Hip-Hop/Rap (35%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: var(--blue-gradient);"></div>
+                                    <span>Urbano Latino (25%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: var(--green-gradient);"></div>
+                                    <span>Pop (15%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: var(--orange-gradient);"></div>
+                                    <span>Latin (10%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: var(--purple-gradient);"></div>
+                                    <span>Otros (15%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Artistas Favoritos -->
+                    <div class="top-items-section">
+                        <h4 class="section-subtitle">Artistas que más escucho</h4>
+                        <div class="artists-grid">
+                            <div class="artist-card animate-fade-in" style="animation-delay: 0.1s">
+                                <div class="artist-avatar">RB</div>
+                                <h5 class="artist-name">Rels B</h5>
+                                <p class="artist-meta">Hip-Hop · Urbano Latino</p>
+                                <div class="artist-bar" style="--width: 100%"></div>
+                            </div>
+                            <div class="artist-card animate-fade-in" style="animation-delay: 0.2s">
+                                <div class="artist-avatar">ME</div>
+                                <h5 class="artist-name">Melendi</h5>
+                                <p class="artist-meta">Pop Rock · Cantautor</p>
+                                <div class="artist-bar" style="--width: 90%"></div>
+                            </div>
+                            <div class="artist-card animate-fade-in" style="animation-delay: 0.3s">
+                                <div class="artist-avatar">CT</div>
+                                <h5 class="artist-name">C. Tangana</h5>
+                                <p class="artist-meta">Hip-Hop · Urbano Latino</p>
+                                <div class="artist-bar" style="--width: 85%"></div>
+                            </div>
+                            <div class="artist-card animate-fade-in" style="animation-delay: 0.4s">
+                                <div class="artist-avatar">EX</div>
+                                <h5 class="artist-name">Extremoduro</h5>
+                                <p class="artist-meta">Rock · Rock Español</p>
+                                <div class="artist-bar" style="--width: 80%"></div>
+                            </div>
+                            <div class="artist-card animate-fade-in" style="animation-delay: 0.5s">
+                                <div class="artist-avatar">KZ</div>
+                                <h5 class="artist-name">Kaze</h5>
+                                <p class="artist-meta">Hip-Hop · Rap Español</p>
+                                <div class="artist-bar" style="--width: 75%"></div>
+                            </div>
+                            <div class="artist-card animate-fade-in" style="animation-delay: 0.6s">
+                                <div class="artist-avatar">BB</div>
+                                <h5 class="artist-name">Bad Bunny</h5>
+                                <p class="artist-meta">Reggaeton · Urbano Latino</p>
+                                <div class="artist-bar" style="--width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Sección Social -->
+        <section id="social" class="section social-section">
+            <div class="container">
+                <div class="social-hero">
+                    <h2 class="social-title">Conecta Conmigo</h2>
+                    <p class="social-subtitle">Sígueme en mis redes sociales y mantente al día con mis proyectos</p>
+                    <div class="social-stars"></div>
+                </div>
+
+                <div class="social-grid">
+                    <a href="mailto:dedomingoalvarezmario@gmail.com" target="_blank" class="social-card gmail-card">
+                        <div class="social-card-bg"></div>
+                        <div class="social-card-content">
+                            <div class="social-card-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="social-card-title">Gmail</h3>
+                            <p class="social-card-description">Envíame un email para colaboraciones o consultas</p>
+                            <div class="social-card-stats">
+                                <span>Respuesta en 24h</span>
+                            </div>
+                        </div>
+                        <div class="social-card-glow"></div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/mario-de-domingo-%C3%A1lvarez-615535295/" target="_blank"
+                        class="social-card linkedin-card">
+                        <div class="social-card-bg"></div>
+                        <div class="social-card-content">
+                            <div class="social-card-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <h3 class="social-card-title">LinkedIn</h3>
+                            <p class="social-card-description">Conecta conmigo profesionalmente</p>
+                            <div class="social-card-stats">
+                                <span>Desarrollo profesional</span>
+                            </div>
+                        </div>
+                        <div class="social-card-glow"></div>
+                    </a>
+
+                    <a href="https://github.com/wolverine307mda" target="_blank" class="social-card github-card">
+                        <div class="social-card-bg"></div>
+                        <div class="social-card-content">
+                            <div class="social-card-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h3 class="social-card-title">GitHub</h3>
+                            <p class="social-card-description">Explora mis repositorios y proyectos</p>
+                            <div class="social-card-stats">
+                                <span>Código abierto</span>
+                            </div>
+                        </div>
+                        <div class="social-card-glow"></div>
+                    </a>
+
+                    <a href="https://www.instagram.com/mariio_dd" target="_blank" class="social-card instagram-card">
+                        <div class="social-card-bg"></div>
+                        <div class="social-card-content">
+                            <div class="social-card-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <h3 class="social-card-title">Instagram</h3>
+                            <p class="social-card-description">Sígueme para ver mi día a día y proyectos</p>
+                            <div class="social-card-stats">
+                                <span>Contenido diario</span>
+                            </div>
+                        </div>
+                        <div class="social-card-glow"></div>
+                    </a>
+
+                    <a href="https://open.spotify.com/user/a2qtspq6fz4g7wrz2yawcwco7?si=szi3MZ2bS2ijjm-VjDSHfQ"
+                        target="_blank" class="social-card spotify-card">
+                        <div class="social-card-bg"></div>
+                        <div class="social-card-content">
+                            <div class="social-card-icon">
+                                <i class="fab fa-spotify"></i>
+                            </div>
+                            <h3 class="social-card-title">Spotify</h3>
+                            <p class="social-card-description">Descubre mi música favorita y playlists</p>
+                            <div class="social-card-stats">
+                                <span>280k+ min escuchados</span>
+                            </div>
+                        </div>
+                        <div class="social-card-glow"></div>
+                    </a>
+
+                    <a href="https://x.com/Mario_DA_" target="_blank" class="social-card twitter-card">
+                        <div class="social-card-bg"></div>
+                        <div class="social-card-content">
+                            <div class="social-card-icon">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                            <h3 class="social-card-title">X (Twitter)</h3>
+                            <p class="social-card-description">Sígueme para actualizaciones y pensamientos</p>
+                            <div class="social-card-stats">
+                                <span>Tweets diarios</span>
+                            </div>
+                        </div>
+                        <div class="social-card-glow"></div>
+                    </a>
+                </div>
+
+                <div class="social-cta">
+                    <h3 class="social-cta-title">¿Colaboramos?</h3>
+                    <p class="social-cta-text">Siempre estoy abierto a nuevas oportunidades y proyectos interesantes</p>
+                    <a href="mailto:dedomingoalvarezmario@gmail.com" class="social-cta-button">
+                        <span>Contactar Ahora</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Partículas de fondo -->
+            <div class="social-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <a href="#hero" class="footer-logo">Mario de Domingo Álvarez</a>
+                        <p class="footer-text">Desarrollador Web Full Stack | Especialista en Frontend & Backend</p>
+                        <p class="footer-description">Creando experiencias digitales innovadoras con las últimas
+                            tecnologías web. Apasionado por el desarrollo de software y la resolución de problemas
+                            complejos.</p>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4 class="footer-title">Navegación</h4>
+                        <ul>
+                            <li><a href="#about">Sobre mí</a></li>
+                            <li><a href="#projects">Proyectos</a></li>
+                            <li><a href="#skills">Habilidades</a></li>
+                            <li><a href="#hobbies">Aficiones</a></li>
+                            <li><a href="#contact">Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-contact">
+                        <h4 class="footer-title">Contacto</h4>
+                        <div class="contact-info">
+                            <p><i class="fas fa-envelope"></i> dedomingoalvarezmario@gmail.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Madrid, España</p>
+                            <p><i class="fas fa-code"></i> Disponible para proyectos</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-social">
+                        <h4 class="footer-title">Redes Sociales</h4>
+                        <div class="social-links-compact">
+                            <a href="mailto:dedomingoalvarezmario@gmail.com" target="_blank" aria-label="Gmail"
+                                class="social-link-compact gmail">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mario-de-domingo-%C3%A1lvarez-615535295/"
+                                target="_blank" aria-label="LinkedIn" class="social-link-compact linkedin">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/wolverine307mda" target="_blank" aria-label="GitHub"
+                                class="social-link-compact github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.instagram.com/mariio_dd" target="_blank" aria-label="Instagram"
+                                class="social-link-compact instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://open.spotify.com/user/a2qtspq6fz4g7wrz2yawcwco7?si=szi3MZ2bS2ijjm-VjDSHfQ"
+                                target="_blank" aria-label="Spotify" class="social-link-compact spotify">
+                                <i class="fab fa-spotify"></i>
+                            </a>
+                            <a href="https://x.com/Mario_DA_" target="_blank" aria-label="Twitter/X"
+                                class="social-link-compact twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-bottom">
+                    <div class="footer-bottom-content">
+                        <p class="copyright">&copy; <span id="year"></span> Mario de Domingo Álvarez. Todos los derechos
+                            reservados.</p>
+                        <p class="footer-made">Hecho con <span class="heart">❤️</span> y mucho <span
+                                class="coffee">☕</span></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
