@@ -94,11 +94,12 @@ body.light-mode {
 
 /* Estilos para aficiones en modo claro */
 .light-mode .hobby-section {
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border: 1px solid #e9ecef;
+    background-color: white !important;
+    border-radius: 16px;
+    padding: 40px 20px;
+    margin-bottom: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .light-mode .hobby-title {
