@@ -2182,6 +2182,7 @@ body.dark-mode .btn-outline {
 
 /* Partículas de fondo */
 .social-particles {
+    margin-top: -5px;
     position: absolute;
     top: 0;
     left: 0;
