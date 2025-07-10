@@ -141,7 +141,7 @@ img {
 .btn-outline {
     background-color: transparent;
     border: 2px solid var(--primary-color);
-    color: var(--primary-color);
+    color: white;
 }
 
 body.dark-mode .btn-outline {
@@ -2183,6 +2183,7 @@ body.dark-mode .btn-outline {
 /* Partículas de fondo */
 .social-particles {
     position: absolute;
+    margin-top: -5px !important;
     top: 0;
     left: 0;
     width: 100%;
