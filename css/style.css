@@ -1149,9 +1149,17 @@ body.dark-mode .btn-outline {
     margin-right: auto;
 }
 
+/* WRAPPER PARA GÉNEROS Y SPOTIFY */
+.music-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 3rem 0;
+    align-items: start;
+}
+
 /* GÉNEROS MUSICALES CON COLORES VIBRANTES */
 .music-genres-section {
-    margin: 3rem 0 2rem;
     text-align: center;
     padding: 2rem;
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
@@ -2098,247 +2106,85 @@ body.dark-mode .btn-outline {
     color: #fff;
 }
 
-/* CTA Section */
-.social-cta {
+/* SECCIÓN SPOTIFY EMBED CON FONDO BLANCO */
+.spotify-section {
     text-align: center;
-    position: relative;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
-    padding: 50px 40px;
-    animation: ctaFloat 6s ease-in-out infinite;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
 }
 
-@keyframes ctaFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+[data-theme="dark"] .spotify-section {
+    background: #ffffff;
+    color: #333;
 }
 
-.social-cta-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 15px;
-    background: linear-gradient(135deg, #fff 0%, #a8edea 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+[data-theme="dark"] .spotify-section .section-subtitle {
+    color: #333;
 }
 
-.social-cta-text {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 30px;
-}
-
-.social-cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    padding: 18px 35px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+.spotify-embed-container {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: var(--transition);
     position: relative;
     overflow: hidden;
+    margin-top: 1.5rem;
 }
 
-.social-cta-button::before {
+.spotify-embed-container::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.6s ease;
-}
-
-.social-cta-button:hover::before {
-    left: 100%;
-}
-
-.social-cta-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
-    color: white;
-    text-decoration: none;
-}
-
-.social-cta-button i {
-    transition: transform 0.3s ease;
-}
-
-.social-cta-button:hover i {
-    transform: translateX(5px);
-}
-
-/* Partículas de fondo */
-.social-particles {
-    position: absolute;
-    margin-top: -5px !important;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #1DB954, #1ed760, #1DB954);
     z-index: 1;
 }
 
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    animation: float 15s linear infinite;
+.spotify-embed-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.particle:nth-child(1) {
-    left: 10%;
-    animation-delay: 0s;
-    animation-duration: 12s;
+.spotify-embed-container iframe {
+    border-radius: 8px;
+    filter: contrast(1.1) saturate(1.1);
+    transition: var(--transition);
 }
 
-.particle:nth-child(2) {
-    left: 20%;
-    animation-delay: 2s;
-    animation-duration: 15s;
+.spotify-embed-container:hover iframe {
+    filter: contrast(1.2) saturate(1.2);
 }
 
-.particle:nth-child(3) {
-    left: 30%;
-    animation-delay: 4s;
-    animation-duration: 18s;
-}
-
-.particle:nth-child(4) {
-    left: 40%;
-    animation-delay: 6s;
-    animation-duration: 14s;
-}
-
-.particle:nth-child(5) {
-    left: 60%;
-    animation-delay: 1s;
-    animation-duration: 16s;
-}
-
-.particle:nth-child(6) {
-    left: 70%;
-    animation-delay: 3s;
-    animation-duration: 13s;
-}
-
-.particle:nth-child(7) {
-    left: 80%;
-    animation-delay: 5s;
-    animation-duration: 17s;
-}
-
-.particle:nth-child(8) {
-    left: 90%;
-    animation-delay: 7s;
-    animation-duration: 11s;
-}
-
-@keyframes float {
-    0% {
-        opacity: 0;
-        transform: translateY(100vh) scale(0);
-    }
-    10% {
-        opacity: 1;
-        transform: translateY(90vh) scale(1);
-    }
-    90% {
-        opacity: 1;
-        transform: translateY(10vh) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0) scale(0);
-    }
-}
-
-/* Responsive para sección social */
-@media (max-width: 768px) {
-    .social-title {
-        font-size: 2.5rem;
-    }
-    
-    .social-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .social-grid {
+/* Responsive para el layout */
+@media (max-width: 1024px) {
+    .music-content-wrapper {
         grid-template-columns: 1fr;
-        gap: 20px;
-        margin-bottom: 60px;
-    }
-    
-    .social-card {
-        padding: 25px;
-    }
-    
-    .social-card-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 2rem;
-    }
-    
-    .social-card-title {
-        font-size: 1.5rem;
-    }
-    
-    .social-cta {
-        padding: 40px 30px;
-    }
-    
-    .social-cta-title {
-        font-size: 2rem;
-    }
-    
-    .social-cta-text {
-        font-size: 1.1rem;
+        gap: 2rem;
     }
 }
 
-@media (max-width: 480px) {
-    .social-section {
-        min-height: auto;
-        padding: 60px 0;
+@media (max-width: 768px) {
+    .music-content-wrapper {
+        gap: 1.5rem;
     }
     
-    .social-hero {
-        margin-bottom: 50px;
+    .spotify-embed-container {
+        padding: 0.8rem;
     }
     
-    .social-title {
-        font-size: 2rem;
+    .spotify-embed-container iframe {
+        height: 320px !important;
     }
     
-    .social-card {
-        padding: 20px;
-    }
-    
-    .social-cta {
-        padding: 30px 20px;
-    }
-    
-    .social-cta-title {
-        font-size: 1.8rem;
-    }
-    
-    .social-cta-button {
-        padding: 15px 25px;
-        font-size: 1rem;
+    .music-genres-section,
+    .spotify-section {
+        padding: 1.5rem;
     }
 }
