@@ -15,7 +15,7 @@
     --text-light: #666;
     --text-dark: #000;
     --bg-color: #f8f9fa;
-    --bg-light: #fff;
+    --bg-light: #ffffff;
     --bg-card: #fff;
     --border-color: #e9ecef;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -46,6 +46,15 @@
     --border-color: #333;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Overlays para modo oscuro */
+[data-theme="dark"] .section:not(.social-section)::before {
+    background: rgba(18, 18, 18, 0.5);
+}
+
+[data-theme="dark"] .section.bg-light::before {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Base Styles */
@@ -93,6 +102,42 @@ img {
 
 .section {
     padding: 80px 0;
+    position: relative;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Fondo para secciones normales */
+.section:not(.bg-light):not(.social-section) {
+    background-image: url('../Imgs/fondo_oscuroo.jpg');
+}
+
+/* Fondo para secciones bg-light */
+.section.bg-light {
+    background-image: url('../Imgs/fondo_dia.jpg');
+}
+
+/* Overlay para mejorar legibilidad del texto */
+.section:not(.social-section)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.section.bg-light::before {
+    background: rgba(248, 249, 250, 0);
+}
+
+/* Asegurar que el contenido esté por encima del overlay */
+.section > .container {
+    position: relative;
+    z-index: 2;
 }
 
 .section-title {
@@ -110,10 +155,6 @@ img {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.bg-light {
-    background-color: var(--bg-light);
 }
 
 .btn {
@@ -2186,5 +2227,19 @@ body.dark-mode .btn-outline {
     .music-genres-section,
     .spotify-section {
         padding: 1.5rem;
+    }
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+    .section {
+        background-attachment: scroll;
+    }
+}
+
+/* Optimización para dispositivos con baja potencia */
+@media (prefers-reduced-motion: reduce) {
+    .section {
+        background-attachment: scroll;
     }
 }
