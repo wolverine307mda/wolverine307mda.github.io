@@ -342,7 +342,7 @@ body.dark-mode .btn-outline {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    width: 60%; /* Tamaño más pequeño */
+    width: 65%; /* Tamaño más pequeño */
 }
 
 .profile-img {
