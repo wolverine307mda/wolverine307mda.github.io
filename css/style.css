@@ -12,7 +12,7 @@
     --green-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
     --orange-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
     --text-color: #333;
-    --text-light: #666;
+    --text-light: #464646;
     --text-dark: #000;
     --bg-color: #f8f9fa;
     --bg-light: #ffffff;
@@ -38,7 +38,7 @@
     --green-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
     --orange-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
     --text-color: #f8f9fa;
-    --text-light: #adb5bd;
+    --text-light: #767676;
     --text-dark: #fff;
     --bg-color: #121212;
     --bg-light: #1e1e1e;
@@ -1750,6 +1750,49 @@ body.dark-mode .btn-outline {
     }
 }
 
+/* ESTILOS ESPECÍFICOS PARA SPOTIFY PROFILE CARD */
+.spotify-profile-card {
+    background: linear-gradient(135deg, rgba(29, 185, 84, 0.05), rgba(30, 215, 96, 0.05));
+    border-left-color: #1db954;
+}
+
+.spotify-profile-card .stat-icon {
+    background: linear-gradient(135deg, #1db954, #1ed760);
+    color: white;
+    overflow: hidden;
+}
+
+.spotify-profile-card .stat-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.spotify-profile-card .stat-progress {
+    background: linear-gradient(90deg, #1db954, #1ed760);
+}
+
+.spotify-profile-card .stat-number {
+    color: #1db954;
+    font-weight: 700;
+}
+
+.spotify-profile-card .stat-label {
+    color: #0d7a3f;
+    font-weight: 600;
+}
+
+.spotify-profile-card .stat-comparison {
+    color: #1db954;
+    font-weight: 500;
+}
+
+.spotify-profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(29, 185, 84, 0.2);
+}
+
 @media (max-width: 480px) {
     .stat-card {
         padding: 1.2rem;
@@ -2241,5 +2284,367 @@ body.dark-mode .btn-outline {
 @media (prefers-reduced-motion: reduce) {
     .section {
         background-attachment: scroll;
+    }
+}
+
+/* ANIMACIONES DE PARTÍCULAS */
+.social-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: floatParticle 15s infinite linear;
+    opacity: 0;
+}
+
+/* Diferentes tamaños y velocidades para las partículas */
+.particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 20s;
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(2) {
+    left: 20%;
+    animation-delay: 2s;
+    animation-duration: 18s;
+    width: 5px;
+    height: 5px;
+}
+
+.particle:nth-child(3) {
+    left: 30%;
+    animation-delay: 4s;
+    animation-duration: 22s;
+    width: 2px;
+    height: 2px;
+}
+
+.particle:nth-child(4) {
+    left: 40%;
+    animation-delay: 6s;
+    animation-duration: 16s;
+    width: 4px;
+    height: 4px;
+}
+
+.particle:nth-child(5) {
+    left: 50%;
+    animation-delay: 8s;
+    animation-duration: 24s;
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(6) {
+    left: 60%;
+    animation-delay: 10s;
+    animation-duration: 19s;
+    width: 5px;
+    height: 5px;
+}
+
+.particle:nth-child(7) {
+    left: 70%;
+    animation-delay: 12s;
+    animation-duration: 21s;
+    width: 2px;
+    height: 2px;
+}
+
+.particle:nth-child(8) {
+    left: 80%;
+    animation-delay: 14s;
+    animation-duration: 17s;
+    width: 4px;
+    height: 4px;
+}
+
+.particle:nth-child(9) {
+    left: 90%;
+    animation-delay: 16s;
+    animation-duration: 23s;
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(10) {
+    left: 15%;
+    animation-delay: 18s;
+    animation-duration: 20s;
+    width: 6px;
+    height: 6px;
+}
+
+.particle:nth-child(11) {
+    left: 25%;
+    animation-delay: 20s;
+    animation-duration: 18s;
+    width: 2px;
+    height: 2px;
+}
+
+.particle:nth-child(12) {
+    left: 35%;
+    animation-delay: 22s;
+    animation-duration: 25s;
+    width: 4px;
+    height: 4px;
+}
+
+.particle:nth-child(13) {
+    left: 45%;
+    animation-delay: 1s;
+    animation-duration: 19s;
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(14) {
+    left: 55%;
+    animation-delay: 3s;
+    animation-duration: 21s;
+    width: 5px;
+    height: 5px;
+}
+
+.particle:nth-child(15) {
+    left: 65%;
+    animation-delay: 5s;
+    animation-duration: 17s;
+    width: 2px;
+    height: 2px;
+}
+
+.particle:nth-child(16) {
+    left: 75%;
+    animation-delay: 7s;
+    animation-duration: 23s;
+    width: 4px;
+    height: 4px;
+}
+
+.particle:nth-child(17) {
+    left: 85%;
+    animation-delay: 9s;
+    animation-duration: 18s;
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(18) {
+    left: 95%;
+    animation-delay: 11s;
+    animation-duration: 22s;
+    width: 5px;
+    height: 5px;
+}
+
+.particle:nth-child(19) {
+    left: 5%;
+    animation-delay: 13s;
+    animation-duration: 20s;
+    width: 2px;
+    height: 2px;
+}
+
+.particle:nth-child(20) {
+    left: 77%;
+    animation-delay: 15s;
+    animation-duration: 24s;
+    width: 4px;
+    height: 4px;
+}
+
+.particle:nth-child(21) {
+    left: 33%;
+    animation-delay: 17s;
+    animation-duration: 16s;
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(22) {
+    left: 88%;
+    animation-delay: 19s;
+    animation-duration: 21s;
+    width: 6px;
+    height: 6px;
+}
+
+.particle:nth-child(23) {
+    left: 12%;
+    animation-delay: 21s;
+    animation-duration: 18s;
+    width: 2px;
+    height: 2px;
+}
+
+.particle:nth-child(24) {
+    left: 67%;
+    animation-delay: 23s;
+    animation-duration: 25s;
+    width: 4px;
+    height: 4px;
+}
+
+/* Keyframes para la animación de partículas */
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Variaciones de movimiento más complejas */
+.particle:nth-child(odd) {
+    animation-name: floatParticleLeft;
+}
+
+.particle:nth-child(even) {
+    animation-name: floatParticleRight;
+}
+
+@keyframes floatParticleLeft {
+    0% {
+        transform: translateY(100vh) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(75vh) translateX(-20px) rotate(90deg);
+    }
+    50% {
+        transform: translateY(50vh) translateX(10px) rotate(180deg);
+    }
+    75% {
+        transform: translateY(25vh) translateX(-15px) rotate(270deg);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(50px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatParticleRight {
+    0% {
+        transform: translateY(100vh) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(75vh) translateX(20px) rotate(90deg);
+    }
+    50% {
+        transform: translateY(50vh) translateX(-10px) rotate(180deg);
+    }
+    75% {
+        transform: translateY(25vh) translateX(15px) rotate(270deg);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(-50px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Partículas para modo oscuro */
+[data-theme="dark"] .particle {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Partículas negras para secciones con fondo claro */
+.bg-light .particle {
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .bg-light .particle {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Partículas especiales para el hero */
+#hero .particle {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Partículas más grandes para el hero */
+#hero .particle:nth-child(3n) {
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+#hero .particle:nth-child(5n) {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Animación especial para partículas del hero */
+#hero .particle:nth-child(4n) {
+    animation-name: floatParticleHero;
+}
+
+@keyframes floatParticleHero {
+    0% {
+        transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(75vh) translateX(-30px) rotate(90deg) scale(1.2);
+    }
+    50% {
+        transform: translateY(50vh) translateX(15px) rotate(180deg) scale(0.9);
+    }
+    75% {
+        transform: translateY(25vh) translateX(-20px) rotate(270deg) scale(1.1);
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) translateX(40px) rotate(360deg) scale(0.8);
+        opacity: 0;
     }
 }
