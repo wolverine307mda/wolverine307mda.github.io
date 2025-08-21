@@ -115,9 +115,9 @@ img {
 }
 
 /* Fondo para secciones bg-light */
-.section.bg-light {
+/* .section.bg-light {
     background-image: url('../Imgs/fondo_dia.jpg');
-}
+} */
 
 /* Overlay para mejorar legibilidad del texto */
 .section:not(.social-section)::before {
