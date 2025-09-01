@@ -113,7 +113,6 @@ img {
 .section:not(.bg-light):not(.social-section) {
     background-image: url('../Imgs/fondo_oscuroo.jpg');
 }
-
 /* Fondo para secciones bg-light */
 /* .section.bg-light {
     background-image: url('../Imgs/fondo_dia.jpg');
