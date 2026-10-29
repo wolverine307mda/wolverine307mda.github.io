@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" data-mode="light" data-color="naranja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aviso legal y privacidad · Mario de Domingo</title>
+  <meta name="description" content="Aviso legal, privacidad y créditos de la web personal de Mario de Domingo Álvarez.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ff7a1f'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial' font-weight='900' font-size='17' fill='%23050f16' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610302100">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610302100">
+  <script>
+    (() => {
+      const d = document.documentElement;
+      let mode = 'system', color = 'naranja';
+      try { mode = localStorage.getItem('mode') || mode; color = localStorage.getItem('color') || color; } catch {}
+      const dark = mode === 'dark' || (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+      d.dataset.mode = dark ? 'dark' : 'light';
+      d.dataset.color = color;
+    })();
+  </script>
+</head>
+
+<body class="legal">
+  <header class="legal__top">
+    <a class="top__mark" href="./" aria-label="Volver al inicio">MDA</a>
+    <a class="link link--line" href="./">Volver a la web</a>
+  </header>
+
+  <main class="legal__body">
+    <p class="legal__kicker"><code>// actualizado el 29 de octubre de 2026</code></p>
+    <h1 class="legal__title">Aviso legal y privacidad</h1>
+
+    <section aria-labelledby="titular">
+      <h2 id="titular">Quién está detrás</h2>
+      <p>Esta web es el portfolio personal de <strong>Mario de Domingo Álvarez</strong>, programador web en Madrid. Puedes escribirme a <a class="link link--line" href="mailto:dedomingoalvarezmario@gmail.com">dedomingoalvarezmario@gmail.com</a>.</p>
+      <p>Es una web informativa y sin fines comerciales: muestra mis proyectos, mi currículum y mis fotos. No vendo nada ni ofrezco contratación a través de ella.</p>
+    </section>
+
+    <section aria-labelledby="datos">
+      <h2 id="datos">Tus datos</h2>
+      <p><strong>No recojo datos personales.</strong> No hay formularios, registro, comentarios ni herramientas de analítica o publicidad.</p>
+      <ul>
+        <li><strong>Sin cookies.</strong> Lo único que se guarda en tu navegador (con <code>localStorage</code>) es el tema y el color que elijas con el pincel, para recordarlos en tu próxima visita. No sale de tu dispositivo y lo puedes borrar cuando quieras desde los ajustes del navegador.</li>
+        <li><strong>Sin servicios de terceros.</strong> Las fuentes, las librerías y las imágenes se sirven desde esta misma web; tu navegador no hace peticiones a Google Fonts ni a otros CDN.</li>
+        <li><strong>Alojamiento.</strong> La web está en GitHub Pages (GitHub, Inc.). Como cualquier servidor, GitHub puede registrar tu dirección IP por motivos técnicos y de seguridad; lo explica en su <a class="link link--line" href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement">declaración de privacidad</a>.</li>
+        <li><strong>Si me escribes,</strong> usaré tu email y lo que me cuentes solo para responderte, y no lo compartiré con nadie.</li>
+      </ul>
+      <p>Puedes pedirme en cualquier momento acceder a tus datos, corregirlos o borrarlos escribiendo al email de arriba. Si crees que no se han tratado bien, puedes reclamar ante la <a class="link link--line" href="https://www.aepd.es/">Agencia Española de Protección de Datos</a>.</p>
+    </section>
+
+    <section aria-labelledby="contenido">
+      <h2 id="contenido">Contenido e imágenes</h2>
+      <ul>
+        <li>Las <strong>fotografías</strong> de la galería son mías. Si quieres usar alguna, pregúntame.</li>
+        <li>Las imágenes de las tarjetas de proyectos son de <a class="link link--line" href="https://unsplash.com/es/licencia">Unsplash</a> y se usan según su licencia.</li>
+        <li>Fuentes: Panchang y Switzer (Indian Type Foundry, licencia ITF Free Font) y JetBrains Mono (licencia SIL Open Font).</li>
+        <li>Los nombres de productos, tecnologías y marcas que aparecen pertenecen a sus dueños y se citan solo para describir mi trabajo.</li>
+        <li>Los enlaces a otras webs (GitHub, LinkedIn, Instagram…) llevan a sitios con sus propias condiciones, de las que no soy responsable.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="legal__foot">
+    <p>© <span data-year>2026</span> Mario de Domingo Álvarez</p>
+  </footer>
+  <script>document.querySelector('[data-year]').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>
