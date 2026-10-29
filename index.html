@@ -41,21 +41,27 @@
   <header class="top">
     <a class="top__mark" href="#inicio" aria-label="Inicio">MdD</a>
     <nav class="top__nav" aria-label="Principal">
-      <a class="link" href="#proyectos">Proyectos</a>
+      <a class="link top__opt2" href="#proyectos">Proyectos</a>
       <a class="link top__opt" href="#stack">Stack</a>
       <a class="link top__opt" href="#fotografia">Fotos</a>
       <a class="link link--line" href="#contacto">Contacto</a>
       <span class="top__tools">
-        <button class="icon-btn" type="button" data-toggle-mode aria-label="Cambiar a modo noche">
-          <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
-          <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
-        </button>
         <button class="icon-btn" type="button" data-palette-toggle aria-expanded="false" aria-controls="palette" aria-label="Elegir tema y color">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 3.3a1.6 1.6 0 0 0-2.3 0l-8.2 8.2 2.3 2.3 8.2-8.2a1.6 1.6 0 0 0 0-2.3z"/><path d="M9.3 12.9c-2 0-3.5 1.5-3.5 3.4 0 1.6-.9 2.8-2.3 3.3 1 .9 2.4 1.4 3.9 1.4 2.9 0 4.9-2 4.9-4.6l-3-3.5z"/></svg>
+        </button>
+        <button class="icon-btn" type="button" data-account-toggle aria-expanded="false" aria-controls="account" aria-label="Acceso a mi área privada">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5"/></svg>
         </button>
       </span>
     </nav>
   </header>
+
+  <!-- Acceso: punto de entrada a mi app privada (cuando esté en marcha, el enlace apunta a ella) -->
+  <div class="palette account" id="account" role="dialog" aria-label="Área privada" hidden>
+    <p class="account__title">Área privada</p>
+    <p class="account__text">Aquí entraré a mi propia app, alojada en un servidor en casa. Está en construcción.</p>
+    <a class="button account__go" href="#" data-app-url aria-disabled="true">Próximamente</a>
+  </div>
 
   <!-- Panel de tema: se abre con el pincel -->
   <div class="palette" id="palette" role="dialog" aria-label="Tema y color" hidden>
@@ -95,14 +101,15 @@
           <span class="line"><span data-line data-move class="hero__l1" style="--i:0">Mario de</span></span>
           <span class="line"><span data-line data-move class="hero__l2" style="--i:1">Domingo</span></span>
         </h1>
-        <div class="hero__window" data-move aria-hidden="true">
-          <pre class="hero__code"><code data-type><span class="c">// Mario.cs</span>
-<span class="k">public class</span> <span class="t">Mario</span> : <span class="t">Developer</span>
+        <div class="hero__window" data-move aria-hidden="true"></div>
+        <div class="hero__slot" aria-hidden="true">
+          <pre class="hero__code"><code data-type><span class="opt"><span class="c">// Mario.cs</span>
+</span><span class="k">public class</span> <span class="t">Mario</span> : <span class="t">Developer</span>
 {
     <span class="k">public</span> <span class="t">string</span>[] Stack =&gt;
-        [<span class="s">"C#"</span>, <span class="s">"VB.NET"</span>, <span class="s">"Angular"</span>];
-
-    <span class="k">public</span> <span class="t">string</span> Ciudad =&gt; <span class="s">"Madrid"</span>;
+      [<span class="s">"C#"</span>, <span class="s">"VB.NET"</span>, <span class="s">"Angular"</span>];
+<span class="opt">
+</span>    <span class="k">public</span> <span class="t">string</span> Ciudad =&gt; <span class="s">"Madrid"</span>;
 }</code></pre>
         </div>
         <div class="hero__foot" data-move>
@@ -298,11 +305,42 @@
   </main>
 
   <footer class="footer" data-tone="dark">
-    <p class="footer__name" aria-hidden="true"><span data-reveal>Mario de</span><span data-reveal style="--i:1">Domingo</span></p>
-    <div class="footer__row">
-      <p>Madrid · Leganés · Alcorcón</p>
-      <a class="link link--line" href="#inicio">Volver arriba</a>
-      <p>© <span data-year>2026</span> Mario de Domingo Álvarez. Fotos propias.</p>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="footer__mark" href="#inicio" aria-label="Volver al inicio">MdD</a>
+        <p>Mario de Domingo Álvarez. Desarrollador web full stack: C# y Visual Basic .NET en el backend, Angular en el frontend.</p>
+      </div>
+      <nav class="footer__col" aria-label="Secciones">
+        <h2 class="footer__head"><code>secciones</code></h2>
+        <ul>
+          <li><a class="link" href="#sobre-mi">Sobre mí</a></li>
+          <li><a class="link" href="#proyectos">Proyectos</a></li>
+          <li><a class="link" href="#stack">Stack</a></li>
+          <li><a class="link" href="#fotografia">Fotografía</a></li>
+        </ul>
+      </nav>
+      <div class="footer__col">
+        <h2 class="footer__head"><code>contacto</code></h2>
+        <ul>
+          <li><a class="link" href="mailto:dedomingoalvarezmario@gmail.com">Email</a></li>
+          <li><a class="link" href="https://www.linkedin.com/in/mario-de-domingo-%C3%A1lvarez-615535295/">LinkedIn</a></li>
+          <li><a class="link" href="https://github.com/wolverine307mda">GitHub</a></li>
+          <li><a class="link" href="https://wolverine307mda.github.io/curriculum/">Currículum</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h2 class="footer__head"><code>ubicación</code></h2>
+        <ul>
+          <li>Madrid, España</li>
+          <li>Hora local <time data-clock>--:--</time></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <p>© <span data-year>2026</span> Mario de Domingo Álvarez · Fotografías propias</p>
+      <a class="footer__top link" href="#inicio">Volver arriba
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+      </a>
     </div>
   </footer>
 

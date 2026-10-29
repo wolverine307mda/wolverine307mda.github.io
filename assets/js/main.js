@@ -5,6 +5,22 @@
   /* ---------- Escenas de scroll y desplazamiento con peso ---------- */
   if (window.Stage) { Stage.smooth(); Stage.init(); }
 
+  /* ---------- Portada: la capa que crece parte exactamente del editor ---------- */
+  const heroStage = document.querySelector('.hero__stage');
+  const heroSlot = document.querySelector('.hero__slot');
+  const heroWindow = document.querySelector('.hero__window');
+  const measureWindow = () => {
+    const a = heroStage.getBoundingClientRect(), b = heroSlot.getBoundingClientRect();
+    heroWindow.style.setProperty('--wt', `${b.top - a.top}px`);
+    heroWindow.style.setProperty('--wl', `${b.left - a.left}px`);
+    heroWindow.style.setProperty('--wr', `${a.right - b.right}px`);
+    heroWindow.style.setProperty('--wb', `${a.bottom - b.bottom}px`);
+  };
+  measureWindow();
+  new ResizeObserver(measureWindow).observe(heroSlot);
+  window.addEventListener('resize', measureWindow);
+  document.fonts?.ready.then(measureWindow);
+
   /* ---------- Cabecera: su tinta sigue al fondo de cada capítulo ---------- */
   const top = document.querySelector('.top');
   if (window.ScrollTrigger) {
@@ -101,7 +117,6 @@
     html.dataset.color = color;
     document.querySelectorAll('[data-mode-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modeSet === mode)));
     document.querySelectorAll('[data-color-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.colorSet === color)));
-    document.querySelectorAll('[data-toggle-mode]').forEach((b) => b.setAttribute('aria-label', dark ? 'Cambiar a modo día' : 'Cambiar a modo noche'));
     metaTheme.content = getComputedStyle(document.body).backgroundColor;
   };
 
@@ -128,29 +143,36 @@
   document.querySelectorAll('[data-color-set]').forEach((btn) => {
     btn.addEventListener('click', () => applyTheme(() => { color = btn.dataset.colorSet; store.set('color', color); }, btn));
   });
-  document.querySelectorAll('[data-toggle-mode]').forEach((btn) => {
-    btn.addEventListener('click', () => applyTheme(() => {
-      mode = html.dataset.mode === 'dark' ? 'light' : 'dark';
-      store.set('mode', mode);
-    }, btn));
-  });
   systemDark.addEventListener('change', () => { if (mode === 'system') render(); });
   render();
 
-  /* ---------- Pincel: abre y cierra el panel de tema ---------- */
-  const palette = document.getElementById('palette');
-  const brush = document.querySelector('[data-palette-toggle]');
-  const setPalette = (open) => {
-    palette.hidden = !open;
-    palette.classList.toggle('is-open', open);
-    brush.setAttribute('aria-expanded', String(open));
-    if (open) palette.querySelector('[aria-pressed="true"]')?.focus({ preventScroll: true });
+  /* ---------- Paneles de la cabecera: pincel (tema) y persona (acceso) ---------- */
+  const panels = [...document.querySelectorAll('[data-palette-toggle], [data-account-toggle]')].map((btn) => ({
+    btn, el: document.getElementById(btn.getAttribute('aria-controls')),
+  }));
+  const setPanel = (panel, open) => {
+    panel.el.hidden = !open;
+    panel.el.classList.toggle('is-open', open);
+    panel.btn.setAttribute('aria-expanded', String(open));
+    if (open) panel.el.querySelector('[aria-pressed="true"], a, button')?.focus({ preventScroll: true });
   };
-  brush.addEventListener('click', () => setPalette(palette.hidden));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !palette.hidden) { setPalette(false); brush.focus(); } });
-  document.addEventListener('pointerdown', (e) => {
-    if (!palette.hidden && !palette.contains(e.target) && !brush.contains(e.target)) setPalette(false);
+  const anyOpen = () => panels.some((p) => !p.el.hidden);
+  panels.forEach((panel) => panel.btn.addEventListener('click', () => {
+    const open = panel.el.hidden;
+    panels.forEach((p) => setPanel(p, p === panel && open));
+  }));
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const open = panels.find((p) => !p.el.hidden);
+    if (open) { setPanel(open, false); open.btn.focus(); }
   });
+  document.addEventListener('pointerdown', (e) => {
+    panels.forEach((p) => { if (!p.el.hidden && !p.el.contains(e.target) && !p.btn.contains(e.target)) setPanel(p, false); });
+  });
+
+  // Acceso: mientras la app no tenga dirección, el botón no lleva a ningún sitio
+  const appLink = document.querySelector('[data-app-url]');
+  appLink.addEventListener('click', (e) => { if (appLink.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
 
   /* ---------- Recorrido automático: baja despacio por toda la web ---------- */
   const tour = document.querySelector('[data-tour]');
@@ -193,14 +215,14 @@
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     if (Math.abs(y - lastY) < 6) return;
-    top.classList.toggle('is-hidden', y > lastY && y > 120 && palette.hidden);
+    top.classList.toggle('is-hidden', y > lastY && y > 120 && !anyOpen());
     lastY = y;
   }, { passive: true });
 
   /* ---------- Hora de Madrid en el contacto ---------- */
-  const clock = document.querySelector('[data-clock]');
+  const clocks = document.querySelectorAll('[data-clock]');
   const fmt = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
-  const tickClock = () => { clock.textContent = fmt.format(new Date()); };
+  const tickClock = () => { const t = fmt.format(new Date()); clocks.forEach((c) => { c.textContent = t; }); };
   tickClock();
   setInterval(tickClock, 30000);
 
