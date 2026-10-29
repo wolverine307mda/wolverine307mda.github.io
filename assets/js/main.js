@@ -210,6 +210,77 @@
   /* ---------- "¿Hablamos?" sube desde su línea ---------- */
   reveal.observe(document.querySelector('.contact__title'));
 
+  /* ---------- Galería: filtros y visor con anterior/siguiente ---------- */
+  const shots = [...document.querySelectorAll('.shot')];
+  const filters = document.querySelectorAll('[data-filter]');
+  filters.forEach((btn) => btn.addEventListener('click', () => {
+    const cat = btn.dataset.filter;
+    filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    shots.forEach((li) => {
+      li.hidden = cat !== 'todas' && li.dataset.cat !== cat;
+      if (!li.hidden) li.classList.add('is-in');
+    });
+    fitToggle();
+    window.ScrollTrigger?.refresh();
+  }));
+
+  // plegar y desplegar la galería; al plegar, se vuelve al principio de la sección
+  const galleryWrap = document.querySelector('[data-gallery-wrap]');
+  const galleryToggle = document.querySelector('[data-gallery-toggle]');
+  galleryToggle.addEventListener('click', () => {
+    const open = galleryWrap.classList.toggle('is-collapsed') === false;
+    galleryToggle.setAttribute('aria-expanded', String(open));
+    galleryToggle.querySelector('[data-gallery-label]').textContent = open ? 'Ver menos' : 'Ver todas las fotos';
+    if (open) shots.forEach((li) => li.classList.add('is-in'));
+    else {
+      const y = document.getElementById('galeria').getBoundingClientRect().top + scrollY;
+      window.Stage?.lenis ? window.Stage.lenis.scrollTo(y, { immediate: true }) : scrollTo(0, y);
+    }
+    window.ScrollTrigger?.refresh();
+  });
+  // si con el filtro caben todas, no hace falta el botón
+  function fitToggle() {
+    const grid = galleryWrap.querySelector('[data-gallery]');
+    const fits = grid.scrollHeight <= parseFloat(getComputedStyle(galleryWrap).maxHeight || '0') + 1;
+    galleryToggle.parentElement.hidden = galleryWrap.classList.contains('is-collapsed') && fits;
+    galleryWrap.classList.toggle('is-short', fits);
+  }
+  fitToggle();
+  addEventListener('resize', fitToggle);
+
+  const viewer = document.querySelector('[data-viewer]');
+  const vImg = viewer.querySelector('[data-viewer-img]');
+  const vText = viewer.querySelector('[data-viewer-text]');
+  let current = 0;
+  const visibleShots = () => shots.filter((li) => !li.hidden);
+  const showShot = (li) => {
+    const list = visibleShots();
+    current = list.indexOf(li);
+    const img = li.querySelector('img');
+    vImg.src = img.currentSrc || img.src;
+    vImg.alt = img.alt;
+    vText.textContent = img.alt;
+  };
+  const stepShot = (d) => { const list = visibleShots(); showShot(list[(current + d + list.length) % list.length]); };
+  shots.forEach((li) => li.querySelector('[data-shot]').addEventListener('click', () => { showShot(li); viewer.showModal(); }));
+  viewer.querySelector('[data-viewer-close]').addEventListener('click', () => viewer.close());
+  viewer.querySelector('[data-viewer-prev]').addEventListener('click', () => stepShot(-1));
+  viewer.querySelector('[data-viewer-next]').addEventListener('click', () => stepShot(1));
+  viewer.addEventListener('click', (e) => { if (e.target === viewer) viewer.close(); });
+  viewer.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') stepShot(-1);
+    if (e.key === 'ArrowRight') stepShot(1);
+  });
+  // en el teléfono, deslizar para pasar de foto
+  let touchX = null;
+  viewer.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  viewer.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) stepShot(dx < 0 ? 1 : -1);
+    touchX = null;
+  });
+
   /* ---------- Copiar email ---------- */
   document.querySelectorAll('[data-copy]').forEach((btn) => {
     const out = btn.querySelector('[data-copy-label]') || btn;

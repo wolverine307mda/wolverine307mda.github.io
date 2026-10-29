@@ -19,8 +19,8 @@
   <link href="https://api.fontshare.com/v2/css?f[]=panchang@700&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/scenes/stage.css?v=202610300100">
-  <link rel="stylesheet" href="assets/css/style.css?v=202610300100">
+  <link rel="stylesheet" href="assets/scenes/stage.css?v=202610302030">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610302030">
   <script>
     // Tema guardado antes de pintar, para que no parpadee
     (() => {
@@ -175,8 +175,8 @@
 
           <a data-tilt="10" class="panel panel--shot" href="https://github.com/wolverine307mda/MovieTrip-TFC">
             <span class="panel__media">
-              <img src="assets/img/movietrip-inicio.webp" width="1200" height="900" alt="Página de inicio de MovieTrip con carruseles de películas" loading="lazy">
-              <img src="assets/img/movietrip-panel.webp" width="1200" height="900" alt="Panel de administración de MovieTrip con mapa de ubicaciones de rodaje" loading="lazy">
+              <img src="assets/img/movietrip-rodaje.webp" width="1200" height="900" alt="Claqueta de cine sostenida en una carretera del desierto" loading="lazy">
+              <img src="assets/img/movietrip-cine.webp" width="1200" height="900" alt="Butacas rojas de una sala de cine vacía" loading="lazy">
             </span>
             <span class="panel__name">MovieTrip</span>
             <span class="panel__meta">tfc · kotlin, spring boot, vue · 2025</span>
@@ -184,31 +184,35 @@
           </a>
 
           <a data-tilt="10" class="panel panel--hot panel--low" href="https://github.com/wolverine307mda/VivesBank.Net">
+            <span class="panel__cover"><img src="assets/img/vivesbank-pago.webp" width="1200" height="900" alt="Persona pagando con tarjeta desde un portátil" loading="lazy"></span>
             <span class="panel__name">VivesBank</span>
             <span class="panel__meta">c#, .net, postgresql · 2025</span>
             <span class="panel__text">Servicio bancario modular en .NET, con el foco puesto en la seguridad.</span>
           </a>
 
           <a data-tilt="10" class="panel panel--paper" href="https://github.com/wolverine307mda/Organix">
+            <span class="panel__cover"><img src="assets/img/organix-agenda.webp" width="1200" height="900" alt="Agenda semanal, café y gafas sobre un escritorio ordenado" loading="lazy"></span>
             <span class="panel__name">Organix</span>
             <span class="panel__meta">angular, kotlin, spring boot · 2025</span>
             <span class="panel__text">Varios servicios del día a día conectados en una plataforma con frontend en Angular.</span>
           </a>
 
           <a data-tilt="10" class="panel panel--hot" href="https://github.com/wolverine307mda/Wallapop-Laravel">
+            <span class="panel__cover"><img src="assets/img/waravel-ropa.webp" width="1200" height="900" alt="Manos buscando entre ropa colgada en perchas" loading="lazy"></span>
             <span class="panel__name">Waravel</span>
             <span class="panel__meta">laravel, postgresql · 2025</span>
             <span class="panel__text">Tienda de segunda mano con carrito completo y tests en Cypress.</span>
           </a>
 
           <a data-tilt="10" class="panel panel--shot panel--low" href="https://wolverine307mda.github.io/RFA/">
-            <span class="panel__media"><img src="assets/img/rfa.webp" width="1200" height="900" alt="Portada de RFA con los proyectos de diseño de interfaces" loading="lazy"></span>
+            <span class="panel__media"><img src="assets/img/rfa-bocetos.webp" width="1200" height="900" alt="Bocetos a mano de la estructura de una web sobre papel" loading="lazy"></span>
             <span class="panel__name">RFA</span>
             <span class="panel__meta">angular, html, css, js · 2024</span>
             <span class="panel__text">Mis diseños de interfaces y entornos de cliente, publicados.</span>
           </a>
 
           <a data-tilt="10" class="panel panel--paper panel--low" href="https://github.com/wolverine307mda/Funkos_CSharp">
+            <span class="panel__cover"><img src="assets/img/funkos-figura.webp" width="1200" height="900" alt="Figura Funko Pop de una superheroína" loading="lazy"></span>
             <span class="panel__name">Funkos</span>
             <span class="panel__meta">c# .net y spring boot · 2024</span>
             <span class="panel__text">La misma API en .NET y en Spring Boot, para comparar los dos mundos.</span>
@@ -217,6 +221,7 @@
           <a data-tilt="10" class="panel panel--more" href="https://github.com/wolverine307mda?tab=repositories">
             <span class="panel__name">GitHub</span>
             <span class="panel__meta">todos mis repositorios, más de veinte</span>
+            <span class="panel__go">Ver repositorios <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a>
         </div>
       </div>
@@ -295,9 +300,103 @@ git commit -m "feat: más café, menos bugs"</pre>
           <img data-move style="--x:16%;--y:80%" src="assets/img/playa.webp" width="800" height="1200" alt="Playa de agua turquesa">
           <img data-move style="--x:84%;--y:80%" src="assets/img/margaritas.webp" width="1199" height="1800" alt="Campo de margaritas blancas">
         </div>
-        <p class="photos__note" data-move>Naturaleza, mar y luz de tarde. <a class="link link--line" href="https://www.instagram.com/md4_photos">Más en @md4_photos</a></p>
+        <p class="photos__note" data-move>Naturaleza, mar y luz de tarde. <a class="link link--line" href="#galeria">Ver la galería</a> · <a class="link link--line" href="https://www.instagram.com/md4_photos">@md4_photos</a></p>
       </div>
     </section>
+
+    <!-- Galería: todas las fotos, con filtros y visor -->
+    <section class="gallery" id="galeria" data-tone="dark" aria-labelledby="gallery-title">
+      <div class="gallery__head">
+        <h2 class="h-small" id="gallery-title" data-reveal>Galería</h2>
+        <p class="gallery__count" data-reveal><code>// todas mías</code></p>
+      </div>
+      <div class="gallery__filters" role="group" aria-label="Filtrar fotos" data-reveal>
+        <button type="button" data-filter="todas" aria-pressed="true">Todas</button>
+        <button type="button" data-filter="naturaleza" aria-pressed="false">Naturaleza</button>
+        <button type="button" data-filter="ciudad" aria-pressed="false">Ciudad</button>
+        <button type="button" data-filter="animales" aria-pressed="false">Animales</button>
+        <button type="button" data-filter="motor" aria-pressed="false">Motor</button>
+      </div>
+      <div class="gallery__wrap is-collapsed" id="galeria-fotos" data-gallery-wrap>
+      <ul class="gallery__grid" data-gallery>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/girasoles.webp" width="1201" height="1800" alt="Campo de girasoles bajo el sol" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/quijote-plaza-espana.webp" width="960" height="1280" alt="Monumento a Cervantes con Don Quijote y Sancho Panza en la Plaza de España de Madrid" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="animales" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/perro-pelota.webp" width="720" height="1280" alt="Perro blanco con una pelota naranja en la boca" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="motor" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/camaro-rojo.webp" width="960" height="1280" alt="Chevrolet Camaro rojo aparcado entre pinos" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/tulipanes-mercado.webp" width="1172" height="1280" alt="Tulipanes naranjas y rosas en un puesto de flores" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/templo-debod.webp" width="800" height="1164" alt="Templo de Debod iluminado de noche en Madrid" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="animales" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/buho-real.webp" width="960" height="1280" alt="Búho real posado delante de un tapiz" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/margaritas-abeja.webp" width="720" height="1280" alt="Margaritas africanas con una abeja en el centro" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/calle-lluvia-noche.webp" width="960" height="1280" alt="Calle empedrada mojada por la lluvia de noche" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/mar-veleros.webp" width="800" height="1067" alt="Mar en calma con veleros al atardecer" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="motor" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/maserati-mc20.webp" width="720" height="1280" alt="Maserati MC20 gris sobre la hierba" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="animales" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/pavos-reales.webp" width="1280" height="870" alt="Dos pavos reales en un jardín" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/flor-almendro.webp" width="800" height="1200" alt="Flores de almendro contra un cielo azul" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/estatua-carlos-iii.webp" width="854" height="1280" alt="Estatua ecuestre de Carlos III en la Puerta del Sol" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/narcisos-amarillos.webp" width="1280" height="1186" alt="Narcisos amarillos entre hojas verdes" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="animales" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/gato.webp" width="1738" height="1800" alt="Gato mirando a cámara" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/fuente-arcoiris.webp" width="853" height="1280" alt="Fuente con un arcoíris junto a un templete en un parque" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/valle-montes.webp" width="1280" height="960" alt="Valle de montes cubiertos de pinos bajo un cielo azul" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="motor" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/escarabajo-verde.webp" width="853" height="1280" alt="Volkswagen Escarabajo verde entre árboles" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/mimosas.webp" width="960" height="1280" alt="Ramos de mimosa amarilla envueltos en papel" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="animales" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/pato-agua.webp" width="960" height="1280" alt="Silueta de un pato sobre el agua con reflejos" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/cupula-iglesia.webp" width="854" height="1280" alt="Cúpula de una iglesia contra un cielo nublado" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/playa.webp" width="800" height="1200" alt="Playa de agua turquesa" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/zinnia-rosa.webp" width="1200" height="1800" alt="Zinnia rosa entre flores naranjas" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="motor" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/civic-type-r.webp" width="896" height="1195" alt="Honda Civic Type R rojo entre pinos" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="animales" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/perros-parque.webp" width="720" height="1280" alt="Dos perros tumbados en el césped de un parque" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/viaducto-hierro.webp" width="720" height="1280" alt="Viaducto de hierro visto desde abajo con nubes" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/rododendro-blanco.webp" width="960" height="1280" alt="Flores blancas de rododendro" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/navidad.webp" width="800" height="1117" alt="Luces de Navidad en la calle" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="animales" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/mariposa.webp" width="800" height="1200" alt="Mariposa posada entre hojas" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/rio-arboles.webp" width="1013" height="1800" alt="Árboles reflejados en un río" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/estatua-jardin.webp" width="670" height="1280" alt="Estatua clásica entre columnas en un jardín" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/oxalis-morado.webp" width="960" height="1280" alt="Hojas moradas de oxalis junto a una pared de ladrillo" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="animales" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/pavos-reales-arbol.webp" width="1280" height="705" alt="Pavos reales bajo un árbol" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/atardecer-mar.webp" width="800" height="1067" alt="Atardecer naranja sobre el mar" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/campanario-dorado.webp" width="960" height="1280" alt="Campanario con una figura dorada" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/flor-ciruelo.webp" width="960" height="1280" alt="Flores blancas de ciruelo en una rama" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/gofre-belga.webp" width="1280" height="960" alt="Gofre con chocolate y una bandera de Bélgica" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/margaritas.webp" width="1199" height="1800" alt="Campo de margaritas blancas" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/nubes.webp" width="1012" height="1800" alt="Nubes altas en un cielo azul" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/osito-ruinas.webp" width="960" height="1280" alt="Osito de peluche abandonado entre ruinas" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/playa-velero.webp" width="720" height="1280" alt="Playa con un velero en el horizonte" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/flores-mercado.webp" width="1280" height="960" alt="Ramas de flores rosas y amarillas en un mercado" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="ciudad" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/carretera.webp" width="800" height="1000" alt="Carretera que se pierde entre árboles" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/hojas-menta.webp" width="960" height="1280" alt="Hojas verdes de menta" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/narcisos-blancos.webp" width="960" height="1280" alt="Narcisos blancos con el centro naranja" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/rio-rocas.webp" width="1200" height="1800" alt="Río de montaña entre rocas" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/ramo-blanco-azul.webp" width="960" height="1280" alt="Ramo de flores blancas y azules" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/margaritas-africanas.webp" width="720" height="1280" alt="Macizo de margaritas africanas blancas" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/cielo-hojas.webp" width="1013" height="1800" alt="Hojas contra el cielo vistas desde abajo" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:2"><button type="button" data-shot><img src="assets/img/copas-arboles.webp" width="1800" height="1350" alt="Copas de árboles desde el suelo" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:3"><button type="button" data-shot><img src="assets/img/zinnias.webp" width="1200" height="1800" alt="Zinnias de colores en un jardín" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:0"><button type="button" data-shot><img src="assets/img/campo-manzanilla.webp" width="720" height="1280" alt="Campo de manzanilla en flor" loading="lazy" decoding="async"></button></li>
+          <li class="shot" data-cat="naturaleza" data-reveal style="--i:1"><button type="button" data-shot><img src="assets/img/margarita-abeja.webp" width="800" height="1423" alt="Margarita blanca con una abeja en el centro" loading="lazy" decoding="async"></button></li>
+      </ul>
+      </div>
+      <div class="gallery__more">
+        <button class="button gallery__toggle" type="button" data-gallery-toggle aria-expanded="false" aria-controls="galeria-fotos">
+          <span data-gallery-label>Ver todas las fotos</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Visor de fotos -->
+    <dialog class="viewer" data-viewer aria-label="Foto ampliada">
+      <img class="viewer__img" src="" alt="" data-viewer-img>
+      <p class="viewer__caption"><span data-viewer-text></span></p>
+      <button class="icon-btn viewer__btn viewer__btn--close" type="button" data-viewer-close aria-label="Cerrar">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <button class="icon-btn viewer__btn viewer__btn--prev" type="button" data-viewer-prev aria-label="Foto anterior">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button class="icon-btn viewer__btn viewer__btn--next" type="button" data-viewer-next aria-label="Foto siguiente">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </dialog>
 
     <!-- Contacto: bocadillo de cómic y tres viñetas para escribirme -->
     <section class="contact" id="contacto" aria-labelledby="contact-title">
@@ -381,6 +480,7 @@ git commit -m "feat: más café, menos bugs"</pre>
           <li><a class="link" href="#proyectos">Proyectos</a></li>
           <li><a class="link" href="#stack">Stack</a></li>
           <li><a class="link" href="#fotografia">Fotografía</a></li>
+          <li><a class="link" href="#galeria">Galería</a></li>
         </ul>
       </nav>
       <div class="footer__col">
@@ -401,7 +501,7 @@ git commit -m "feat: más café, menos bugs"</pre>
       </div>
     </div>
     <div class="footer__bar">
-      <p>© <span data-year>2026</span> Mario de Domingo Álvarez · Fotografías propias</p>
+      <p>© <span data-year>2026</span> Mario de Domingo Álvarez · Fotografías propias · Imágenes de los proyectos: <a class="link link--line" href="https://unsplash.com/es/licencia">Unsplash</a></p>
       <a class="footer__top link" href="#inicio">Volver arriba
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
       </a>
@@ -411,11 +511,11 @@ git commit -m "feat: más café, menos bugs"</pre>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
-  <script src="assets/scenes/stage.js?v=202610300100"></script>
-  <script src="assets/scenes/scenes.js?v=202610300100"></script>
-  <script src="assets/js/main.js?v=202610300100"></script>
+  <script src="assets/scenes/stage.js?v=202610302030"></script>
+  <script src="assets/scenes/scenes.js?v=202610302030"></script>
+  <script src="assets/js/main.js?v=202610302030"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="assets/js/hero3d.js?v=202610300100"></script>
+  <script src="assets/js/hero3d.js?v=202610302030"></script>
 </body>
 
 </html>
