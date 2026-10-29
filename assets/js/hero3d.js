@@ -1,5 +1,5 @@
 // Portada en 3D: una nube de partículas que es una esfera en reposo y, al bajar, se convierte
-// en palabras de las tecnologías con las que trabajo. scenes.js mueve window.Hero3D.progress de 0 a 3.
+// en mi nombre, lo que hago y un símbolo de código. scenes.js mueve window.Hero3D.progress de 0 a 3.
 // Script clásico (no módulo) para que funcione también abriendo el archivo sin servidor.
 (() => {
 const THREE = window.THREE;
@@ -7,7 +7,7 @@ const canvas = document.querySelector('[data-hero3d]');
 const hero = canvas?.closest('.hero');
 const state = (window.Hero3D = window.Hero3D || { progress: 0 });
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const WORDS = ['C#', 'VB.NET', 'ANGULAR'];
+const WORDS = ['MARIO', 'DESARROLLADOR|WEB', '</>'];
 
 let renderer;
 try {
@@ -62,17 +62,20 @@ if (renderer) {
     return t;
   };
 
-  // Una palabra: se pinta en un canvas oculto y se toman sus píxeles como puntos
+  // Una palabra (o varias líneas separadas por "|"): se pinta en un canvas oculto y se toman sus píxeles como puntos
   const word = (text, width) => {
-    const c = document.createElement('canvas'), W = 1200, H = 360;
+    const lines = text.split('|');
+    const c = document.createElement('canvas'), W = 1200, H = 360 * lines.length;
     c.width = W; c.height = H;
     const x = c.getContext('2d', { willReadFrequently: true });
     let size = 300;
     x.font = `700 ${size}px Panchang, "Arial Black", sans-serif`;
-    size = Math.min(300, (size * (W * 0.92)) / x.measureText(text).width);
+    const widest = Math.max(...lines.map((l) => x.measureText(l).width));
+    size = Math.min(300, (size * (W * 0.92)) / widest);
     x.font = `700 ${size}px Panchang, "Arial Black", sans-serif`;
     x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff';
-    x.fillText(text, W / 2, H / 2);
+    const lh = size * 1.15;
+    lines.forEach((l, i) => x.fillText(l, W / 2, H / 2 + (i - (lines.length - 1) / 2) * lh));
     const data = x.getImageData(0, 0, W, H).data, pts = [];
     for (let py = 0; py < H; py += 3) for (let px = 0; px < W; px += 3) if (data[(py * W + px) * 4 + 3] > 128) pts.push(px, py);
     const scale = width / W, t = new Float32Array(N * 3), count = pts.length / 2;
@@ -85,7 +88,7 @@ if (renderer) {
 
   const build = () => {
     const r = Math.min(halfW, halfH) * (small() ? 0.74 : 0.7);
-    targets = [sphere(r), ...WORDS.map((w) => word(w, halfW * 1.75))];
+    targets = [sphere(r), ...WORDS.map((w) => word(w, halfW * (small() ? 1.75 : 1.5)))];
   };
 
   // ---- Color: las dos tintas del tema activo ----
