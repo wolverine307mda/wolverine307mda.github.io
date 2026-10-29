@@ -3,7 +3,7 @@
 // un fallo del CDN y, en "track", el teléfono.
 window.Scenes = window.Scenes || {};
 
-// 1. Partículas en 3D (hero3d.js): la esfera se convierte en MARIO, DESARROLLADOR WEB y </> al bajar.
+// 1. Partículas en 3D (hero3d.js): la bola de partículas se convierte en MARIO, DESARROLLADOR WEB y </> al bajar.
 //    Aquí solo se mueve window.Hero3D.progress (0 → 3) y se aparta el texto de presentación.
 //    Marcado: .hero__canvas, .hero__intro, .hero__hint, .hero__steps
 Scenes['hero-3d'] = (root, opts = {}) => Stage.scene(root, {

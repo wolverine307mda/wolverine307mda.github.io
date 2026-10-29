@@ -268,7 +268,7 @@ code { font-family: var(--font-code); }
   padding: var(--section) var(--margin);
 }
 .about__side { grid-column: 1 / span 4; }
-.about__portrait { width: 72px; height: 72px; border-radius: 50%; background: var(--brand); margin: 32px 0; }
+.about__portrait { width: clamp(160px, 18vw, 240px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; background: var(--brand); display: block; margin: 32px auto 40px; }
 .facts > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; }
 .facts dt { font: 400 var(--step-small)/1.4 var(--font-code); color: var(--soft); }
 .facts dt::before { content: '$ '; color: var(--brand); }
