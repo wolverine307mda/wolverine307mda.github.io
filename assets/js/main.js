@@ -5,22 +5,6 @@
   /* ---------- Escenas de scroll y desplazamiento con peso ---------- */
   if (window.Stage) { Stage.smooth(); Stage.init(); }
 
-  /* ---------- Portada: la capa que crece parte exactamente del editor ---------- */
-  const heroStage = document.querySelector('.hero__stage');
-  const heroSlot = document.querySelector('.hero__slot');
-  const heroWindow = document.querySelector('.hero__window');
-  const measureWindow = () => {
-    const a = heroStage.getBoundingClientRect(), b = heroSlot.getBoundingClientRect();
-    heroWindow.style.setProperty('--wt', `${b.top - a.top}px`);
-    heroWindow.style.setProperty('--wl', `${b.left - a.left}px`);
-    heroWindow.style.setProperty('--wr', `${a.right - b.right}px`);
-    heroWindow.style.setProperty('--wb', `${a.bottom - b.bottom}px`);
-  };
-  measureWindow();
-  new ResizeObserver(measureWindow).observe(heroSlot);
-  window.addEventListener('resize', measureWindow);
-  document.fonts?.ready.then(measureWindow);
-
   /* ---------- Cabecera: su tinta sigue al fondo de cada capítulo ---------- */
   const top = document.querySelector('.top');
   if (window.ScrollTrigger) {
@@ -33,25 +17,6 @@
         onToggle: (self) => top.classList.toggle(cls, self.isActive),
       });
     });
-  }
-
-  /* ---------- Editor de la portada: el código se escribe solo ---------- */
-  const typed = document.querySelector('[data-type]');
-  if (typed && !reduced()) {
-    const walker = document.createTreeWalker(typed, NodeFilter.SHOW_TEXT);
-    const nodes = [];
-    while (walker.nextNode()) nodes.push([walker.currentNode, walker.currentNode.textContent]);
-    nodes.forEach(([n]) => { n.textContent = ''; });
-    let i = 0, pos = 0;
-    const tick = () => {
-      for (let c = 0; c < 3 && i < nodes.length; c++) {
-        const [n, full] = nodes[i];
-        n.textContent = full.slice(0, ++pos);
-        if (pos >= full.length) { i++; pos = 0; }
-      }
-      if (i < nodes.length) setTimeout(tick, 16);
-    };
-    setTimeout(tick, 650);
   }
 
   /* ---------- Código que fluye: filas sin fin con empuje del scroll ---------- */
@@ -67,6 +32,22 @@
       });
     }
   });
+
+  /* ---------- Inclinación 3D: tarjetas que siguen al ratón ---------- */
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduced()) {
+    document.querySelectorAll('[data-tilt]').forEach((el) => {
+      const max = Number(el.dataset.tilt) || 8;
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--rx', `${(-y * max).toFixed(2)}deg`);
+        el.style.setProperty('--ry', `${(x * max).toFixed(2)}deg`);
+        el.style.setProperty('--gx', `${((x + 0.5) * 100).toFixed(1)}%`);
+        el.style.setProperty('--gy', `${((y + 0.5) * 100).toFixed(1)}%`);
+      });
+      el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+    });
+  }
 
   /* ---------- Entradas al hacer scroll (una vez) ---------- */
   const pending = new Set();
@@ -231,15 +212,16 @@
 
   /* ---------- Copiar email ---------- */
   document.querySelectorAll('[data-copy]').forEach((btn) => {
-    const label = btn.textContent;
+    const out = btn.querySelector('[data-copy-label]') || btn;
+    const label = out.textContent;
     btn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(btn.dataset.copy);
-        btn.textContent = 'Copiado';
+        out.textContent = 'Copiado';
       } catch {
         location.href = `mailto:${btn.dataset.copy}`;
       }
-      setTimeout(() => { btn.textContent = label; }, 2000);
+      setTimeout(() => { out.textContent = label; }, 2000);
     });
   });
 

@@ -3,19 +3,17 @@
 // un fallo del CDN y, en "track", el teléfono.
 window.Scenes = window.Scenes || {};
 
-// 1. El nombre se abre y la ventana del editor crece hasta ocupar la pantalla.
-//    Marcado: .hero__name > .line ×2, .hero__window > .hero__code, .hero__foot, .hero__statement
-Scenes['hero-open'] = (root, opts = {}) => Stage.scene(root, {
-  hold: opts.hold ?? 1.6,
-  scrub: 0.6,
+// 1. Partículas en 3D (hero3d.js): la esfera se convierte en C#, VB.NET y Angular al bajar.
+//    Aquí solo se mueve window.Hero3D.progress (0 → 3) y se aparta el texto de presentación.
+//    Marcado: .hero__canvas, .hero__intro, .hero__hint, .hero__steps
+Scenes['hero-3d'] = (root, opts = {}) => Stage.scene(root, {
+  hold: opts.hold ?? 2.4,
+  scrub: true,
   build(tl, { q }) {
-    const [l1, l2] = q('.hero__name .line');
-    tl.to(l1, { xPercent: -45, autoAlpha: 0, duration: 0.5, ease: 'power2.in' }, 0)
-      .to(l2, { xPercent: 45, autoAlpha: 0, duration: 0.5, ease: 'power2.in' }, 0)
-      .to(q('.hero__foot'), { y: 60, autoAlpha: 0, duration: 0.25 }, 0)
-      .to(q('.hero__window'), { '--o': 1, duration: 0.6, ease: 'power2.inOut' }, 0.05)
-      .to(q('.hero__code'), { scale: 1.6, autoAlpha: 0.22, duration: 0.6, ease: 'power2.inOut' }, 0.1)
-      .fromTo(q('.hero__statement'), { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: 'power2.out' }, 0.62);
+    const state = (window.Hero3D = window.Hero3D || { progress: 0 });
+    tl.to(q('.hero__intro'), { autoAlpha: 0, y: -40, duration: 0.12, ease: 'power2.in' }, 0.02)
+      .to(q('.hero__hint'), { autoAlpha: 0, duration: 0.06 }, 0)
+      .fromTo(state, { progress: 0 }, { progress: 3, duration: 0.86, ease: 'none' }, 0.1);
   },
 });
 
@@ -44,12 +42,12 @@ Scenes['fly'] = (root, opts = {}) => Stage.scene(root, {
     const fly = imgs.length - landing;
     imgs.forEach((img, i) => {
       if (i < fly) {
-        const at = i * 0.07;
+        const at = i * (0.56 / Math.max(1, fly - 1));
         tl.fromTo(img, { z: -2400 }, { z: 760, duration: 0.45, ease: 'none' }, at)
           .fromTo(img, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.1, ease: 'none' }, at)
           .to(img, { autoAlpha: 0, duration: 0.06, ease: 'none' }, at + 0.39);
       } else {
-        const at = 0.42 + (i - fly) * 0.06;
+        const at = 0.5 + (i - fly) * 0.06;
         tl.fromTo(img, { z: -2400, autoAlpha: 0 }, { z: 0, duration: 0.4, ease: 'power2.out' }, at)
           .to(img, { autoAlpha: 1, duration: 0.12, ease: 'none' }, at);
       }

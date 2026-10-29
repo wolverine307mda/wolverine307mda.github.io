@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mario de Domingo · Desarrollador web</title>
-  <meta name="description" content="Mario de Domingo Álvarez, desarrollador web full stack en Madrid. C# y Visual Basic .NET en el backend, Angular en el frontend. Proyectos, stack y fotografía propia.">
+  <meta name="description" content="Mario de Domingo Álvarez, programador web en Madrid. Trabajo con tecnologías como C#, Visual Basic .NET y Angular. Proyectos, stack y fotografía propia.">
   <meta name="theme-color" content="#ff7a1f">
   <meta property="og:title" content="Mario de Domingo · Desarrollador web">
-  <meta property="og:description" content="Desarrollador web full stack en Madrid: C#, Visual Basic .NET y Angular.">
+  <meta property="og:description" content="Programador web en Madrid. Trabajo con C#, Visual Basic .NET, Angular y más.">
   <meta property="og:image" content="https://wolverine307mda.github.io/assets/img/rio-rocas.webp">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ff7a1f'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial' font-weight='900' font-size='17' fill='%23050f16' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
@@ -19,8 +19,8 @@
   <link href="https://api.fontshare.com/v2/css?f[]=panchang@700&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/scenes/stage.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/scenes/stage.css?v=202610291830">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610291830">
   <script>
     // Tema guardado antes de pintar, para que no parpadee
     (() => {
@@ -39,7 +39,7 @@
   <a class="skip" href="#sobre-mi">Saltar al contenido</a>
 
   <header class="top">
-    <a class="top__mark" href="#inicio" aria-label="Inicio">MdD</a>
+    <a class="top__mark" href="#inicio" aria-label="Inicio">MDA</a>
     <nav class="top__nav" aria-label="Principal">
       <a class="link top__opt2" href="#proyectos">Proyectos</a>
       <a class="link top__opt" href="#stack">Stack</a>
@@ -94,29 +94,32 @@
   </button>
 
   <main>
-    <!-- Escena 1: el nombre se abre y deja paso a la foto -->
-    <section class="scene hero" id="inicio" data-tone="dark" data-tone-start="top -40%" data-scene="hero-open" data-options='{"hold":1.4}' aria-labelledby="hero-title">
+    <!-- Escena 1: partículas en 3D que se transforman en mi stack al bajar -->
+    <section class="scene hero" id="inicio" data-scene="hero-3d" data-options='{"hold":2.4}' aria-labelledby="hero-title">
       <div class="scene-stage hero__stage">
-        <h1 class="hero__name lines" id="hero-title">
-          <span class="line"><span data-line data-move class="hero__l1" style="--i:0">Mario de</span></span>
-          <span class="line"><span data-line data-move class="hero__l2" style="--i:1">Domingo</span></span>
-        </h1>
-        <div class="hero__window" data-move aria-hidden="true"></div>
-        <div class="hero__slot" aria-hidden="true">
-          <pre class="hero__code"><code data-type><span class="opt"><span class="c">// Mario.cs</span>
-</span><span class="k">public class</span> <span class="t">Mario</span> : <span class="t">Developer</span>
-{
-    <span class="k">public</span> <span class="t">string</span>[] Stack =&gt;
-      [<span class="s">"C#"</span>, <span class="s">"VB.NET"</span>, <span class="s">"Angular"</span>];
-<span class="opt">
-</span>    <span class="k">public</span> <span class="t">string</span> Ciudad =&gt; <span class="s">"Madrid"</span>;
-}</code></pre>
+        <canvas class="hero__canvas" data-hero3d aria-hidden="true"></canvas>
+
+        <div class="hero__intro">
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__name" data-load style="--d:200ms">Mario de Domingo</span>
+            <span class="hero__role" data-load style="--d:320ms">Programador web</span>
+          </h1>
+          <a class="hero__cta" data-load style="--d:440ms" href="#proyectos">
+            Ver proyectos
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
-        <div class="hero__foot" data-move>
-          <p class="hero__lead" data-load style="--d:420ms">Desarrollador web full stack en Madrid. C# <br> y Visual Basic .NET en el backend, Angular en el frontend.</p>
-          <a class="hero__cta link link--line" data-load style="--d:500ms" href="#proyectos">Ver proyectos</a>
-        </div>
-        <p class="hero__statement" data-move aria-hidden="true">Código de día.<br>Fotos al atardecer.</p>
+
+        <ol class="hero__steps" aria-label="Lo que forman las partículas">
+          <li data-step="0" class="is-on"><code>esfera</code></li>
+          <li data-step="1"><code>C#</code></li>
+          <li data-step="2"><code>VB.NET</code></li>
+          <li data-step="3"><code>Angular</code></li>
+        </ol>
+
+        <p class="hero__hint" data-load style="--d:700ms" aria-hidden="true"><code>baja para transformarlo</code>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </p>
       </div>
     </section>
 
@@ -128,12 +131,12 @@
         <dl class="facts" data-reveal style="--i:2">
           <div><dt>base</dt><dd>Madrid</dd></div>
           <div><dt>trabajo</dt><dd>Fontventa, Alcorcón</dd></div>
-          <div><dt>a diario</dt><dd>C#, VB.NET, Angular</dd></div>
+          <div><dt>trabajo con</dt><dd>C#, VB.NET, Angular…</dd></div>
           <div><dt>formación</dt><dd>DAW, IES Luis Vives</dd></div>
         </dl>
       </div>
       <div class="about__body">
-        <p class="about__statement" data-reveal>Hago aplicaciones web completas: backend en C# y Visual Basic .NET, interfaces en Angular.</p>
+        <p class="about__statement" data-reveal>Soy programador web. Trabajo con tecnologías como C#, Visual Basic .NET y Angular, de la base de datos a la interfaz.</p>
         <p data-reveal>Estudié Desarrollo de Aplicaciones Web en el IES Luis Vives de Leganés. Hice las prácticas en <strong>Fontventa</strong>, una consultora tecnológica de Alcorcón, y sigo allí: programación a medida, mantenimiento y apps.</p>
         <p data-reveal style="--i:1">En mis proyectos he tocado también Kotlin, Spring Boot, Vue y Laravel. Fuera del código hago fotos de naturaleza; todas las de esta web son mías.</p>
         <a class="button" href="https://wolverine307mda.github.io/curriculum/" data-reveal style="--i:2">Ver currículum</a>
@@ -144,7 +147,12 @@
     <section class="code" aria-labelledby="code-title">
       <div class="code__head">
         <h2 class="code__title" id="code-title" data-reveal>Código que fluye</h2>
-        <p class="code__note" data-reveal style="--i:1"><code>// C#, Visual Basic .NET y Angular: lo que escribo cada día</code></p>
+        <p class="code__note" data-reveal style="--i:1"><code>// C#, Visual Basic .NET, Angular… algo de lo que escribo</code></p>
+      </div>
+      <div class="code__fx" aria-hidden="true">
+        <span class="pow pow--a">¡BUILD!</span>
+        <span class="pow pow--b">200 OK</span>
+        <span class="pow pow--c">¡DEPLOY!</span>
       </div>
       <div class="code__rows" aria-hidden="true">
         <div class="code__row" data-speed="1">
@@ -165,7 +173,7 @@
         <div class="work__track" data-move>
           <h2 class="work__title" id="work-title">Proyectos</h2>
 
-          <a class="panel panel--shot" href="https://github.com/wolverine307mda/MovieTrip-TFC">
+          <a data-tilt="10" class="panel panel--shot" href="https://github.com/wolverine307mda/MovieTrip-TFC">
             <span class="panel__media">
               <img src="assets/img/movietrip-inicio.webp" width="1200" height="900" alt="Página de inicio de MovieTrip con carruseles de películas" loading="lazy">
               <img src="assets/img/movietrip-panel.webp" width="1200" height="900" alt="Panel de administración de MovieTrip con mapa de ubicaciones de rodaje" loading="lazy">
@@ -175,38 +183,38 @@
             <span class="panel__text">Películas y destinos de rodaje en una sola app, con panel de administración y mapa de ubicaciones.</span>
           </a>
 
-          <a class="panel panel--hot panel--low" href="https://github.com/wolverine307mda/VivesBank.Net">
+          <a data-tilt="10" class="panel panel--hot panel--low" href="https://github.com/wolverine307mda/VivesBank.Net">
             <span class="panel__name">VivesBank</span>
             <span class="panel__meta">c#, .net, postgresql · 2025</span>
             <span class="panel__text">Servicio bancario modular en .NET, con el foco puesto en la seguridad.</span>
           </a>
 
-          <a class="panel panel--paper" href="https://github.com/wolverine307mda/Organix">
+          <a data-tilt="10" class="panel panel--paper" href="https://github.com/wolverine307mda/Organix">
             <span class="panel__name">Organix</span>
             <span class="panel__meta">angular, kotlin, spring boot · 2025</span>
             <span class="panel__text">Varios servicios del día a día conectados en una plataforma con frontend en Angular.</span>
           </a>
 
-          <a class="panel panel--hot" href="https://github.com/wolverine307mda/Wallapop-Laravel">
+          <a data-tilt="10" class="panel panel--hot" href="https://github.com/wolverine307mda/Wallapop-Laravel">
             <span class="panel__name">Waravel</span>
             <span class="panel__meta">laravel, postgresql · 2025</span>
             <span class="panel__text">Tienda de segunda mano con carrito completo y tests en Cypress.</span>
           </a>
 
-          <a class="panel panel--shot panel--low" href="https://wolverine307mda.github.io/RFA/">
+          <a data-tilt="10" class="panel panel--shot panel--low" href="https://wolverine307mda.github.io/RFA/">
             <span class="panel__media"><img src="assets/img/rfa.webp" width="1200" height="900" alt="Portada de RFA con los proyectos de diseño de interfaces" loading="lazy"></span>
             <span class="panel__name">RFA</span>
             <span class="panel__meta">angular, html, css, js · 2024</span>
             <span class="panel__text">Mis diseños de interfaces y entornos de cliente, publicados.</span>
           </a>
 
-          <a class="panel panel--paper panel--low" href="https://github.com/wolverine307mda/Funkos_CSharp">
+          <a data-tilt="10" class="panel panel--paper panel--low" href="https://github.com/wolverine307mda/Funkos_CSharp">
             <span class="panel__name">Funkos</span>
             <span class="panel__meta">c# .net y spring boot · 2024</span>
             <span class="panel__text">La misma API en .NET y en Spring Boot, para comparar los dos mundos.</span>
           </a>
 
-          <a class="panel panel--more" href="https://github.com/wolverine307mda?tab=repositories">
+          <a data-tilt="10" class="panel panel--more" href="https://github.com/wolverine307mda?tab=repositories">
             <span class="panel__name">GitHub</span>
             <span class="panel__meta">todos mis repositorios, más de veinte</span>
           </a>
@@ -214,17 +222,38 @@
       </div>
     </section>
 
-    <!-- Stack: lo de cada día en grande, lo demás en código -->
+    <!-- Stack: con lo que trabajo, en grande; lo demás, en código -->
     <section class="stack" id="stack" aria-labelledby="stack-title">
+      <pre class="bg-code" aria-hidden="true">using System.Linq;
+namespace Portfolio.Api;
+
+public class StackController : ControllerBase
+{
+    [HttpGet("stack")]
+    public IActionResult Get() =&gt; Ok(_stack.Where(t =&gt; t.EnUso));
+}
+
+Public Sub Guardar(cliente As Cliente)
+    If cliente Is Nothing Then Throw New ArgumentNullException()
+    db.Clientes.Add(cliente) : db.SaveChanges()
+End Sub
+
+export class StackComponent {
+  tecnologias = signal&lt;string[]&gt;(['C#', 'VB.NET', 'Angular']);
+  elegida = computed(() =&gt; this.tecnologias()[0]);
+}
+
+SELECT nombre, COUNT(*) FROM proyectos GROUP BY nombre;
+git commit -m "feat: más café, menos bugs"</pre>
       <h2 class="h-small" id="stack-title" data-reveal>Stack técnico</h2>
       <ul class="lineup" aria-describedby="stack-hint">
-        <li><button type="button" data-used="el trabajo de cada día, VivesBank y Funkos">C#</button></li>
-        <li><button type="button" data-used="el trabajo de cada día en Fontventa">Visual Basic</button></li>
+        <li><button type="button" data-used="el trabajo, VivesBank y Funkos">C#</button></li>
+        <li><button type="button" data-used="el trabajo en Fontventa">Visual Basic</button></li>
         <li><button type="button" data-used="el trabajo, VivesBank y Funkos">.NET</button></li>
         <li><button type="button" data-used="el trabajo, Organix y RFA">Angular</button></li>
         <li><button type="button" data-used="Angular e Ionic">TypeScript</button></li>
       </ul>
-      <p class="stack__label" data-reveal><code>// lo que uso a diario</code></p>
+      <p class="stack__label" data-reveal><code>// con lo que trabajo</code></p>
       <ul class="lineup lineup--more" aria-describedby="stack-hint">
         <li><button type="button" data-used="MovieTrip y Organix">Kotlin</button></li>
         <li><button type="button" data-used="MovieTrip, Organix y Funkos">Spring Boot</button></li>
@@ -242,7 +271,7 @@
     </section>
 
     <!-- Escena 3: vuelo a través de las fotos -->
-    <section class="scene photos" id="fotografia" data-tone="dark" data-scene="fly" data-options='{"hold":2.4}' aria-labelledby="photos-title">
+    <section class="scene photos" id="fotografia" data-tone="dark" data-scene="fly" data-options='{"hold":3.4}' aria-labelledby="photos-title">
       <div class="scene-stage photos__stage">
         <h2 class="photos__title" id="photos-title" data-move>Fuera de<br>pantalla</h2>
         <div class="photos__field">
@@ -252,6 +281,15 @@
           <img data-move style="--x:82%;--y:72%" src="assets/img/mariposa.webp" width="800" height="1200" alt="Mariposa posada entre hojas">
           <img data-move style="--x:12%;--y:50%" src="assets/img/girasoles.webp" width="1201" height="1800" alt="Campo de girasoles bajo el sol">
           <img data-move style="--x:60%;--y:18%" src="assets/img/templo-debod.webp" width="800" height="1164" alt="Templo de Debod iluminado de noche en Madrid">
+          <img data-move style="--x:40%;--y:80%" src="assets/img/atardecer-mar.webp" width="800" height="1067" alt="Atardecer naranja sobre el mar" decoding="async">
+          <img data-move style="--x:88%;--y:50%" src="assets/img/gato.webp" width="1738" height="1800" alt="Gato mirando a cámara" decoding="async">
+          <img data-move style="--x:24%;--y:34%" src="assets/img/nubes.webp" width="1012" height="1800" alt="Nubes altas en un cielo azul" decoding="async">
+          <img data-move style="--x:70%;--y:76%" src="assets/img/carretera.webp" width="800" height="1000" alt="Carretera que se pierde entre árboles" decoding="async">
+          <img data-move style="--x:50%;--y:16%" src="assets/img/cielo-hojas.webp" width="1013" height="1800" alt="Hojas contra el cielo vistas desde abajo" decoding="async">
+          <img data-move style="--x:10%;--y:66%" src="assets/img/rio-rocas.webp" width="1200" height="1800" alt="Río de montaña entre rocas" decoding="async">
+          <img data-move style="--x:78%;--y:40%" src="assets/img/copas-arboles.webp" width="1800" height="1350" alt="Copas de árboles desde el suelo" decoding="async">
+          <img data-move style="--x:34%;--y:24%" src="assets/img/navidad.webp" width="800" height="1117" alt="Luces de Navidad en la calle" decoding="async">
+          <img data-move style="--x:62%;--y:64%" src="assets/img/zinnias.webp" width="1200" height="1800" alt="Zinnias de colores en un jardín" decoding="async">
           <img data-move style="--x:14%;--y:22%" src="assets/img/zinnia-rosa.webp" width="1200" height="1800" alt="Zinnia rosa entre flores naranjas">
           <img data-move style="--x:86%;--y:22%" src="assets/img/rio-arboles.webp" width="1013" height="1800" alt="Árboles reflejados en un río">
           <img data-move style="--x:16%;--y:80%" src="assets/img/playa.webp" width="800" height="1200" alt="Playa de agua turquesa">
@@ -261,43 +299,66 @@
       </div>
     </section>
 
-    <!-- Contacto: el saludo gigante y el email como titular -->
+    <!-- Contacto: bocadillo de cómic y tres viñetas para escribirme -->
     <section class="contact" id="contacto" aria-labelledby="contact-title">
       <div class="contact__top">
-        <h2 class="contact__title lines" id="contact-title">
-          <span class="line"><span data-rise>¿Hablamos?</span></span>
+        <h2 class="contact__title" id="contact-title">
+          <span class="contact__bubble"><span data-rise>¿Hablamos?</span></span>
         </h2>
         <div class="contact__side" data-reveal>
-          <p class="contact__lead">Si tienes un proyecto web o buscas un desarrollador .NET y Angular, escríbeme. Respondo en menos de 24 horas.</p>
+          <p class="contact__lead">Si tienes un proyecto web o buscas un programador, escríbeme. Respondo en menos de 24 horas.</p>
+          <p class="contact__status"><span class="contact__dot" aria-hidden="true"></span><code>disponible · Madrid <time data-clock>--:--</time></code></p>
         </div>
       </div>
-      <div class="contact__mail" data-reveal style="--i:1">
-        <a class="contact__email" href="mailto:dedomingoalvarezmario@gmail.com"><span>dedomingoalvarezmario</span><span>@gmail.com</span></a>
-        <button class="button contact__copy" type="button" data-copy="dedomingoalvarezmario@gmail.com">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12"/><path d="M4 16V4h12"/></svg>
-          <span>Copiar email</span>
-        </button>
-        <p class="contact__status"><span class="contact__dot" aria-hidden="true"></span><code>disponible · Madrid <time data-clock>--:--</time></code></p>
-      </div>
+      <ul class="contact__cards">
+        <li class="card" data-reveal style="--i:1">
+          <code class="card__tag">01 · email</code>
+          <h3 class="card__name">Escríbeme</h3>
+          <p class="card__text">dedomingoalvarezmario<wbr>@gmail.com</p>
+          <div class="card__actions">
+            <a class="button card__go" href="mailto:dedomingoalvarezmario@gmail.com">Enviar email</a>
+            <button class="card__copy" type="button" data-copy="dedomingoalvarezmario@gmail.com">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12"/><path d="M4 16V4h12"/></svg>
+              <span data-copy-label>Copiar</span>
+            </button>
+          </div>
+        </li>
+        <li class="card" data-reveal style="--i:2">
+          <code class="card__tag">02 · linkedin</code>
+          <h3 class="card__name">Conectemos</h3>
+          <p class="card__text">Experiencia, proyectos y contacto profesional.</p>
+          <div class="card__actions">
+            <a class="button card__go" href="https://www.linkedin.com/in/mario-de-domingo-%C3%A1lvarez-615535295/">Abrir LinkedIn</a>
+          </div>
+        </li>
+        <li class="card" data-reveal style="--i:3">
+          <code class="card__tag">03 · cv</code>
+          <h3 class="card__name">Currículum</h3>
+          <p class="card__text">Formación, trabajo y tecnologías en una página.</p>
+          <div class="card__actions">
+            <a class="button card__go" href="https://wolverine307mda.github.io/curriculum/">Ver currículum</a>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <!-- Redes: filas grandes que se tiñen al pasar -->
     <section class="social" id="redes" data-tone="paper" aria-labelledby="social-title">
       <h2 class="h-small" id="social-title" data-reveal>Dónde encontrarme</h2>
       <ul class="social__list">
-        <li data-reveal style="--i:1"><a class="social__row" href="https://github.com/wolverine307mda">
+        <li data-reveal style="--i:1"><a data-tilt="4" class="social__row" href="https://github.com/wolverine307mda">
           <span class="social__name">GitHub</span><code class="social__handle">@wolverine307mda</code><span class="social__what">Código y proyectos</span>
           <svg class="icon social__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
-        <li data-reveal style="--i:2"><a class="social__row" href="https://www.linkedin.com/in/mario-de-domingo-%C3%A1lvarez-615535295/">
+        <li data-reveal style="--i:2"><a data-tilt="4" class="social__row" href="https://www.linkedin.com/in/mario-de-domingo-%C3%A1lvarez-615535295/">
           <span class="social__name">LinkedIn</span><code class="social__handle">mario-de-domingo-álvarez</code><span class="social__what">Experiencia y contacto profesional</span>
           <svg class="icon social__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
-        <li data-reveal style="--i:3"><a class="social__row" href="https://www.instagram.com/mariio_dd">
+        <li data-reveal style="--i:3"><a data-tilt="4" class="social__row" href="https://www.instagram.com/mariio_dd">
           <span class="social__name">Instagram</span><code class="social__handle">@mariio_dd</code><span class="social__what">Fotografía y día a día</span>
           <svg class="icon social__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
-        <li data-reveal style="--i:4"><a class="social__row" href="https://x.com/Mario_DA_">
+        <li data-reveal style="--i:4"><a data-tilt="4" class="social__row" href="https://x.com/Mario_DA_">
           <span class="social__name">X</span><code class="social__handle">@Mario_DA_</code><span class="social__what">Tecnología y curiosidades</span>
           <svg class="icon social__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
-        <li data-reveal style="--i:5"><a class="social__row" href="https://open.spotify.com/user/a2qtspq6fz4g7wrz2yawcwco7">
+        <li data-reveal style="--i:5"><a data-tilt="4" class="social__row" href="https://open.spotify.com/user/a2qtspq6fz4g7wrz2yawcwco7">
           <span class="social__name">Spotify</span><code class="social__handle">mario de domingo</code><span class="social__what">La música con la que programo</span>
           <svg class="icon social__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
       </ul>
@@ -307,8 +368,8 @@
   <footer class="footer" data-tone="dark">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a class="footer__mark" href="#inicio" aria-label="Volver al inicio">MdD</a>
-        <p>Mario de Domingo Álvarez. Desarrollador web full stack: C# y Visual Basic .NET en el backend, Angular en el frontend.</p>
+        <a class="footer__mark" href="#inicio" aria-label="Volver al inicio">MDA</a>
+        <p>Mario de Domingo Álvarez. Programador web en Madrid; trabajo con C#, Visual Basic .NET, Angular y otras tecnologías.</p>
       </div>
       <nav class="footer__col" aria-label="Secciones">
         <h2 class="footer__head"><code>secciones</code></h2>
@@ -347,9 +408,11 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
-  <script src="assets/scenes/stage.js"></script>
-  <script src="assets/scenes/scenes.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/scenes/stage.js?v=202610291830"></script>
+  <script src="assets/scenes/scenes.js?v=202610291830"></script>
+  <script src="assets/js/main.js?v=202610291830"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="assets/js/hero3d.js?v=202610291830"></script>
 </body>
 
 </html>
