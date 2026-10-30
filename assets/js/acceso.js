@@ -1,43 +1,50 @@
 // Área privada: un candado 3D de líneas con anillos de partículas en órbita, sobre una rejilla
-// que avanza hacia el horizonte. El formulario no envía nada: la app todavía no existe,
-// así que al intentarlo el candado tira del arco, no abre y lo cuenta.
+// que avanza hacia el horizonte. La tarjeta comprueba si el equipo de casa está encendido
+// (GET /api/salud por Tailscale) y lleva a su pantalla de inicio de sesión; al entrar, el candado se abre.
 (() => {
 const html = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const form = document.querySelector('[data-login]');
-const msg = form.querySelector('[data-msg]');
-const go = form.querySelector('.login__go');
+const puerta = document.querySelector('[data-puerta]');
+const app = puerta.dataset.app;
+const estadoTexto = puerta.querySelector('[data-estado-texto]');
+const msg = puerta.querySelector('[data-msg]');
+const go = puerta.querySelector('[data-go]');
 
-/* ---------- Formulario: mostrar contraseña e intento de entrar ---------- */
-const pass = form.querySelector('[data-pass]');
-const eye = form.querySelector('[data-eye]');
-eye.addEventListener('click', () => {
-  const show = pass.type === 'password';
-  pass.type = show ? 'text' : 'password';
-  eye.setAttribute('aria-pressed', String(show));
-  eye.setAttribute('aria-label', show ? 'Ocultar la contraseña' : 'Mostrar la contraseña');
-});
+/* ---------- ¿Está encendido el equipo de casa? ---------- */
+const comprobar = async () => {
+  puerta.dataset.estado = 'comprobando';
+  estadoTexto.textContent = 'comprobando el equipo de casa…';
+  try {
+    const r = await fetch(`${app}/api/salud`, { cache: 'no-store', signal: AbortSignal.timeout(7000) });
+    if (!r.ok) throw new Error(String(r.status));
+    puerta.dataset.estado = 'en-linea';
+    estadoTexto.textContent = 'equipo de casa · en línea';
+    msg.textContent = '';
+  } catch {
+    puerta.dataset.estado = 'apagado';
+    estadoTexto.textContent = 'equipo de casa · apagado';
+    msg.textContent = 'Ahora mismo mi equipo está apagado o sin conexión. Prueba más tarde.';
+  }
+};
+comprobar();
+// al volver a la pestaña, se vuelve a mirar
+document.addEventListener('visibilitychange', () => { if (!document.hidden) comprobar(); });
 
-let tryAt = -10;
-form.addEventListener('submit', (e) => {
-  e.preventDefault();  // nada sale de esta página
-  if (!form.usuario.value.trim() || !form.clave.value) {
-    msg.textContent = 'Escribe usuario y contraseña.';
-    msg.classList.add('is-error');
-    (form.usuario.value.trim() ? form.clave : form.usuario).focus();
+/* ---------- Entrar: el candado se abre y se pasa a la app ---------- */
+let tryAt = -10, openAt = -10;
+go.addEventListener('click', (e) => {
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // abrir en otra pestaña: normal
+  if (puerta.dataset.estado === 'apagado') {
+    e.preventDefault();
+    tryAt = performance.now() * 0.001;
+    puerta.classList.remove('is-shake'); void puerta.offsetWidth; puerta.classList.add('is-shake');
+    comprobar();
     return;
   }
-  go.classList.add('is-busy');
-  msg.textContent = 'Comprobando la llave';
-  msg.classList.remove('is-error');
-  tryAt = performance.now() * 0.001;
-  setTimeout(() => {
-    go.classList.remove('is-busy');
-    msg.textContent = 'El candado sigue cerrado: la app aún está en construcción. ¡Pronto!';
-    msg.classList.add('is-error');
-    form.classList.remove('is-shake'); void form.offsetWidth; form.classList.add('is-shake');
-    form.clave.value = '';
-  }, 1100);
+  if (reduced) return;
+  e.preventDefault();
+  openAt = performance.now() * 0.001;
+  setTimeout(() => { location.href = go.href; }, 750);
 });
 
 /* ---------- Escena 3D ---------- */
@@ -158,8 +165,14 @@ const render = (time) => {
   rings.forEach((r) => { r.rotation.y = t * r.userData.speed; });
   stars.rotation.y = t * 0.01;
   // intento de entrar: el arco sube, no abre, vuelve y el candado tiembla
-  const k = t - tryAt;
-  if (k >= 0 && k < 1.6) {
+  const k = t - tryAt, o = t - openAt;
+  if (o >= 0) {
+    // abierto: el arco sube y gira, y los anillos se aceleran
+    const e = Math.min(1, o / 0.7);
+    shackle.position.y = 0.55 + e * 0.6;
+    shackle.rotation.y = e * 0.9;
+    rings.forEach((r) => { r.rotation.y += o * 2; });
+  } else if (k >= 0 && k < 1.6) {
     const up = k < 0.6 ? Math.sin((k / 0.6) * Math.PI / 2) * 0.35 : Math.max(0, 0.35 - (k - 0.6) * 0.9);
     shackle.position.y = 0.55 + up;
     lock.rotation.z = k > 1 && k < 1.5 ? Math.sin(k * 60) * 0.06 * (1.5 - k) * 2 : 0;

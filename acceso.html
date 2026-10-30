@@ -10,9 +10,9 @@
   <meta name="theme-color" content="#03080b">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ff7a1f'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial' font-weight='900' font-size='17' fill='%23050f16' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
   <link rel="preload" href="assets/fonts/panchang-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301000">
-  <link rel="stylesheet" href="assets/css/style.css?v=202610301000">
-  <link rel="stylesheet" href="assets/css/acceso.css?v=202610301000">
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301830">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610301830">
+  <link rel="stylesheet" href="assets/css/acceso.css?v=202610301830">
   <script>
     // El mismo tema que la web: modo y color guardados
     (() => {
@@ -41,36 +41,23 @@
       <p class="login__big">Solo<br>con<br>llave</p>
     </section>
 
-    <form class="login__card" data-login novalidate aria-labelledby="login-title">
-      <p class="login__chip"><span class="login__dot" aria-hidden="true"></span><code>servidor · en construcción</code></p>
+    <!-- La puerta: comprueba si el equipo de casa está encendido y lleva a su pantalla de inicio de sesión.
+         La contraseña se escribe allí (conexión cifrada con mi propio servidor), nunca en esta web. -->
+    <section class="login__card" data-puerta data-estado="comprobando" data-app="https://equipo-de-casa.tail77819b.ts.net" aria-labelledby="login-title">
+      <p class="login__chip"><span class="login__dot" aria-hidden="true"></span><code data-estado-texto>comprobando el equipo de casa…</code></p>
       <h1 class="login__title" id="login-title">Área privada</h1>
-      <p class="login__lead">Mi propia app, alojada en un equipo de casa. Cuando esté lista, se entrará desde aquí.</p>
-
-      <label class="field">
-        <span class="field__label"><code>usuario</code></span>
-        <input class="field__input" type="text" name="usuario" autocomplete="username" spellcheck="false" required>
-        <span class="field__line" aria-hidden="true"></span>
-      </label>
-      <label class="field">
-        <span class="field__label"><code>contraseña</code></span>
-        <input class="field__input" type="password" name="clave" autocomplete="current-password" required data-pass>
-        <span class="field__line" aria-hidden="true"></span>
-        <button class="field__eye" type="button" data-eye aria-label="Mostrar la contraseña" aria-pressed="false">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
-        </button>
-      </label>
-
-      <button class="button login__go" type="submit">
-        <span>Entrar</span>
+      <p class="login__lead">Mi app personal vive en un equipo de casa. El inicio de sesión se hace allí, por una conexión cifrada.</p>
+      <a class="button login__go" href="https://equipo-de-casa.tail77819b.ts.net/entrar" data-go>
+        <span>Ir a iniciar sesión</span>
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
+      </a>
       <p class="login__msg" data-msg role="status" aria-live="polite"></p>
-      <p class="login__note"><code>// no se envía ni se guarda nada</code></p>
-    </form>
+      <p class="login__note"><code>// la contraseña nunca pasa por esta web</code></p>
+    </section>
   </main>
 
   <script src="assets/vendor/three.min.js"></script>
-  <script src="assets/js/acceso.js?v=202610301000"></script>
+  <script src="assets/js/acceso.js?v=202610301830"></script>
 </body>
 
 </html>
