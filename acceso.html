@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" data-mode="dark" data-color="naranja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área privada · Mario de Domingo</title>
+  <meta name="description" content="Acceso al área privada de Mario de Domingo.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#03080b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ff7a1f'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial' font-weight='900' font-size='17' fill='%23050f16' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/panchang-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301000">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610301000">
+  <link rel="stylesheet" href="assets/css/acceso.css?v=202610301000">
+  <script>
+    // El mismo tema que la web: modo y color guardados
+    (() => {
+      const d = document.documentElement;
+      d.classList.add('js');
+      let mode = 'system', color = 'naranja';
+      try { mode = localStorage.getItem('mode') || mode; color = localStorage.getItem('color') || color; } catch {}
+      const dark = mode === 'dark' || (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+      d.dataset.mode = dark ? 'dark' : 'light';
+      d.dataset.color = color;
+    })();
+  </script>
+</head>
+
+<body class="login">
+  <canvas class="login__canvas" data-login3d aria-hidden="true"></canvas>
+
+  <header class="login__top">
+    <a class="top__mark" href="./" aria-label="Volver a la web">MDA</a>
+    <a class="link link--line" href="./">Volver a la web</a>
+  </header>
+
+  <main class="login__main">
+    <section class="login__intro" aria-hidden="true">
+      <p class="login__kicker"><code>// zona privada</code></p>
+      <p class="login__big">Solo<br>con<br>llave</p>
+    </section>
+
+    <form class="login__card" data-login novalidate aria-labelledby="login-title">
+      <p class="login__chip"><span class="login__dot" aria-hidden="true"></span><code>servidor · en construcción</code></p>
+      <h1 class="login__title" id="login-title">Área privada</h1>
+      <p class="login__lead">Mi propia app, alojada en un equipo de casa. Cuando esté lista, se entrará desde aquí.</p>
+
+      <label class="field">
+        <span class="field__label"><code>usuario</code></span>
+        <input class="field__input" type="text" name="usuario" autocomplete="username" spellcheck="false" required>
+        <span class="field__line" aria-hidden="true"></span>
+      </label>
+      <label class="field">
+        <span class="field__label"><code>contraseña</code></span>
+        <input class="field__input" type="password" name="clave" autocomplete="current-password" required data-pass>
+        <span class="field__line" aria-hidden="true"></span>
+        <button class="field__eye" type="button" data-eye aria-label="Mostrar la contraseña" aria-pressed="false">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </label>
+
+      <button class="button login__go" type="submit">
+        <span>Entrar</span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="login__msg" data-msg role="status" aria-live="polite"></p>
+      <p class="login__note"><code>// no se envía ni se guarda nada</code></p>
+    </form>
+  </main>
+
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/js/acceso.js?v=202610301000"></script>
+</body>
+
+</html>

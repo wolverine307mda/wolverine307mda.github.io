@@ -25,9 +25,9 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ff7a1f'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial' font-weight='900' font-size='17' fill='%23050f16' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
   <link rel="preload" href="assets/fonts/panchang-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610302100">
-  <link rel="stylesheet" href="assets/scenes/stage.css?v=202610302100">
-  <link rel="stylesheet" href="assets/css/style.css?v=202610302100">
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301700">
+  <link rel="stylesheet" href="assets/scenes/stage.css?v=202610301700">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610301700">
   <script>
     // Tema guardado antes de pintar, para que no parpadee
     (() => {
@@ -67,7 +67,7 @@
   <div class="palette account" id="account" role="dialog" aria-label="Área privada" hidden>
     <p class="account__title">Área privada</p>
     <p class="account__text">Aquí entraré a mi propia app, alojada en un servidor en casa. Está en construcción.</p>
-    <a class="button account__go" href="#" data-app-url aria-disabled="true">Próximamente</a>
+    <a class="button account__go" href="acceso.html" data-app-url>Entrar</a>
   </div>
 
   <!-- Panel de tema: se abre con el pincel -->
@@ -87,6 +87,7 @@
         <button type="button" class="swatch" data-color-set="lima" style="--sw:#c8f53c">Lima</button>
         <button type="button" class="swatch" data-color-set="cobalto" style="--sw:#3355ff">Cobalto</button>
         <button type="button" class="swatch" data-color-set="rosa" style="--sw:#ff5fa2">Rosa</button>
+        <button type="button" class="swatch" data-color-set="rojo" style="--sw:#e62429">Rojo</button>
       </div>
     </fieldset>
     <p class="palette__note">Se guarda para tu próxima visita.</p>
@@ -518,11 +519,12 @@ git commit -m "feat: más café, menos bugs"</pre>
   <script src="assets/vendor/gsap.min.js"></script>
   <script src="assets/vendor/ScrollTrigger.min.js"></script>
   <script src="assets/vendor/lenis.min.js"></script>
-  <script src="assets/scenes/stage.js?v=202610302100"></script>
-  <script src="assets/scenes/scenes.js?v=202610302100"></script>
-  <script src="assets/js/main.js?v=202610302100"></script>
+  <script src="assets/scenes/stage.js?v=202610301700"></script>
+  <script src="assets/scenes/scenes.js?v=202610301700"></script>
+  <script src="assets/js/main.js?v=202610301700"></script>
   <script src="assets/vendor/three.min.js"></script>
-  <script src="assets/js/hero3d.js?v=202610302100"></script>
+  <script src="assets/js/hero3d.js?v=202610301700"></script>
+  <script src="assets/js/photo3d.js?v=202610301700"></script>
 </body>
 
 </html>

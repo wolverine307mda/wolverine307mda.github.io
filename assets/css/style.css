@@ -58,6 +58,7 @@
 [data-color="lima"]    { --brand: #c8f53c; --brand-alt: #1f6b34; --on-brand: #0b1a07; }
 [data-color="cobalto"] { --brand: #3355ff; --brand-alt: #ffd23f; --on-brand: #ffffff; }
 [data-color="rosa"]    { --brand: #ff5fa2; --brand-alt: #ffffff; --on-brand: #1a0510; }
+[data-color="rojo"]    { --brand: #e62429; --brand-alt: #050f16; --on-brand: #ffffff; }
 
 /* Modo noche: la marca pasa a ser tinta y los fondos se apagan */
 [data-mode="dark"] {
@@ -520,14 +521,14 @@ code { font-family: var(--font-code); }
 .segmented button[aria-pressed="true"] { background: var(--brand); color: var(--on-brand); }
 .segmented button:active { transform: scale(0.96); }
 
-.swatches { display: flex; flex-wrap: wrap; gap: 20px; }
+.swatches { display: flex; flex-wrap: wrap; gap: 14px; }
 .swatch {
   display: flex; flex-direction: column; align-items: center; gap: 10px;
   background: none; border: 0; padding: 0; cursor: pointer;
   font-size: var(--step-small); font-weight: 500;
 }
 .swatch::before {
-  content: ''; width: 56px; height: 56px; border-radius: 50%;
+  content: ''; width: 50px; height: 50px; border-radius: 50%;
   background: var(--sw);
   outline: 3px solid transparent; outline-offset: 4px;
   transition: transform var(--t-ui) var(--ease-out), outline-color var(--t-ui) ease;
@@ -713,6 +714,13 @@ code { font-family: var(--font-code); }
   -webkit-mask: radial-gradient(70% 70% at 62% 50%, transparent 18%, #000 60%, transparent 100%);
           mask: radial-gradient(70% 70% at 62% 50%, transparent 18%, #000 60%, transparent 100%);
 }
+
+/* Fotos: cámara, focos y carrete en 3D (photo3d.js) detrás de las fotos, y el destello del flash */
+.photos__canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; display: none; }
+.photos.is-live .photos__canvas { display: block; }
+.photos__flash { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; background: radial-gradient(circle at 22% 78%, #fff, rgba(255, 255, 255, 0.35) 45%, transparent 80%); } /* taste-skill-ignore: luz del flash */
+.photos__flash.is-on { animation: flash 700ms var(--ease-out); }
+@keyframes flash { 0% { opacity: 0; } 8% { opacity: 0.32; } 100% { opacity: 0; } }
 
 /* Fotos: trama del color de marca sobre el fondo oscuro */
 .photos { position: relative; isolation: isolate; }

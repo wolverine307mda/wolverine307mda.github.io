@@ -25,7 +25,7 @@ if (renderer) {
   scene.add(group);
 
   const small = () => window.innerWidth < 768;
-  const N = small() ? 3200 : 6500;
+  const N = small() ? 4200 : 6500;
   const pos = new Float32Array(N * 3);
   const col = new Float32Array(N * 3);
   const delay = new Float32Array(N);
@@ -68,20 +68,30 @@ if (renderer) {
     const c = document.createElement('canvas'), W = 1200, H = 360 * lines.length;
     c.width = W; c.height = H;
     const x = c.getContext('2d', { willReadFrequently: true });
+    // Panchang es muy ancha: en palabras largas las letras salen chatas, así que esas van en Switzer, más estrecha y alta
+    const longest = Math.max(...lines.map((l) => l.length));
+    const family = longest > 8 || lines.length > 2 ? '500 {S}px Switzer, "Arial Narrow", Arial, sans-serif' : '700 {S}px Panchang, "Arial Black", sans-serif';
+    const font = (px) => family.replace('{S}', px);
     let size = 300;
-    x.font = `700 ${size}px Panchang, "Arial Black", sans-serif`;
+    x.font = font(size);
     const widest = Math.max(...lines.map((l) => x.measureText(l).width));
     size = Math.min(300, (size * (W * 0.92)) / widest);
-    x.font = `700 ${size}px Panchang, "Arial Black", sans-serif`;
+    x.font = font(size);
     x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff';
-    const lh = size * 1.15;
-    lines.forEach((l, i) => x.fillText(l, W / 2, H / 2 + (i - (lines.length - 1) / 2) * lh));
+    const lh = size * (longest > 8 || lines.length > 2 ? 1.0 : 1.15);
+    // un trazo fino engorda un poco los palos para que las partículas los dibujen enteros
+    x.strokeStyle = '#fff'; x.lineJoin = 'round'; x.lineWidth = longest > 8 || lines.length > 2 ? size * 0.05 : 0;
+    lines.forEach((l, i) => {
+      const y = H / 2 + (i - (lines.length - 1) / 2) * lh;
+      x.fillText(l, W / 2, y);
+      if (x.lineWidth > 0) x.strokeText(l, W / 2, y);
+    });
     const data = x.getImageData(0, 0, W, H).data, pts = [];
     for (let py = 0; py < H; py += 3) for (let px = 0; px < W; px += 3) if (data[(py * W + px) * 4 + 3] > 128) pts.push(px, py);
     const scale = width / W, t = new Float32Array(N * 3), count = pts.length / 2;
     for (let i = 0; i < N; i++) {
       const j = Math.floor(Math.random() * count) * 2;
-      t.set([(pts[j] - W / 2) * scale, -(pts[j + 1] - H / 2) * scale, (Math.random() - 0.5) * 0.35], i * 3);
+      t.set([(pts[j] - W / 2) * scale, -(pts[j + 1] - H / 2) * scale, (Math.random() - 0.5) * 0.12], i * 3);
     }
     return t;
   };
@@ -89,7 +99,10 @@ if (renderer) {
   let radius = 1;
   const build = () => {
     radius = Math.min(halfW, halfH) * (small() ? 0.62 : 0.62);
-    targets = [sphere(radius), ...WORDS.map((w) => word(w, halfW * (small() ? 1.75 : 1.5)))];
+    // las palabras de dos líneas pueden ocupar más ancho: si no, sus letras quedan demasiado pequeñas
+    // en el teléfono «desarrollador» se parte en dos líneas para que las letras salgan grandes
+    const words = WORDS.map((w) => (small() && w === 'DESARROLLADOR|WEB' ? 'DESARRO-|LLADOR|WEB' : w));
+    targets = [sphere(radius), ...words.map((w) => word(w, halfW * (w.includes('|') ? (small() ? 1.92 : 1.8) : (small() ? 1.75 : 1.5))))];
   };
 
   // ---- Color: las dos tintas del tema activo ----
@@ -273,6 +286,6 @@ if (renderer) {
     hero.classList.add('has-3d');
   };
   new ResizeObserver(() => { resize(); if (reduced) render(0); }).observe(canvas);
-  (document.fonts ? document.fonts.load('700 100px Panchang') : Promise.resolve()).then(start, start);
+  (document.fonts ? Promise.all([document.fonts.load('700 100px Panchang'), document.fonts.load('500 100px Switzer')]) : Promise.resolve()).then(start, start);
 }
 })();
