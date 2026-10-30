@@ -151,9 +151,34 @@
     panels.forEach((p) => { if (!p.el.hidden && !p.el.contains(e.target) && !p.btn.contains(e.target)) setPanel(p, false); });
   });
 
-  // Acceso: mientras la app no tenga dirección, el botón no lleva a ningún sitio
+  // Acceso: al abrir el panel se mira si el equipo de casa está encendido (GET /api/salud)
+  // y el botón lleva directo a su inicio de sesión; si está apagado, lo dice en vez de llevar a una página caída
   const appLink = document.querySelector('[data-app-url]');
-  appLink.addEventListener('click', (e) => { if (appLink.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
+  const appEstado = document.querySelector('[data-app-estado]');
+  const appBase = new URL(appLink.href).origin;
+  let comprobado = 0;
+  const comprobarApp = async () => {
+    if (Date.now() - comprobado < 15000) return;
+    comprobado = Date.now();
+    appEstado.dataset.appEstado = 'comprobando';
+    appEstado.querySelector('em').textContent = 'comprobando el equipo de casa…';
+    try {
+      const r = await fetch(`${appBase}/api/salud`, { cache: 'no-store', signal: AbortSignal.timeout(7000) });
+      if (!r.ok) throw new Error(String(r.status));
+      appEstado.dataset.appEstado = 'en-linea';
+      appEstado.querySelector('em').textContent = 'equipo de casa · en línea';
+    } catch {
+      appEstado.dataset.appEstado = 'apagado';
+      appEstado.querySelector('em').textContent = 'equipo de casa · apagado ahora mismo';
+      comprobado = 0;
+    }
+  };
+  document.querySelector('[data-account-toggle]').addEventListener('click', comprobarApp);
+  appLink.addEventListener('click', (e) => {
+    if (appEstado.dataset.appEstado !== 'apagado') return;
+    e.preventDefault();
+    comprobarApp();
+  });
 
   /* ---------- Recorrido automático: baja despacio por toda la web ---------- */
   const tour = document.querySelector('[data-tour]');

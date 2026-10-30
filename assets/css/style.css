@@ -201,6 +201,14 @@ code { font-family: var(--font-code); }
 .account__text { color: var(--soft); }
 .account__go { align-self: flex-start; border-radius: 999px; }
 .account__go[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+.account__estado { display: flex; align-items: center; gap: 8px; font-size: var(--step-small); color: var(--soft); }
+.account__estado em { font-style: normal; }
+.account__estado span { width: 8px; height: 8px; border-radius: 50%; background: var(--soft); flex: none; }
+.account__estado[data-app-estado="comprobando"] span { animation: account-latido 1s ease-in-out infinite alternate; }
+.account__estado[data-app-estado="en-linea"] span { background: #2bd576; box-shadow: 0 0 0 4px color-mix(in srgb, #2bd576 22%, transparent); }
+.account__estado[data-app-estado="apagado"] span { background: #e5484d; }
+.account__estado[data-app-estado="apagado"] + .account__go { opacity: 0.55; cursor: not-allowed; }
+@keyframes account-latido { to { opacity: 0.25; } }
 
 /* ---------- Escena 1: portada en 3D ---------- */
 

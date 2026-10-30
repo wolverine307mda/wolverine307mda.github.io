@@ -27,7 +27,7 @@
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301700">
   <link rel="stylesheet" href="assets/scenes/stage.css?v=202610301700">
-  <link rel="stylesheet" href="assets/css/style.css?v=202610301700">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610301900">
   <script>
     // Tema guardado antes de pintar, para que no parpadee
     (() => {
@@ -66,8 +66,9 @@
   <!-- Acceso: punto de entrada a mi app privada (cuando esté en marcha, el enlace apunta a ella) -->
   <div class="palette account" id="account" role="dialog" aria-label="Área privada" hidden>
     <p class="account__title">Área privada</p>
-    <p class="account__text">Mi propia app, alojada en un equipo de casa: panel, fotos y más. Solo con llave.</p>
-    <a class="button account__go" href="acceso.html" data-app-url>Entrar</a>
+    <p class="account__text">Mi propia app, alojada en un equipo de casa: panel, gastos, documentos y más. Solo con llave.</p>
+    <p class="account__estado" data-app-estado="comprobando"><span aria-hidden="true"></span><em>comprobando el equipo de casa…</em></p>
+    <a class="button account__go" href="https://equipo-de-casa.tail77819b.ts.net/entrar" data-app-url>Iniciar sesión</a>
   </div>
 
   <!-- Panel de tema: se abre con el pincel -->
@@ -521,7 +522,7 @@ git commit -m "feat: más café, menos bugs"</pre>
   <script src="assets/vendor/lenis.min.js"></script>
   <script src="assets/scenes/stage.js?v=202610301700"></script>
   <script src="assets/scenes/scenes.js?v=202610301700"></script>
-  <script src="assets/js/main.js?v=202610301700"></script>
+  <script src="assets/js/main.js?v=202610301900"></script>
   <script src="assets/vendor/three.min.js"></script>
   <script src="assets/js/hero3d.js?v=202610301700"></script>
   <script src="assets/js/photo3d.js?v=202610301700"></script>
