@@ -155,19 +155,16 @@
   // y el botón lleva directo a su inicio de sesión; si está apagado, lo dice en vez de llevar a una página caída
   const appLink = document.querySelector('[data-app-url]');
   const appEstado = document.querySelector('[data-app-estado]');
-  const appBase = new URL(appLink.href).origin;
   let comprobado = 0;
   const comprobarApp = async () => {
     if (Date.now() - comprobado < 15000) return;
     comprobado = Date.now();
     appEstado.dataset.appEstado = 'comprobando';
     appEstado.querySelector('em').textContent = 'comprobando el equipo de casa…';
-    try {
-      const r = await fetch(`${appBase}/api/salud`, { cache: 'no-store', signal: AbortSignal.timeout(7000) });
-      if (!r.ok) throw new Error(String(r.status));
+    if (await window.Privada.salud()) {
       appEstado.dataset.appEstado = 'en-linea';
       appEstado.querySelector('em').textContent = 'equipo de casa · en línea';
-    } catch {
+    } else {
       appEstado.dataset.appEstado = 'apagado';
       appEstado.querySelector('em').textContent = 'equipo de casa · apagado ahora mismo';
       comprobado = 0;
@@ -235,59 +232,117 @@
   /* ---------- "¿Hablamos?" sube desde su línea ---------- */
   reveal.observe(document.querySelector('.contact__title'));
 
-  /* ---------- Galería: filtros y visor con anterior/siguiente ---------- */
-  const shots = [...document.querySelectorAll('.shot')];
-  const filters = document.querySelectorAll('[data-filter]');
-  filters.forEach((btn) => btn.addEventListener('click', () => {
-    const cat = btn.dataset.filter;
-    filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-    shots.forEach((li) => {
-      li.hidden = cat !== 'todas' && li.dataset.cat !== cat;
-      if (!li.hidden) li.classList.add('is-in');
-    });
-    fitToggle();
-    window.ScrollTrigger?.refresh();
-  }));
+  /* ---------- Galería: sale de mi zona privada y solo existe mientras el equipo de casa está encendido ---------- */
+  const gallerySection = document.getElementById('galeria');
+  const galleryGrid = gallerySection.querySelector('[data-gallery]');
+  const filtersBox = gallerySection.querySelector('[data-filters]');
+  const galleryCount = gallerySection.querySelector('[data-gallery-count]');
+  const galleryWrap = gallerySection.querySelector('[data-gallery-wrap]');
+  const galleryToggle = gallerySection.querySelector('[data-gallery-toggle]');
+  const galleryLinks = document.querySelectorAll('[data-needs-gallery]');
+  const viewer = document.querySelector('[data-viewer]');
+  const vImg = viewer.querySelector('[data-viewer-img]');
+  const vText = viewer.querySelector('[data-viewer-text]');
+  let shots = [];
+  let current = 0;
+  let galleryKey = '';
+  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
   // plegar y desplegar la galería; al plegar, se vuelve al principio de la sección
-  const galleryWrap = document.querySelector('[data-gallery-wrap]');
-  const galleryToggle = document.querySelector('[data-gallery-toggle]');
   galleryToggle.addEventListener('click', () => {
     const open = galleryWrap.classList.toggle('is-collapsed') === false;
     galleryToggle.setAttribute('aria-expanded', String(open));
     galleryToggle.querySelector('[data-gallery-label]').textContent = open ? 'Ver menos' : 'Ver todas las fotos';
     if (open) shots.forEach((li) => li.classList.add('is-in'));
     else {
-      const y = document.getElementById('galeria').getBoundingClientRect().top + scrollY;
+      const y = gallerySection.getBoundingClientRect().top + scrollY;
       window.Stage?.lenis ? window.Stage.lenis.scrollTo(y, { immediate: true }) : scrollTo(0, y);
     }
     window.ScrollTrigger?.refresh();
   });
   // si con el filtro caben todas, no hace falta el botón
   function fitToggle() {
-    const grid = galleryWrap.querySelector('[data-gallery]');
-    const fits = grid.scrollHeight <= parseFloat(getComputedStyle(galleryWrap).maxHeight || '0') + 1;
+    const fits = galleryGrid.scrollHeight <= parseFloat(getComputedStyle(galleryWrap).maxHeight || '0') + 1;
     galleryToggle.parentElement.hidden = galleryWrap.classList.contains('is-collapsed') && fits;
     galleryWrap.classList.toggle('is-short', fits);
   }
-  fitToggle();
-  addEventListener('resize', fitToggle);
+  addEventListener('resize', () => { if (!gallerySection.hidden) fitToggle(); });
 
-  const viewer = document.querySelector('[data-viewer]');
-  const vImg = viewer.querySelector('[data-viewer-img]');
-  const vText = viewer.querySelector('[data-viewer-text]');
-  let current = 0;
   const visibleShots = () => shots.filter((li) => !li.hidden);
   const showShot = (li) => {
     const list = visibleShots();
     current = list.indexOf(li);
-    const img = li.querySelector('img');
-    vImg.src = img.currentSrc || img.src;
-    vImg.alt = img.alt;
-    vText.textContent = img.alt;
+    vImg.src = window.Privada.base + li.dataset.grande;
+    vImg.alt = li.dataset.alt;
+    vText.textContent = li.dataset.descripcion ? `${li.dataset.titulo} · ${li.dataset.descripcion}` : li.dataset.titulo;
   };
   const stepShot = (d) => { const list = visibleShots(); showShot(list[(current + d + list.length) % list.length]); };
-  shots.forEach((li) => li.querySelector('[data-shot]').addEventListener('click', () => { showShot(li); viewer.showModal(); }));
+
+  const setFilter = (cat) => {
+    filtersBox.querySelectorAll('[data-filter]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === cat)));
+    shots.forEach((li) => {
+      li.hidden = cat !== 'todas' && li.dataset.cat !== cat;
+      if (!li.hidden) li.classList.add('is-in');
+    });
+    fitToggle();
+    window.ScrollTrigger?.refresh();
+  };
+  filtersBox.addEventListener('click', (e) => { const b = e.target.closest('[data-filter]'); if (b) setFilter(b.dataset.filter); });
+  galleryGrid.addEventListener('click', (e) => {
+    const li = e.target.closest('.shot');
+    if (li && e.target.closest('[data-shot]')) { showShot(li); viewer.showModal(); }
+  });
+
+  // pinta las fotos que manda la privada (todo con textContent: lo que llegue de fuera nunca se interpreta como HTML)
+  const renderGallery = (fotos) => {
+    const hay = Array.isArray(fotos) && fotos.length > 0;
+    const key = hay ? fotos.map((f) => `${f.id}${f.mini}${f.titulo}${f.descripcion}${f.categoria}`).join('|') : '';
+    gallerySection.hidden = !hay;
+    galleryLinks.forEach((el) => { el.hidden = !hay; });
+    if (!hay) {
+      if (viewer.open) viewer.close();
+      galleryGrid.replaceChildren(); shots = []; galleryKey = '';
+      window.ScrollTrigger?.refresh();
+      return;
+    }
+    if (key === galleryKey) return;
+    galleryKey = key;
+    const cats = [...new Set(fotos.map((f) => f.categoria).filter(Boolean))];
+    filtersBox.replaceChildren(...['todas', ...cats].map((c) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.dataset.filter = c; b.setAttribute('aria-pressed', String(c === 'todas')); b.textContent = c === 'todas' ? 'Todas' : cap(c);
+      return b;
+    }));
+    filtersBox.hidden = cats.length < 2;
+    galleryCount.textContent = `// ${fotos.length} ${fotos.length === 1 ? 'foto' : 'fotos'} · desde mi zona privada`;
+    shots = fotos.map((f, i) => {
+      const li = document.createElement('li');
+      li.className = 'shot'; li.dataset.cat = f.categoria || ''; li.dataset.reveal = ''; li.style.setProperty('--i', String(i % 4));
+      li.dataset.grande = f.grande; li.dataset.titulo = f.titulo || ''; li.dataset.descripcion = f.descripcion || ''; li.dataset.alt = f.alt || f.titulo || '';
+      const btn = document.createElement('button'); btn.type = 'button'; btn.dataset.shot = '';
+      const img = document.createElement('img');
+      img.src = window.Privada.base + f.mini; img.width = f.ancho; img.height = f.alto; img.alt = f.alt || f.titulo || '';
+      img.loading = 'lazy'; img.decoding = 'async'; img.style.background = /^#[0-9a-f]{6}$/i.test(f.tono) ? f.tono : '';
+      btn.append(img); li.append(btn);
+      return li;
+    });
+    galleryGrid.replaceChildren(...shots);
+    shots.forEach((li) => reveal.observe(li));
+    setFilter('todas');
+  };
+
+  // Al cargar la web se pregunta a mi equipo de casa; si responde y tengo la galería activa, aparece la sección.
+  // Se vuelve a mirar cada 90 s con la pestaña a la vista: si el equipo se apaga, la sección desaparece sola.
+  let galleryAt = 0;
+  const syncGallery = async () => {
+    if (document.hidden || Date.now() - galleryAt < 20000) return;
+    galleryAt = Date.now();
+    renderGallery(await window.Privada.galeria());
+  };
+  if (window.requestIdleCallback) requestIdleCallback(syncGallery, { timeout: 1500 }); else setTimeout(syncGallery, 400);
+  setInterval(syncGallery, 90000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) syncGallery(); });
+
   viewer.querySelector('[data-viewer-close]').addEventListener('click', () => viewer.close());
   viewer.querySelector('[data-viewer-prev]').addEventListener('click', () => stepShot(-1));
   viewer.querySelector('[data-viewer-next]').addEventListener('click', () => stepShot(1));

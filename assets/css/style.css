@@ -1014,3 +1014,20 @@ body.legal { background: var(--paper); color: var(--on-paper); }
 .legal__body li::marker { color: var(--brand); }
 .legal__body strong { font-weight: 500; }
 .legal__foot { padding: 32px var(--margin); background: var(--dark); color: var(--on-dark); font-size: var(--step-small); }
+
+/* galería: nace oculta y solo aparece si la zona privada (equipo de casa) responde */
+.gallery[hidden], [data-needs-gallery][hidden], .gallery__filters[hidden] { display: none !important; }
+.shot img { background: var(--dark-2); }
+
+/* equipo de casa en directo (solo aparece si la zona privada responde y lo tengo activado) */
+.vivo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; width: fit-content; max-width: 100%; margin: 0 0 28px; padding: 10px 16px; border-radius: 999px; background: var(--dark-2); font-family: var(--mono, 'JetBrains Mono', monospace); font-size: var(--step-small); }
+.vivo[hidden] { display: none; }
+.vivo b { font-weight: 600; }
+.vivo__punto { width: 9px; height: 9px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 0 rgb(61 220 132 / .55); animation: vivo-late 2s ease-out infinite; }
+.vivo__datos { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; color: color-mix(in srgb, currentColor 78%, transparent); }
+.vivo__datos[hidden] { display: none; }
+.vivo__datos b { color: var(--brand); font-variant-numeric: tabular-nums; }
+.vivo__spark { width: 84px; height: 24px; overflow: visible; }
+.vivo__spark polyline { fill: none; stroke: var(--brand); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; transition: all 600ms ease; }
+@keyframes vivo-late { 70% { box-shadow: 0 0 0 9px rgb(61 220 132 / 0); } 100% { box-shadow: 0 0 0 0 rgb(61 220 132 / 0); } }
+@media (prefers-reduced-motion: reduce) { .vivo__punto { animation: none; } .vivo__spark polyline { transition: none; } }

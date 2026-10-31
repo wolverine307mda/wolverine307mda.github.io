@@ -14,13 +14,11 @@ const go = puerta.querySelector('[data-go]');
 const comprobar = async () => {
   puerta.dataset.estado = 'comprobando';
   estadoTexto.textContent = 'comprobando el equipo de casa…';
-  try {
-    const r = await fetch(`${app}/api/salud`, { cache: 'no-store', signal: AbortSignal.timeout(7000) });
-    if (!r.ok) throw new Error(String(r.status));
+  if (await window.Privada.salud()) {
     puerta.dataset.estado = 'en-linea';
     estadoTexto.textContent = 'equipo de casa · en línea';
     msg.textContent = '';
-  } catch {
+  } else {
     puerta.dataset.estado = 'apagado';
     estadoTexto.textContent = 'equipo de casa · apagado';
     msg.textContent = 'Ahora mismo mi equipo está apagado o sin conexión. Prueba más tarde.';
