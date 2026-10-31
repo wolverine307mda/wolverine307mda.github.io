@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mario de Domingo · Desarrollador web</title>
   <meta name="description" content="Mario de Domingo Álvarez, programador web en Madrid. Trabajo con tecnologías como C#, Visual Basic .NET y Angular. Proyectos, stack y fotografía propia.">
+  <link rel="canonical" href="https://wolverine307mda.github.io/">
   <meta name="privada" content="https://equipo-de-casa.tail77819b.ts.net">
   <meta name="theme-color" content="#ff7a1f">
   <meta property="og:title" content="Mario de Domingo · Desarrollador web">
@@ -41,6 +42,7 @@
       d.dataset.color = color;
     })();
   </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mario de Domingo Álvarez","jobTitle":"Desarrollador web","url":"https://wolverine307mda.github.io/","email":"mailto:dedomingoalvarezmario@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Madrid","addressCountry":"ES"}}</script>
 </head>
 
 <body>
@@ -256,6 +258,11 @@
         </span>
       </p>
 
+      <figure class="gemelo" data-gemelo hidden>
+        <canvas role="img" aria-label="Maqueta 3D de mi servidor: los ventiladores giran más rápido cuanto más trabaja el equipo real"></canvas>
+        <figcaption><code>gemelo en directo · gira con la CPU de mi PC de casa</code></figcaption>
+      </figure>
+
       <div class="casa__escaparate">
         <figure class="casa__portatil" data-reveal data-tilt="4">
           <span class="casa__barra" aria-hidden="true"><i></i><i></i><i></i><b>equipo-de-casa · zona privada</b></span>
@@ -388,6 +395,15 @@ git commit -m "feat: más café, menos bugs"</pre>
         <p class="gallery__count" data-reveal><code data-gallery-count>// desde mi zona privada</code></p>
       </div>
       <div class="gallery__filters" role="group" aria-label="Filtrar fotos" data-reveal data-filters hidden></div>
+      <div class="gallery__tabs" role="tablist" aria-label="Cómo ver las fotos" data-tabs hidden>
+        <button type="button" role="tab" aria-selected="true" data-vista="cuadricula">Cuadrícula</button>
+        <button type="button" role="tab" aria-selected="false" data-vista="mapa">Mapa</button>
+      </div>
+      <div class="gallery__globo" data-globo hidden>
+        <canvas role="img" aria-label="Globo 3D con los sitios donde he hecho fotos"></canvas>
+        <div class="globo__tarjeta" data-globo-card hidden></div>
+        <p class="globo__pista">Arrastra para girar · toca un pin para ver sus fotos</p>
+      </div>
       <div class="gallery__wrap is-collapsed" id="galeria-fotos" data-gallery-wrap>
         <ul class="gallery__grid" data-gallery></ul>
       </div>
@@ -533,6 +549,8 @@ git commit -m "feat: más café, menos bugs"</pre>
   <script src="assets/js/main.js?v=202610311800"></script>
   <script src="assets/js/vivo.js?v=202610311800"></script>
   <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/js/gemelo.js?v=202610311900"></script>
+  <script src="assets/js/globo.js?v=202610311900"></script>
   <script src="assets/js/hero3d.js?v=202610301700"></script>
   <script src="assets/js/photo3d.js?v=202610301700"></script>
 </body>

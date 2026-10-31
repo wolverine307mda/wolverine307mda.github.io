@@ -243,6 +243,10 @@
   const viewer = document.querySelector('[data-viewer]');
   const vImg = viewer.querySelector('[data-viewer-img]');
   const vText = viewer.querySelector('[data-viewer-text]');
+  const tabs = gallerySection.querySelector('[data-tabs]');
+  const globoCaja = gallerySection.querySelector('[data-globo]');
+  const globoTarjeta = gallerySection.querySelector('[data-globo-card]');
+  let globo = null, sitios = [], vista = 'cuadricula';
   let shots = [];
   let current = 0;
   let galleryKey = '';
@@ -293,6 +297,36 @@
     if (li && e.target.closest('[data-shot]')) { showShot(li); viewer.showModal(); }
   });
 
+  // Mapa: los sitios (agrupados) con foto y posición pública; el globo se crea la primera vez que se abre la pestaña
+  const mostrarSitio = (s) => {
+    globoTarjeta.replaceChildren();
+    const h = document.createElement('p'); h.className = 'globo__sitio'; h.textContent = `${s.nombre || 'Sin nombre'} · ${s.indices.length} ${s.indices.length === 1 ? 'foto' : 'fotos'}`;
+    const fila = document.createElement('div'); fila.className = 'globo__fotos';
+    s.indices.forEach((i) => {
+      const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', shots[i].dataset.titulo || 'Ver foto');
+      const im = document.createElement('img'); im.src = shots[i].querySelector('img').src; im.alt = ''; im.width = 72; im.height = 72; im.loading = 'lazy';
+      b.append(im);
+      b.addEventListener('click', () => { setFilter('todas'); showShot(shots[i]); viewer.showModal(); });
+      fila.append(b);
+    });
+    globoTarjeta.append(h, fila); globoTarjeta.hidden = false;
+  };
+  const abrirGlobo = () => {
+    if (globo || !sitios.length || !window.Globo) return;
+    globo = window.Globo.crear(globoCaja, sitios, mostrarSitio);
+    if (!globo) { tabs.hidden = true; ponerVista('cuadricula'); }
+  };
+  const ponerVista = (v) => {
+    vista = v;
+    tabs.querySelectorAll('[data-vista]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.vista === v)));
+    const mapa = v === 'mapa';
+    globoCaja.hidden = !mapa;
+    galleryWrap.hidden = mapa; filtersBox.hidden = mapa || filtersBox.childElementCount < 3; galleryToggle.parentElement.hidden = mapa || galleryToggle.parentElement.hidden;
+    if (mapa) { globoTarjeta.hidden = true; abrirGlobo(); } else fitToggle();
+    window.ScrollTrigger?.refresh();
+  };
+  tabs.addEventListener('click', (e) => { const b = e.target.closest('[data-vista]'); if (b) ponerVista(b.dataset.vista); });
+
   // pinta las fotos que manda la privada (todo con textContent: lo que llegue de fuera nunca se interpreta como HTML)
   const renderGallery = (fotos) => {
     const hay = Array.isArray(fotos) && fotos.length > 0;
@@ -301,7 +335,7 @@
     galleryLinks.forEach((el) => { el.hidden = !hay; });
     if (!hay) {
       if (viewer.open) viewer.close();
-      galleryGrid.replaceChildren(); shots = []; galleryKey = '';
+      galleryGrid.replaceChildren(); shots = []; galleryKey = ''; globo?.destruir(); globo = null; sitios = [];
       window.ScrollTrigger?.refresh();
       return;
     }
@@ -329,6 +363,18 @@
     galleryGrid.replaceChildren(...shots);
     shots.forEach((li) => reveal.observe(li));
     setFilter('todas');
+    // sitios del mapa: una pin por lugar (las fotos del mismo sitio van juntas)
+    const porSitio = new Map();
+    fotos.forEach((f, i) => {
+      if (!f.lugar || typeof f.lugar.lat !== 'number' || typeof f.lugar.lon !== 'number') return;
+      const k = `${f.lugar.lat},${f.lugar.lon}`;
+      if (!porSitio.has(k)) porSitio.set(k, { lat: f.lugar.lat, lon: f.lugar.lon, nombre: f.lugar.nombre, indices: [] });
+      porSitio.get(k).indices.push(i);
+    });
+    sitios = [...porSitio.values()];
+    globo?.destruir(); globo = null;
+    tabs.hidden = sitios.length === 0;
+    if (!sitios.length) ponerVista('cuadricula'); else if (vista === 'mapa') ponerVista('mapa');
   };
 
   // Al cargar la web se pregunta a mi equipo de casa; si responde y tengo la galería activa, aparece la sección.

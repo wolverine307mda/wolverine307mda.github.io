@@ -16,6 +16,7 @@
     return d > 0 ? `${d} d ${h} h` : h > 0 ? `${h} h ${min % 60} min` : `${min} min`;
   };
   const pintar = (d) => {
+    dispatchEvent(new CustomEvent('privada:estado', { detail: d }));
     caja.hidden = false;
     caja.dataset.vivo = 'en-linea';
     estado.textContent = 'equipo de casa · en línea';
@@ -30,7 +31,7 @@
     linea.setAttribute('points', s.map((v, i) => `${(i * paso).toFixed(1)},${(30 - (Math.min(100, v) / 100) * 28).toFixed(1)}`).join(' '));
     if (reducido) caja.dataset.quieto = '';
   };
-  const apagar = () => { caja.hidden = true; caja.dataset.vivo = 'apagado'; };
+  const apagar = () => { dispatchEvent(new CustomEvent('privada:apagado')); caja.hidden = true; caja.dataset.vivo = 'apagado'; };
 
   let cerrar = null;
   const abrir = () => { if (!cerrar) cerrar = window.Privada.vivo(pintar, apagar); };
