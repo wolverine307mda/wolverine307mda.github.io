@@ -104,7 +104,7 @@
 
   <main>
     <!-- Escena 1: partículas en 3D que se transforman en mi stack al bajar -->
-    <section class="scene hero" id="inicio" data-scene="hero-3d" data-options='{"hold":2.4}' aria-labelledby="hero-title">
+    <section class="scene hero" id="inicio" data-scene="hero-3d" data-options='{"hold":1.8}' aria-labelledby="hero-title">
       <div class="scene-stage hero__stage">
         <canvas class="hero__canvas" data-hero3d aria-hidden="true"></canvas>
 
@@ -177,7 +177,7 @@
     </section>
 
     <!-- Escena 2: los proyectos desfilan en horizontal -->
-    <section class="scene work" id="proyectos" data-tone="dark" data-scene="track" data-options='{"hold":2.6}' aria-labelledby="work-title">
+    <section class="scene work" id="proyectos" data-tone="dark" data-scene="track" data-options='{"hold":2}' aria-labelledby="work-title">
       <div class="scene-stage work__stage">
         <div class="work__track" data-move>
           <h2 class="work__title" id="work-title">Proyectos</h2>
@@ -236,6 +236,62 @@
       </div>
     </section>
 
+    <!-- Proyecto en casa: la zona privada, contada con capturas de datos inventados -->
+    <section class="casa" id="area-privada" data-tone="dark" aria-labelledby="casa-title">
+      <div class="casa__head">
+        <p class="casa__kicker" data-reveal><span class="casa__punto" aria-hidden="true"></span><code>en producción · corre en mi PC de casa</code></p>
+        <h2 class="casa__title" id="casa-title" data-reveal style="--i:1">Área<br>privada</h2>
+        <p class="casa__lead" data-reveal style="--i:2">Mi propia app, hecha desde cero: dinero, agenda, notas, archivos y avisos en un solo sitio. La uso cada día desde el iPhone como app instalada, y le hablo como a una persona: <em>«ayer 12 € en el Mercadona»</em>, <em>«dentista el jueves de 10 a 11:30»</em>.</p>
+      </div>
+
+      <div class="casa__escaparate">
+        <figure class="casa__portatil" data-reveal data-tilt="4">
+          <span class="casa__barra" aria-hidden="true"><i></i><i></i><i></i><b>equipo-de-casa · zona privada</b></span>
+          <img src="assets/img/zona-inicio.webp" width="1600" height="1000" alt="Panel de inicio de la zona privada: saludo, dinero del mes, el tiempo, la agenda y el estado del PC (datos de demostración)" loading="lazy">
+        </figure>
+        <figure class="casa__movil casa__movil--a" data-reveal style="--i:1">
+          <img src="assets/img/zona-movil-asistente.webp" width="520" height="1125" alt="El asistente en el móvil entendiendo «dentista el jueves de 10 a 11:30 en la clínica, avísame por WhatsApp»" loading="lazy">
+        </figure>
+        <figure class="casa__movil casa__movil--b" data-reveal style="--i:2">
+          <img src="assets/img/zona-movil-cartera.webp" width="520" height="1125" alt="La cartera en el móvil: dinero disponible, lo que se puede gastar al día y las huchas (datos de demostración)" loading="lazy">
+        </figure>
+        <div class="casa__chat" data-reveal style="--i:3" aria-label="Ejemplo de conversación con el bot de Telegram">
+          <p class="casa__chat-cab"><span aria-hidden="true">✈️</span> Bot de Telegram</p>
+          <p class="burbuja burbuja--yo">nuevo recordatorio por whatsapp mañana a las 10 llamar al banco</p>
+          <p class="burbuja">⏰ <b>Recordatorio: Llamar al banco</b><br>mañana a las 10:00 · 🔔 WhatsApp</p>
+          <p class="burbuja__botones" aria-hidden="true"><span>✅ Guardar</span><span>✖️ Cancelar</span></p>
+          <p class="burbuja burbuja--yo">¿cuánto llevo en restaurantes?</p>
+          <p class="burbuja">Este mes llevas 43,00 € en restaurantes (2 apuntes). Es el 36 % de tu presupuesto.</p>
+        </div>
+      </div>
+
+      <ul class="casa__cifras" aria-label="En cifras">
+        <li data-reveal><b>9</b><span>módulos</span></li>
+        <li data-reveal style="--i:1"><b>140+</b><span>tests automáticos</span></li>
+        <li data-reveal style="--i:2"><b>4</b><span>canales de aviso</span></li>
+        <li data-reveal style="--i:3"><b>0</b><span>puertos abiertos en el router</span></li>
+      </ul>
+
+      <div class="casa__modulos">
+        <article class="modulo" data-reveal><span class="modulo__ico" aria-hidden="true">💸</span><h3>Cartera</h3><p>Gastos con foto del ticket, fijos que se repiten, saldo real, huchas, presupuestos con avisos, gasolina y consumo, y el coche que voy pagando.</p></article>
+        <article class="modulo" data-reveal style="--i:1"><span class="modulo__ico" aria-hidden="true">🗓️</span><h3>Agenda</h3><p>El día por horas con mi horario de trabajo de fondo, repeticiones y avisos por la app, correo, WhatsApp o Telegram. Me avisa si una cita cae en horas de trabajo.</p></article>
+        <article class="modulo modulo--hot" data-reveal style="--i:2"><span class="modulo__ico" aria-hidden="true">✨</span><h3>Asistente</h3><p>Un intérprete de español escrito a mano (sin IA de terceros): entiende importes, fechas, horas, lugares y por dónde avisar, y aprende qué categoría pongo a cada cosa.</p></article>
+        <article class="modulo" data-reveal style="--i:3"><span class="modulo__ico" aria-hidden="true">📈</span><h3>El PC en directo</h3><p>CPU, memoria, discos y red del ordenador de casa por SignalR, cada dos segundos, con un agente en Windows.</p></article>
+        <article class="modulo" data-reveal><span class="modulo__ico" aria-hidden="true">📁</span><h3>Documentos</h3><p>Las carpetas del PC desde el móvil: subir, descargar, ver vídeos y una papelera para recuperar lo borrado.</p></article>
+        <article class="modulo" data-reveal style="--i:1"><span class="modulo__ico" aria-hidden="true">🛡️</span><h3>Seguridad</h3><p>Verificación en dos pasos, sesiones que se cierran desde otro equipo, registro de accesos y avisos de cada inicio de sesión.</p></article>
+        <article class="modulo" data-reveal style="--i:2"><span class="modulo__ico" aria-hidden="true">📝</span><h3>Notas</h3><p>Markdown con tareas que se marcan desde la tarjeta, colores y etiquetas.</p></article>
+        <article class="modulo" data-reveal style="--i:3"><span class="modulo__ico" aria-hidden="true">🎧</span><h3>Música y tiempo</h3><p>Lo que suena en Spotify con controles, y la previsión con aviso la víspera si va a llover o helar.</p></article>
+      </div>
+
+      <div class="casa__conectado">
+        <h3 class="h-small" data-reveal>Servicios conectados</h3>
+        <ul class="conectados" data-reveal style="--i:1">
+          <li>Telegram</li><li>WhatsApp</li><li>Google Calendar</li><li>Spotify</li><li>Correo SMTP</li><li>Web Push</li><li>Open-Meteo</li><li>Tailscale</li>
+        </ul>
+        <p class="casa__stack" data-reveal style="--i:2"><code>angular 22 · signals · asp.net core 10 · minimal apis · postgresql · ef core · signalr · identity + 2fa · docker · serilog + seq · pwa</code></p>
+      </div>
+    </section>
+
     <!-- Stack: con lo que trabajo, en grande; lo demás, en código -->
     <section class="stack" id="stack" aria-labelledby="stack-title">
       <pre class="bg-code" aria-hidden="true">using System.Linq;
@@ -285,7 +341,7 @@ git commit -m "feat: más café, menos bugs"</pre>
     </section>
 
     <!-- Escena 3: vuelo a través de las fotos -->
-    <section class="scene photos" id="fotografia" data-tone="dark" data-scene="fly" data-options='{"hold":3.4}' aria-labelledby="photos-title">
+    <section class="scene photos" id="fotografia" data-tone="dark" data-scene="fly" data-options='{"hold":2.5}' aria-labelledby="photos-title">
       <div class="scene-stage photos__stage">
         <h2 class="photos__title" id="photos-title" data-move>Fuera de<br>pantalla</h2>
         <div class="photos__field">

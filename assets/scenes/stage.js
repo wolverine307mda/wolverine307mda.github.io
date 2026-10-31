@@ -37,11 +37,11 @@
     scenes: [],
   };
 
-  // Weighted wheel scrolling. lerp 0.1-0.14 feels heavy without lagging behind the hand; touch keeps the
+  // Weighted wheel scrolling. lerp 0.2 and a 1.35 wheel step keep some glide but move quickly; touch keeps the
   // phone's own scrolling, and reduced motion keeps the browser's.
-  Stage.smooth = ({ lerp = 0.12 } = {}) => {
+  Stage.smooth = ({ lerp = 0.2, wheelMultiplier = 1.35 } = {}) => {
     if (!live || !window.Lenis || Stage.reduced || Stage.touch || Stage.lenis) return Stage.lenis;
-    const lenis = new Lenis({ lerp, smoothWheel: true, anchors: true, autoRaf: false });
+    const lenis = new Lenis({ lerp, wheelMultiplier, smoothWheel: true, anchors: true, autoRaf: false });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
