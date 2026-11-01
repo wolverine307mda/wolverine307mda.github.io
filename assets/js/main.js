@@ -355,8 +355,14 @@
       li.dataset.grande = f.grande; li.dataset.titulo = f.titulo || ''; li.dataset.descripcion = f.descripcion || ''; li.dataset.alt = f.alt || f.titulo || '';
       const btn = document.createElement('button'); btn.type = 'button'; btn.dataset.shot = '';
       const img = document.createElement('img');
-      img.src = window.Privada.base + f.mini; img.width = f.ancho; img.height = f.alto; img.alt = f.alt || f.titulo || '';
-      img.loading = 'lazy'; img.decoding = 'async'; img.style.background = /^#[0-9a-f]{6}$/i.test(f.tono) ? f.tono : '';
+      const b = window.Privada.base;
+      img.src = b + f.mini; img.width = f.ancho; img.height = f.alto; img.alt = f.alt || f.titulo || '';
+      if (f.media) { img.srcset = `${b + f.mini} 360w, ${b + f.media} 720w`; img.sizes = '(max-width: 700px) 50vw, 360px'; }
+      img.loading = 'lazy'; img.decoding = 'async';
+      // mientras llega la foto: su color medio y, si la privada ya la tiene, una versión borrosa de 16 px
+      const tono = /^#[0-9a-f]{6}$/i.test(f.tono) ? f.tono : '';
+      img.style.background = tono;
+      if (typeof f.lqip === 'string' && f.lqip.startsWith('data:image/webp;base64,')) { img.style.backgroundImage = `url("${f.lqip}")`; img.style.backgroundSize = 'cover'; }
       btn.append(img); li.append(btn);
       return li;
     });
@@ -385,7 +391,10 @@
     galleryAt = Date.now();
     renderGallery(await window.Privada.galeria());
   };
-  if (window.requestIdleCallback) requestIdleCallback(syncGallery, { timeout: 1500 }); else setTimeout(syncGallery, 400);
+  // la última lista conocida se pinta al momento (visitas repetidas) y enseguida se confirma con el equipo; si no responde, se retira
+  const guardada = window.Privada.galeriaGuardada();
+  if (guardada?.length) renderGallery(guardada);
+  syncGallery();
   setInterval(syncGallery, 90000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) syncGallery(); });
 

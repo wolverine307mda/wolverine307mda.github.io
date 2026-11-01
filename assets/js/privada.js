@@ -6,7 +6,8 @@
 (() => {
   const base = (document.querySelector('meta[name="privada"]')?.content || 'https://equipo-de-casa.tail77819b.ts.net').replace(/\/$/, '');
   const pedir = async (ruta, ms) => {
-    const r = await fetch(base + ruta, { cache: 'no-cache', signal: AbortSignal.timeout(ms) });
+    // la galería ya viene con «max-age=60»: se deja que el navegador la reutilice; lo demás (salud, estado) siempre se revalida
+    const r = await fetch(base + ruta, { cache: ruta.includes('/galeria') ? 'default' : 'no-cache', signal: AbortSignal.timeout(ms) });
     if (!r.ok) throw new Error(String(r.status));
     return r;
   };
@@ -16,7 +17,15 @@
       try { await pedir('/api/salud', ms); return true; } catch { return false; }
     },
     async galeria(ms = 4000) {
-      try { return (await (await pedir('/api/publico/galeria', ms)).json()).fotos ?? []; } catch { return null; }
+      try {
+        const fotos = (await (await pedir('/api/publico/galeria', ms)).json()).fotos ?? [];
+        try { localStorage.setItem('galeria-privada', JSON.stringify(fotos)); } catch { /* sin almacenamiento: no pasa nada */ }
+        return fotos;
+      } catch { try { localStorage.removeItem('galeria-privada'); } catch { /* idem */ } return null; }
+    },
+    // la última lista que llegó: se pinta al instante mientras se confirma con el equipo (si no responde, la sección se retira)
+    galeriaGuardada() {
+      try { const f = JSON.parse(localStorage.getItem('galeria-privada') || 'null'); return Array.isArray(f) ? f : null; } catch { return null; }
     },
     // Estado en directo (Server-Sent Events). alRecibir(datos) con cada lectura; alCaer() si no hay datos (equipo apagado o desactivado).
     // Si la conexión en directo no sirve, se pregunta cada 30 s. Devuelve una función para cerrarlo.
