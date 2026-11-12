@@ -1,4 +1,4 @@
-// Portada en 3D: una bola de partículas, con una nave en órbita y unas figuras de líneas alrededor, que al bajar
+// Portada en 3D: una bola de partículas que al bajar
 // se convierte en mi nombre, lo que hago y un símbolo de código. scenes.js mueve window.Hero3D.progress de 0 a 3.
 // Script clásico (no módulo) para que funcione también abriendo el archivo sin servidor.
 (() => {
@@ -98,7 +98,7 @@ if (renderer) {
 
   let radius = 1;
   const build = () => {
-    radius = Math.min(halfW, halfH) * (small() ? 0.62 : 0.62);
+    radius = Math.min(halfW, halfH) * (small() ? 0.62 : 0.6);
     // las palabras de dos líneas pueden ocupar más ancho: si no, sus letras quedan demasiado pequeñas
     // en el teléfono «desarrollador» se parte en dos líneas para que las letras salgan grandes
     const words = WORDS.map((w) => (small() && w === 'DESARROLLADOR|WEB' ? 'DESARRO-|LLADOR|WEB' : w));
@@ -113,65 +113,9 @@ if (renderer) {
     const c = new THREE.Color();
     for (let i = 0; i < N; i++) { c.copy(a).lerp(b, mix[i] > 0.62 ? 1 : mix[i] * 0.4); col.set([c.r, c.g, c.b], i * 3); }
     geo.attributes.color.needsUpdate = true;
-    lineMat.color.copy(a); glowMat.color.copy(b);
   };
   new MutationObserver(() => requestAnimationFrame(() => { paint(); if (reduced) render(0); }))
     .observe(document.documentElement, { attributes: true, attributeFilter: ['data-mode', 'data-color'] });
-
-  // ---- Ilustraciones de líneas: una nave en órbita, un planeta con anillo, un cubo y un octaedro ----
-  const lineMat = new THREE.LineBasicMaterial({ transparent: true });
-  const glowMat = new THREE.MeshBasicMaterial({ transparent: true });
-  const lines = (g) => new THREE.LineSegments(new THREE.EdgesGeometry(g), lineMat);
-  const extras = new THREE.Group();
-  scene.add(extras);
-
-  // nave: casco en cono que apunta hacia +z, alas, aleta y la llama del motor
-  const ship = new THREE.Group();
-  const hull = lines(new THREE.ConeGeometry(0.09, 0.34, 6)); hull.rotation.x = Math.PI / 2;
-  const wings = lines(new THREE.BoxGeometry(0.36, 0.014, 0.11)); wings.position.z = -0.07;
-  const fin = lines(new THREE.BoxGeometry(0.014, 0.11, 0.09)); fin.position.set(0, 0.055, -0.11);
-  const flame = new THREE.Mesh(new THREE.ConeGeometry(0.045, 0.14, 8), glowMat);
-  flame.rotation.x = -Math.PI / 2; flame.position.z = -0.24;
-  ship.add(hull, wings, fin, flame);
-
-  // planeta: esfera de líneas con un anillo inclinado
-  const planet = new THREE.Group();
-  planet.add(lines(new THREE.IcosahedronGeometry(0.2, 1)));
-  const ringPts = [];
-  for (let i = 0; i <= 64; i++) { const a = (i / 64) * Math.PI * 2; ringPts.push(new THREE.Vector3(Math.cos(a) * 0.36, 0, Math.sin(a) * 0.36)); }
-  const ring = new THREE.Line(new THREE.BufferGeometry().setFromPoints(ringPts), lineMat);
-  ring.rotation.set(0.45, 0, 0.35);
-  planet.add(ring);
-
-  const cube = lines(new THREE.BoxGeometry(0.24, 0.24, 0.24));
-  const octa = lines(new THREE.OctahedronGeometry(0.17));
-  extras.add(ship, planet, cube, octa);
-  const next = new THREE.Vector3();
-
-  // coloca las figuras alrededor de la bola (c = su centro) y las mueve con el tiempo
-  const moveExtras = (t, c, fade, wide) => {
-    const s = radius * (wide ? 0.85 : 0.7);
-    [ship, planet, cube, octa].forEach((o) => o.scale.setScalar(s));
-    // órbita inclinada alrededor de la bola; la nave mira hacia donde va
-    const orbit = (a) => next.set(
-      c.x + Math.cos(a) * radius * 1.45,
-      c.y + Math.sin(a) * radius * 0.42,
-      Math.sin(a) * radius * 1.1,
-    );
-    const a = t * 0.45;
-    ship.position.copy(orbit(a));
-    ship.lookAt(orbit(a + 0.05));
-    flame.scale.set(1, 0.75 + Math.sin(t * 22) * 0.25, 1);
-    const fx = wide ? 1 : 0.55, fy = wide ? 1 : 1.15;
-    planet.position.set(c.x - radius * 1.55 * fx, c.y + radius * 0.95 * fy + Math.sin(t * 0.7) * 0.05, -0.6);
-    planet.rotation.y = t * 0.3;
-    cube.position.set(c.x + radius * 1.3 * fx, c.y + radius * 1.0 * fy + Math.sin(t * 0.9 + 1) * 0.06, -0.3);
-    cube.rotation.set(t * 0.4, t * 0.5, 0);
-    octa.position.set(c.x + radius * 1.25 * fx, c.y - radius * 0.95 * fy + Math.sin(t * 0.8 + 2) * 0.06, 0.2);
-    octa.rotation.set(t * 0.3, -t * 0.45, 0);
-    lineMat.opacity = glowMat.opacity = fade;
-    extras.visible = fade > 0.02;
-  };
 
   // ---- Tamaño ----
   const resize = () => {
@@ -218,7 +162,7 @@ if (renderer) {
     const spin = Math.max(0, 1 - p);
     // en reposo la bola deja sitio al texto: a la derecha en escritorio, arriba en el teléfono
     const wide = halfW > halfH * 1.1;
-    group.position.x = wide ? halfW * 0.16 * spin : 0;
+    group.position.x = wide ? halfW * 0.27 * spin : 0;
     group.position.y = wide ? 0 : halfH * 0.16 * spin;
     // la bola gira entera; las palabras miran al frente y solo se inclinan con el ratón
     const turn = reduced ? 0 : t * 0.25;
@@ -257,9 +201,6 @@ if (renderer) {
     }
     geo.attributes.position.needsUpdate = true;
 
-    // las figuras se van al convertirse la bola en palabras; se inclinan un poco con el ratón
-    moveExtras(reduced ? 1.2 : t, group.position, Math.max(0, 1 - p * 2.2), wide);
-    extras.rotation.set(mouse.y * -0.08, mouse.x * 0.12, 0);
     renderer.render(scene, camera);
 
     const step = Math.round(p);

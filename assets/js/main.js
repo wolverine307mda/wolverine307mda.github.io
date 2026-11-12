@@ -9,7 +9,7 @@
   const top = document.querySelector('.top');
   if (window.ScrollTrigger) {
     document.querySelectorAll('[data-tone]').forEach((el) => {
-      const cls = el.dataset.tone === 'paper' ? 'is-paper' : 'is-light';
+      const cls = { paper: 'is-paper', deep: 'is-deep', brand: 'is-brand' }[el.dataset.tone] || 'is-light';
       ScrollTrigger.create({
         trigger: el,
         start: el.dataset.toneStart || 'top 40px',

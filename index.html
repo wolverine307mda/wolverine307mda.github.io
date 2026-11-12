@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://wolvem.dev/">
   <meta name="privada" content="https://app.wolvem.dev">
   <link rel="preconnect" href="https://app.wolvem.dev" crossorigin>
-  <meta name="theme-color" content="#ff7a1f">
+  <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="Mario de Domingo · Desarrollador web">
   <meta property="og:description" content="Programador web en Madrid. Trabajo con C#, Visual Basic .NET, Angular y más.">
   <meta property="og:image" content="https://wolvem.dev/assets/img/compartir.jpg">
@@ -30,7 +30,7 @@
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301700">
   <link rel="stylesheet" href="assets/scenes/stage.css?v=202610301700">
-  <link rel="stylesheet" href="assets/css/style.css?v=202610301900">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611121830">
   <script>
     // Tema guardado antes de pintar, para que no parpadee
     (() => {
@@ -113,14 +113,19 @@
         <canvas class="hero__canvas" data-hero3d aria-hidden="true"></canvas>
 
         <div class="hero__intro">
+          <p class="hero__badge" data-load style="--d:100ms"><span class="hero__badge-dot" aria-hidden="true"></span>Disponible · Madrid</p>
           <h1 class="hero__title" id="hero-title">
-            <span class="hero__name" data-load style="--d:200ms">Mario de Domingo</span>
+            <span class="hero__name" data-load style="--d:200ms">Mario de <br>Domingo</span>
             <span class="hero__role" data-load style="--d:320ms">Programador web</span>
           </h1>
-          <a class="hero__cta" data-load style="--d:440ms" href="#proyectos">
-            Ver proyectos
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <p class="hero__pitch" data-load style="--d:400ms">Programación a medida con C#, .NET y Angular, de la base de datos a la interfaz.</p>
+          <div class="hero__actions" data-load style="--d:480ms">
+            <a class="hero__cta" href="#proyectos">
+              Ver proyectos
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="hero__cta hero__cta--ghost" href="#contacto">Contactar</a>
+          </div>
         </div>
 
         <ol class="hero__steps" aria-label="Lo que forman las partículas">
@@ -157,7 +162,7 @@
     </section>
 
     <!-- Código que fluye: tres ríos de código real -->
-    <section class="code" aria-labelledby="code-title">
+    <section class="code" data-tone="brand" aria-labelledby="code-title">
       <div class="code__head">
         <h2 class="code__title" id="code-title" data-reveal>Código que fluye</h2>
         <p class="code__note" data-reveal style="--i:1"><code>// C#, Visual Basic .NET, Angular… algo de lo que escribo</code></p>
@@ -361,7 +366,7 @@ git commit -m "feat: más café, menos bugs"</pre>
     </section>
 
     <!-- Escena 3: vuelo a través de las fotos -->
-    <section class="scene photos" id="fotografia" data-tone="dark" data-scene="fly" data-options='{"hold":2.5}' aria-labelledby="photos-title">
+    <section class="scene photos" id="fotografia" data-tone="deep" data-scene="fly" data-options='{"hold":2.5}' aria-labelledby="photos-title">
       <div class="scene-stage photos__stage">
         <h2 class="photos__title" id="photos-title" data-move>Fuera de<br>pantalla</h2>
         <div class="photos__field">
@@ -432,7 +437,7 @@ git commit -m "feat: más café, menos bugs"</pre>
     </dialog>
 
     <!-- Contacto: bocadillo de cómic y tres viñetas para escribirme -->
-    <section class="contact" id="contacto" aria-labelledby="contact-title">
+    <section class="contact" data-tone="brand" id="contacto" aria-labelledby="contact-title">
       <div class="contact__top">
         <h2 class="contact__title" id="contact-title">
           <span class="contact__bubble"><span data-rise>¿Hablamos?</span></span>
@@ -500,7 +505,7 @@ git commit -m "feat: más café, menos bugs"</pre>
     </section>
   </main>
 
-  <footer class="footer" data-tone="dark">
+  <footer class="footer" data-tone="deep">
     <div class="footer__grid">
       <div class="footer__brand">
         <a class="footer__mark" href="#inicio" aria-label="Volver al inicio">MDA</a>
@@ -547,12 +552,12 @@ git commit -m "feat: más café, menos bugs"</pre>
   <script src="assets/scenes/stage.js?v=202610301700"></script>
   <script src="assets/scenes/scenes.js?v=202610301700"></script>
   <script src="assets/js/privada.js?v=202611011200"></script>
-  <script src="assets/js/main.js?v=202611011200"></script>
+  <script src="assets/js/main.js?v=202611121500"></script>
   <script src="assets/js/vivo.js?v=202610311800"></script>
   <script src="assets/vendor/three.min.js"></script>
   <script src="assets/js/gemelo.js?v=202610311900"></script>
   <script src="assets/js/globo.js?v=202610311900"></script>
-  <script src="assets/js/hero3d.js?v=202610301700"></script>
+  <script src="assets/js/hero3d.js?v=202611121820"></script>
   <script src="assets/js/photo3d.js?v=202610301700"></script>
 </body>
 
