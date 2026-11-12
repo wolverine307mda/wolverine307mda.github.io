@@ -1,6 +1,6 @@
 // Área privada: un candado 3D de líneas con anillos de partículas en órbita, sobre una rejilla
 // que avanza hacia el horizonte. La tarjeta comprueba si el equipo de casa está encendido
-// (GET /api/salud por Tailscale) y lleva a su pantalla de inicio de sesión; al entrar, el candado se abre.
+// (GET /api/salud en app.wolvem.dev) y lleva a su pantalla de inicio de sesión; al entrar, el candado se abre.
 (() => {
 const html = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;

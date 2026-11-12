@@ -1,10 +1,10 @@
-// Conexión con mi zona privada (el equipo de casa, por Tailscale Funnel).
+// Conexión con mi zona privada (el equipo de casa, por un túnel de Cloudflare en app.wolvem.dev).
 // Una sola copia de la dirección y de las preguntas que le hace esta web:
 //  · salud(): ¿está encendido? (GET /api/salud)
 //  · galeria(): las fotos que he publicado (GET /api/publico/galeria); null si el equipo está apagado o la galería está oculta.
 // Si el equipo no responde, la web sigue igual: nada depende de él, solo aparecen secciones de más cuando está encendido.
 (() => {
-  const base = (document.querySelector('meta[name="privada"]')?.content || 'https://equipo-de-casa.tail77819b.ts.net').replace(/\/$/, '');
+  const base = (document.querySelector('meta[name="privada"]')?.content || 'https://app.wolvem.dev').replace(/\/$/, '');
   const pedir = async (ruta, ms) => {
     // la galería ya viene con «max-age=60»: se deja que el navegador la reutilice; lo demás (salud, estado) siempre se revalida
     const r = await fetch(base + ruta, { cache: ruta.includes('/galeria') ? 'default' : 'no-cache', signal: AbortSignal.timeout(ms) });

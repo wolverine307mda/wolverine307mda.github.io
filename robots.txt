@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /acceso.html
 
-Sitemap: https://wolverine307mda.github.io/sitemap.xml
+Sitemap: https://wolvem.dev/sitemap.xml
