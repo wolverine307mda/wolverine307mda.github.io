@@ -1,6 +1,7 @@
 // Conexión con mi zona privada (el equipo de casa, por un túnel de Cloudflare en app.wolvem.dev).
 // Una sola copia de la dirección y de las preguntas que le hace esta web:
 //  · salud(): ¿está encendido? (GET /api/salud)
+//  · tema(): el tema por defecto de la web (GET /api/publico/tema → { modo, color }); null si no responde.
 //  · galeria(): las fotos que he publicado (GET /api/publico/galeria); null si el equipo está apagado o la galería está oculta.
 // Si el equipo no responde, la web sigue igual: nada depende de él, solo aparecen secciones de más cuando está encendido.
 (() => {
@@ -15,6 +16,18 @@
     base,
     async salud(ms = 7000) {
       try { await pedir('/api/salud', ms); return true; } catch { return false; }
+    },
+    // Tema por defecto de la web, el mismo para todos. Se guarda la última respuesta para pintarla al instante
+    // la próxima vez (aunque el equipo esté apagado). Solo se aceptan valores conocidos.
+    async tema(ms = 4000) {
+      try {
+        const t = await (await pedir('/api/publico/tema', ms)).json();
+        const ok = ['light', 'dark', 'system'].includes(t.modo) && ['naranja', 'lima', 'cobalto', 'rosa', 'rojo'].includes(t.color);
+        if (!ok) return null;
+        const tema = { modo: t.modo, color: t.color };
+        try { localStorage.setItem('tema-web', JSON.stringify(tema)); } catch { /* sin almacenamiento: no pasa nada */ }
+        return tema;
+      } catch { return null; }
     },
     async galeria(ms = 4000) {
       try {

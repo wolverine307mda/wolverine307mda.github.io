@@ -217,6 +217,8 @@ code { font-family: var(--font-code); }
 .palette__group legend { font-size: var(--step-small); color: var(--soft); margin-bottom: 12px; }
 .palette__group legend code::before { content: '--'; color: var(--brand-ink); }
 .palette__note { font-size: var(--step-small); color: var(--soft); }
+.palette__reset { align-self: flex-start; padding: 0; background: none; border: 0; font: inherit; font-size: var(--step-small); cursor: pointer; margin-top: -12px; }
+.palette__reset[hidden] { display: none; }
 .account__title { font: 700 var(--step-lead)/1 var(--font-display); text-transform: uppercase; letter-spacing: -0.03em; }
 .account__text { color: var(--soft); }
 .account__go { align-self: flex-start; border-radius: 999px; }

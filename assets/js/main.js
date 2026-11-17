@@ -89,8 +89,13 @@
   };
   const systemDark = matchMedia('(prefers-color-scheme: dark)');
   const metaTheme = document.querySelector('meta[name="theme-color"]');
-  let mode = store.get('mode', 'system');
-  let color = store.get('color', 'naranja');
+  // Tema por defecto de la web (lo edito en los Ajustes de mi zona privada; aquí llega la última copia guardada).
+  // Lo que el visitante elija con el pincel manda solo para él; «Volver al tema de la web» lo borra.
+  const porDefecto = () => { try { return JSON.parse(localStorage.getItem('tema-web') || 'null') || {}; } catch { return {}; } };
+  const propio = () => ({ mode: store.get('mode', ''), color: store.get('color', '') });
+  let mode = propio().mode || porDefecto().modo || 'system';
+  let color = propio().color || porDefecto().color || 'naranja';
+  const resetBtn = document.querySelector('[data-theme-reset]');
 
   const render = () => {
     const dark = mode === 'dark' || (mode === 'system' && systemDark.matches);
@@ -99,6 +104,7 @@
     document.querySelectorAll('[data-mode-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modeSet === mode)));
     document.querySelectorAll('[data-color-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.colorSet === color)));
     metaTheme.content = getComputedStyle(document.body).backgroundColor;
+    if (resetBtn) resetBtn.hidden = !(propio().mode || propio().color);
   };
 
   // El nuevo tema se abre en círculo desde el botón pulsado
@@ -126,6 +132,23 @@
   });
   systemDark.addEventListener('change', () => { if (mode === 'system') render(); });
   render();
+
+  // Quita lo que eligió el visitante y vuelve al tema por defecto de la web
+  const aplicarDefecto = (origin) => applyTheme(() => {
+    try { localStorage.removeItem('mode'); localStorage.removeItem('color'); } catch {}
+    mode = porDefecto().modo || 'system';
+    color = porDefecto().color || 'naranja';
+  }, origin);
+  resetBtn?.addEventListener('click', () => aplicarDefecto(resetBtn));
+
+  // Pregunta a la zona privada cuál es el tema por defecto ahora; si cambió y el visitante no eligió el suyo, se aplica.
+  // Si el equipo está apagado no pasa nada: se queda con la última copia guardada.
+  window.Privada?.tema().then((t) => {
+    if (!t) return;
+    const own = propio();
+    const nuevoModo = own.mode || t.modo, nuevoColor = own.color || t.color;
+    if (nuevoModo !== mode || nuevoColor !== color) applyTheme(() => { mode = nuevoModo; color = nuevoColor; });
+  });
 
   /* ---------- Paneles de la cabecera: pincel (tema) y persona (acceso) ---------- */
   const panels = [...document.querySelectorAll('[data-palette-toggle], [data-account-toggle]')].map((btn) => ({
