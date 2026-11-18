@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/panchang-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301830">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611131530">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611180700">
   <link rel="stylesheet" href="assets/css/acceso.css?v=202610301830">
   <script>
     // El mismo tema que la web: modo y color guardados
@@ -22,11 +22,12 @@
       const d = document.documentElement;
       d.classList.add('js');
       let mode = 'system', color = 'naranja';
-      // lo que haya elegido el visitante manda; si no, el tema por defecto de la web (el último que dio la zona privada)
+      // el visitante solo elige día o noche; el color y el modo de partida son los de la web (los últimos que dio la zona privada)
       try {
         const t = JSON.parse(localStorage.getItem('tema-web') || 'null') || {};
-        mode = localStorage.getItem('mode') || t.modo || mode;
-        color = localStorage.getItem('color') || t.color || color;
+        const propio = localStorage.getItem('mode');
+        mode = propio === 'light' || propio === 'dark' ? propio : (t.modo || mode);
+        color = t.color || color;
       } catch {}
       const dark = mode === 'dark' || (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
       d.dataset.mode = dark ? 'dark' : 'light';

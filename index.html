@@ -32,18 +32,19 @@
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301700">
   <link rel="stylesheet" href="assets/scenes/stage.css?v=202610301700">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611131530">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611180700">
   <script>
     // Tema guardado antes de pintar, para que no parpadee
     (() => {
       const d = document.documentElement;
       d.classList.add('js');
       let mode = 'system', color = 'naranja';
-      // lo que haya elegido el visitante manda; si no, el tema por defecto de la web (el último que dio la zona privada)
+      // el visitante solo elige día o noche; el color y el modo de partida son los de la web (los últimos que dio la zona privada)
       try {
         const t = JSON.parse(localStorage.getItem('tema-web') || 'null') || {};
-        mode = localStorage.getItem('mode') || t.modo || mode;
-        color = localStorage.getItem('color') || t.color || color;
+        const propio = localStorage.getItem('mode');
+        mode = propio === 'light' || propio === 'dark' ? propio : (t.modo || mode);
+        color = t.color || color;
       } catch {}
       const dark = mode === 'dark' || (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
       d.dataset.mode = dark ? 'dark' : 'light';
@@ -64,8 +65,8 @@
       <a class="link top__opt" href="#fotografia">Fotos</a>
       <a class="link link--line" href="#contacto">Contacto</a>
       <span class="top__tools">
-        <button class="icon-btn" type="button" data-palette-toggle aria-expanded="false" aria-controls="palette" aria-label="Elegir tema y color">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 3.3a1.6 1.6 0 0 0-2.3 0l-8.2 8.2 2.3 2.3 8.2-8.2a1.6 1.6 0 0 0 0-2.3z"/><path d="M9.3 12.9c-2 0-3.5 1.5-3.5 3.4 0 1.6-.9 2.8-2.3 3.3 1 .9 2.4 1.4 3.9 1.4 2.9 0 4.9-2 4.9-4.6l-3-3.5z"/></svg>
+        <button class="icon-btn" type="button" data-night-toggle aria-pressed="false" aria-label="Modo noche">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
         <button class="icon-btn" type="button" data-account-toggle aria-expanded="false" aria-controls="account" aria-label="Acceso a mi área privada">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5"/></svg>
@@ -80,30 +81,6 @@
     <p class="account__text">Mi propia app, alojada en un equipo de casa: panel, gastos, documentos y más. Solo con llave.</p>
     <p class="account__estado" data-app-estado="comprobando"><span aria-hidden="true"></span><em>comprobando el equipo de casa…</em></p>
     <a class="button account__go" href="https://app.wolvem.dev/entrar" data-app-url>Iniciar sesión</a>
-  </div>
-
-  <!-- Panel de tema: se abre con el pincel -->
-  <div class="palette" id="palette" role="dialog" aria-label="Tema y color" hidden>
-    <fieldset class="palette__group">
-      <legend><code>modo</code></legend>
-      <div class="segmented">
-        <button type="button" data-mode-set="light">Día</button>
-        <button type="button" data-mode-set="dark">Noche</button>
-        <button type="button" data-mode-set="system">Sistema</button>
-      </div>
-    </fieldset>
-    <fieldset class="palette__group">
-      <legend><code>color</code></legend>
-      <div class="swatches">
-        <button type="button" class="swatch" data-color-set="naranja" style="--sw:#ff7a1f">Naranja</button>
-        <button type="button" class="swatch" data-color-set="lima" style="--sw:#c8f53c">Lima</button>
-        <button type="button" class="swatch" data-color-set="cobalto" style="--sw:#3355ff">Cobalto</button>
-        <button type="button" class="swatch" data-color-set="rosa" style="--sw:#ff5fa2">Rosa</button>
-        <button type="button" class="swatch" data-color-set="rojo" style="--sw:#e62429">Rojo</button>
-      </div>
-    </fieldset>
-    <p class="palette__note">Se guarda para tu próxima visita.</p>
-    <button type="button" class="palette__reset link link--line" data-theme-reset hidden>Volver al tema de la web</button>
   </div>
 
   <!-- Recorrido automático: baja despacio por toda la web -->
@@ -560,7 +537,7 @@ git commit -m "feat: más café, menos bugs"</pre>
   <script src="assets/scenes/stage.js?v=202610301700"></script>
   <script src="assets/scenes/scenes.js?v=202610301700"></script>
   <script src="assets/js/privada.js?v=202611131530"></script>
-  <script src="assets/js/main.js?v=202611131530"></script>
+  <script src="assets/js/main.js?v=202611180700"></script>
   <script src="assets/js/vivo.js?v=202610311800"></script>
   <script src="assets/vendor/three.min.js"></script>
   <script src="assets/js/gemelo.js?v=202610311900"></script>

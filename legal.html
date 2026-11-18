@@ -11,16 +11,17 @@
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=202610301000">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611131530">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611180700">
   <script>
     (() => {
       const d = document.documentElement;
       let mode = 'system', color = 'naranja';
-      // lo que haya elegido el visitante manda; si no, el tema por defecto de la web (el último que dio la zona privada)
+      // el visitante solo elige día o noche; el color y el modo de partida son los de la web (los últimos que dio la zona privada)
       try {
         const t = JSON.parse(localStorage.getItem('tema-web') || 'null') || {};
-        mode = localStorage.getItem('mode') || t.modo || mode;
-        color = localStorage.getItem('color') || t.color || color;
+        const propio = localStorage.getItem('mode');
+        mode = propio === 'light' || propio === 'dark' ? propio : (t.modo || mode);
+        color = t.color || color;
       } catch {}
       const dark = mode === 'dark' || (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
       d.dataset.mode = dark ? 'dark' : 'light';
@@ -49,7 +50,7 @@
       <h2 id="datos">Tus datos</h2>
       <p><strong>No recojo datos personales.</strong> No hay formularios, registro, comentarios ni herramientas de analítica o publicidad.</p>
       <ul>
-        <li><strong>Sin cookies.</strong> Lo único que se guarda en tu navegador (con <code>localStorage</code>) es el tema y el color que elijas con el pincel, para recordarlos en tu próxima visita. No sale de tu dispositivo y lo puedes borrar cuando quieras desde los ajustes del navegador.</li>
+        <li><strong>Sin cookies.</strong> Lo único que se guarda en tu navegador (con <code>localStorage</code>) es si prefieres el modo día o el modo noche, para recordarlo en tu próxima visita, y una copia del aspecto por defecto de la web. No sale de tu dispositivo y lo puedes borrar cuando quieras desde los ajustes del navegador.</li>
         <li><strong>Sin servicios de terceros.</strong> Las fuentes, las librerías y las imágenes se sirven desde esta misma web; tu navegador no hace peticiones a Google Fonts ni a otros CDN. La única excepción es mi propio equipo de casa (ver «Área privada»).</li>
         <li><strong>Alojamiento.</strong> La web está en GitHub Pages (GitHub, Inc.). Como cualquier servidor, GitHub puede registrar tu dirección IP por motivos técnicos y de seguridad; lo explica en su <a class="link link--line" href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement">declaración de privacidad</a>.</li>
         <li><strong>Área privada y galería.</strong> Al cargar esta web, tu navegador pregunta a mi equipo de casa (a través de Cloudflare, en <code>app.wolvem.dev</code>) si está encendido y, si lo está y tengo la galería activada, le pide la lista de fotos que he publicado y sus imágenes. Por eso mi equipo y Cloudflare reciben tu dirección IP y los datos técnicos normales de una visita web (navegador, idioma). Mi servidor usa la IP solo para limitar peticiones abusivas, en memoria; no la guarda ni la asocia a ti. Si el equipo está apagado, esa sección no aparece y no pasa nada más. Si lo tengo activado, también recibes en directo si el equipo está encendido y su carga (CPU y memoria en porcentaje, sin nombre del equipo ni datos que lo identifiquen); la conexión se cierra a los 10 minutos y cuando la pestaña no está a la vista. El inicio de sesión del botón de acceso se hace en ese equipo, no en esta web, y solo yo tengo cuenta.</li>

@@ -89,22 +89,21 @@
   };
   const systemDark = matchMedia('(prefers-color-scheme: dark)');
   const metaTheme = document.querySelector('meta[name="theme-color"]');
-  // Tema por defecto de la web (lo edito en los Ajustes de mi zona privada; aquí llega la última copia guardada).
-  // Lo que el visitante elija con el pincel manda solo para él; «Volver al tema de la web» lo borra.
+  // Aspecto por defecto de la web (lo decido en «Webs y portafolio» de mi zona privada; aquí llega la última copia guardada).
+  // El visitante solo puede elegir día o noche con el botón de la luna y se le recuerda en su próxima visita; el color es siempre el de la web.
   const porDefecto = () => { try { return JSON.parse(localStorage.getItem('tema-web') || 'null') || {}; } catch { return {}; } };
-  const propio = () => ({ mode: store.get('mode', ''), color: store.get('color', '') });
-  let mode = propio().mode || porDefecto().modo || 'system';
-  let color = propio().color || porDefecto().color || 'naranja';
-  const resetBtn = document.querySelector('[data-theme-reset]');
+  const eleccion = () => { const m = store.get('mode', ''); return m === 'light' || m === 'dark' ? m : ''; };
+  try { localStorage.removeItem('color'); } catch {}   // el selector de color de antes ya no existe
+  let mode = eleccion() || porDefecto().modo || 'system';
+  let color = porDefecto().color || 'naranja';
+  const nightBtn = document.querySelector('[data-night-toggle]');
 
   const render = () => {
     const dark = mode === 'dark' || (mode === 'system' && systemDark.matches);
     html.dataset.mode = dark ? 'dark' : 'light';
     html.dataset.color = color;
-    document.querySelectorAll('[data-mode-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modeSet === mode)));
-    document.querySelectorAll('[data-color-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.colorSet === color)));
+    nightBtn?.setAttribute('aria-pressed', String(dark));
     metaTheme.content = getComputedStyle(document.body).backgroundColor;
-    if (resetBtn) resetBtn.hidden = !(propio().mode || propio().color);
   };
 
   // El nuevo tema se abre en círculo desde el botón pulsado
@@ -124,34 +123,21 @@
     }
   };
 
-  document.querySelectorAll('[data-mode-set]').forEach((btn) => {
-    btn.addEventListener('click', () => applyTheme(() => { mode = btn.dataset.modeSet; store.set('mode', mode); }, btn));
-  });
-  document.querySelectorAll('[data-color-set]').forEach((btn) => {
-    btn.addEventListener('click', () => applyTheme(() => { color = btn.dataset.colorSet; store.set('color', color); }, btn));
-  });
+  // La luna alterna entre día y noche (lo que se ve ahora, aunque el modo de partida sea «sistema»)
+  nightBtn?.addEventListener('click', () => applyTheme(() => { mode = html.dataset.mode === 'dark' ? 'light' : 'dark'; store.set('mode', mode); }, nightBtn));
   systemDark.addEventListener('change', () => { if (mode === 'system') render(); });
   render();
 
-  // Quita lo que eligió el visitante y vuelve al tema por defecto de la web
-  const aplicarDefecto = (origin) => applyTheme(() => {
-    try { localStorage.removeItem('mode'); localStorage.removeItem('color'); } catch {}
-    mode = porDefecto().modo || 'system';
-    color = porDefecto().color || 'naranja';
-  }, origin);
-  resetBtn?.addEventListener('click', () => aplicarDefecto(resetBtn));
-
-  // Pregunta a la zona privada cuál es el tema por defecto ahora; si cambió y el visitante no eligió el suyo, se aplica.
+  // Pregunta a la zona privada cuál es el aspecto por defecto ahora; si cambió se aplica (el modo, solo si el visitante no eligió el suyo).
   // Si el equipo está apagado no pasa nada: se queda con la última copia guardada.
   window.Privada?.tema().then((t) => {
     if (!t) return;
-    const own = propio();
-    const nuevoModo = own.mode || t.modo, nuevoColor = own.color || t.color;
+    const nuevoModo = eleccion() || t.modo, nuevoColor = t.color;
     if (nuevoModo !== mode || nuevoColor !== color) applyTheme(() => { mode = nuevoModo; color = nuevoColor; });
   });
 
-  /* ---------- Paneles de la cabecera: pincel (tema) y persona (acceso) ---------- */
-  const panels = [...document.querySelectorAll('[data-palette-toggle], [data-account-toggle]')].map((btn) => ({
+  /* ---------- Panel de la cabecera: la persona (acceso) ---------- */
+  const panels = [...document.querySelectorAll('[data-account-toggle]')].map((btn) => ({
     btn, el: document.getElementById(btn.getAttribute('aria-controls')),
   }));
   const setPanel = (panel, open) => {

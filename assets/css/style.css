@@ -197,6 +197,8 @@ code { font-family: var(--font-code); }
 .top.is-deep .icon-btn[aria-expanded="true"] .icon { stroke: var(--deep); }
 .top.is-brand .icon-btn[aria-expanded="true"] .icon { stroke: var(--brand); }
 @media (hover: hover) and (pointer: fine) { .icon-btn:hover .icon { transform: rotate(-18deg) scale(1.1); } }
+/* la luna del modo noche: rellena cuando la noche está puesta */
+.icon-btn[data-night-toggle][aria-pressed="true"] .icon { fill: currentColor; }
 
 
 /* ---------- Panel de tema ---------- */
